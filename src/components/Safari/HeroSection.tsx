@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 type Destination = {
   name: string;
@@ -58,9 +59,14 @@ export const HeroSection = () => {
     }} />
       <div className="destination-overlay" />
       
+      {/* Static H2 heading - moved outside the animating container */}
+      <div className="absolute inset-0 flex flex-col justify-center items-start pl-[70px] md:pl-[120px] z-10">
+        <h2 className="text-white mb-4 text-7xl text-left font-semibold my-0 mx-[2px]">DISCOVER THE</h2>
+      </div>
+
       <div className="absolute inset-0 flex flex-col justify-center items-start pl-[85px] md:pl-[135px] z-10">
         <div className={`transition-opacity duration-800 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
-          <h2 className="text-white mb-4 text-7xl text-left font-semibold my-0 mx-[2px]">DISCOVER THE</h2>
+          {/* H2 is now removed from here and placed above */}
           <h1 id="hero-destination" className="destination-text mx-[170px]">{destination.name}</h1>
           <p className="safari-quote text-white text-xl mt-4 max-w-md mx-[180px]">
             "{destination.description}"
