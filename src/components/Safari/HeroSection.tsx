@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 type Destination = {
   name: string;
@@ -62,7 +61,7 @@ export const HeroSection = () => {
       <div className="absolute inset-0 flex flex-col justify-center items-start pl-[85px] md:pl-[135px] z-10">
         <div className={`transition-opacity duration-800 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
           <h2 className="text-white mb-4 text-7xl text-left font-semibold my-0 mx-0">DISCOVER THE</h2>
-          <h1 id="hero-destination" className="destination-text mx-[160px]">{destination.name}</h1>
+          <h1 id="hero-destination" className="destination-text mx-[170px]">{destination.name}</h1>
           <p className="safari-quote text-white text-xl mt-4 max-w-md mx-[160px]">
             "{destination.description}"
           </p>
