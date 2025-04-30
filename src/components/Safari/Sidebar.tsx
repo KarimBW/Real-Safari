@@ -3,7 +3,7 @@ import { Facebook, Twitter, Youtube } from "lucide-react";
 
 export const Sidebar = () => {
   return (
-    <div className="safari-sidebar bg-safari-dark-grey text-white flex flex-col">
+    <div className="safari-sidebar bg-safari-dark-grey/50 text-white flex flex-col backdrop-blur-sm">
       <div className="flex-1 flex flex-col justify-between py-10 px-8">
         {/* Logo */}
         <div className="flex justify-center mb-8">
