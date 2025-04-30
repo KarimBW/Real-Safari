@@ -59,8 +59,8 @@ export const HeroSection = () => {
     }} />
       <div className="destination-overlay" />
       
-      {/* Static H2 heading - moved outside the animating container */}
-      <div className="absolute inset-0 flex flex-col justify-center items-start pl-[70px] md:pl-[120px] z-10">
+      {/* Static H2 heading - moved outside the animating container and positioned 200px higher */}
+      <div className="absolute inset-0 flex flex-col justify-center items-start pl-[70px] md:pl-[120px] z-10 -mt-[200px]">
         <h2 className="text-white mb-4 text-7xl text-left font-semibold my-0 mx-[2px]">DISCOVER THE</h2>
       </div>
 
