@@ -11,7 +11,7 @@ export const Sidebar = () => {
             <img 
               src="/lovable-uploads/32f6cd57-ea89-4604-8818-e71fa6f7bf9d.png" 
               alt="Real Safari Logo" 
-              className="w-[35.2px] h-auto" /* Increased size by 10% from w-32 */
+              className="w-[75px] h-auto" /* Set to exactly 75px */
             />
           </a>
         </div>
