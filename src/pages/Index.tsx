@@ -16,6 +16,20 @@ const Index = () => {
     };
   }, []);
 
+  // Pre-load images
+  useEffect(() => {
+    const imageUrls = [
+      "/lovable-uploads/ebab21c9-3137-406f-b457-4a345b28c6ab.png",
+      "/lovable-uploads/c574e67a-51c3-442e-b68e-89788ccfb439.png",
+      "/lovable-uploads/44660527-d212-4dc7-a061-b9879acf0e93.png"
+    ];
+    
+    imageUrls.forEach(url => {
+      const img = new Image();
+      img.src = url;
+    });
+  }, []);
+
   return (
     <div className="relative overflow-hidden h-screen w-screen flex">
       <Sidebar />

@@ -1,5 +1,6 @@
 
-This is a placeholder file. Please replace with actual destination images:
-1. okavango.jpg
-2. kalahari.jpg
-3. makgadikgadi.jpg
+These images have been replaced with:
+1. okavango.jpg - Lion image (public/lovable-uploads/ebab21c9-3137-406f-b457-4a345b28c6ab.png)
+2. kalahari.jpg - Sunset with antelope image (public/lovable-uploads/c574e67a-51c3-442e-b68e-89788ccfb439.png)
+3. makgadikgadi.jpg - Elephants image (public/lovable-uploads/44660527-d212-4dc7-a061-b9879acf0e93.png)
+Logo - Africa paw logo (public/lovable-uploads/32f6cd57-ea89-4604-8818-e71fa6f7bf9d.png)

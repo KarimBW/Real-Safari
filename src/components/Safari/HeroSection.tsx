@@ -10,27 +10,20 @@ type Destination = {
 const destinations: Destination[] = [
   {
     name: "OKAVANGO",
-    image: "/lovable-uploads/okavango.jpg",
-    description: "Where elephants throw pool parties and hippos are the uninvited guests!"
+    image: "/lovable-uploads/ebab21c9-3137-406f-b457-4a345b28c6ab.png",
+    description: "Where lions roam and whisper tales of the wild savanna!"
   },
   {
     name: "KALAHARI",
-    image: "/lovable-uploads/kalahari.jpg",
+    image: "/lovable-uploads/c574e67a-51c3-442e-b68e-89788ccfb439.png",
     description: "It's so hot even the sand gets a sunburn!"
   },
   {
     name: "MAKGADIKGADI",
-    image: "/lovable-uploads/makgadikgadi.jpg",
-    description: "The flattest place on Earth—you can see your future coming from miles away!"
+    image: "/lovable-uploads/44660527-d212-4dc7-a061-b9879acf0e93.png",
+    description: "Where elephants throw dust parties and have trunk-to-trunk conversations!"
   }
 ];
-
-// Placeholder images for demo
-const placeholderImages = {
-  "OKAVANGO": "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1760&auto=format&fit=crop",
-  "KALAHARI": "https://images.unsplash.com/photo-1469041797191-50ace28483c3?q=80&w=1752&auto=format&fit=crop",
-  "MAKGADIKGADI": "https://images.unsplash.com/photo-1576485375217-d6a95e34d031?q=80&w=1760&auto=format&fit=crop"
-};
 
 export const HeroSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -71,16 +64,13 @@ export const HeroSection = () => {
   }, []);
 
   const destination = destinations[currentIndex];
-  
-  // Use placeholder images for demo until real images are uploaded
-  const backgroundImage = destination.image || placeholderImages[destination.name as keyof typeof placeholderImages];
 
   return (
     <div className="relative h-screen w-screen overflow-hidden">
       {/* Background image with overlay */}
       <div 
         className={`background-image ${isAnimating ? 'animate-fade-out' : 'animate-fade-in'}`} 
-        style={{ backgroundImage: `url(${backgroundImage})` }}
+        style={{ backgroundImage: `url(${destination.image})` }}
       />
       <div className="destination-overlay" />
       
