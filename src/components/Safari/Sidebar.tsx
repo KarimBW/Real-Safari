@@ -5,13 +5,15 @@ export const Sidebar = () => {
   return (
     <div className="safari-sidebar bg-safari-dark-grey/50 text-white flex flex-col backdrop-blur-sm">
       <div className="flex-1 flex flex-col justify-between py-10 px-8">
-        {/* Logo */}
+        {/* Logo with homepage link */}
         <div className="flex justify-center mb-8">
-          <img 
-            src="/lovable-uploads/32f6cd57-ea89-4604-8818-e71fa6f7bf9d.png" 
-            alt="Real Safari Logo" 
-            className="w-32 h-auto"
-          />
+          <a href="/" className="hover:opacity-80 transition-opacity">
+            <img 
+              src="/lovable-uploads/32f6cd57-ea89-4604-8818-e71fa6f7bf9d.png" 
+              alt="Real Safari Logo" 
+              className="w-[35.2px] h-auto" /* Increased size by 10% from w-32 */
+            />
+          </a>
         </div>
         
         {/* Social Icons */}

@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 
 type Destination = {
@@ -74,9 +73,9 @@ export const HeroSection = () => {
       />
       <div className="destination-overlay" />
       
-      <div className="absolute inset-0 flex flex-col justify-center items-start pl-[300px] md:pl-[350px] z-10">
+      <div className="absolute inset-0 flex flex-col justify-center items-start pl-[250px] md:pl-[300px] z-10">
         <div className={`transition-opacity duration-800 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
-          <h2 className="text-white text-5xl font-bold mb-4">DISCOVER THE</h2>
+          <h2 className="text-white text-4xl font-bold mb-4">DISCOVER THE</h2>
           <h1 id="hero-destination" className="destination-text">{destination.name}</h1>
           <p className="safari-quote text-white text-xl mt-4 max-w-md">
             "{destination.description}"
@@ -96,7 +95,7 @@ export const HeroSection = () => {
       </div>
 
       {/* Navigation arrows */}
-      <div className="navigation-arrows absolute bottom-8 left-[350px] flex space-x-8 items-center">
+      <div className="navigation-arrows absolute bottom-8 left-[300px] flex space-x-8 items-center">
         <button onClick={prevDestination} aria-label="Previous destination">
           &lt;
         </button>
