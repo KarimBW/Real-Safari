@@ -60,7 +60,7 @@ export const HeroSection = () => {
       
       <div className="absolute inset-0 flex flex-col justify-center items-start pl-[300px] md:pl-[350px] z-10">
         <div className={`transition-opacity duration-800 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
-          <h2 className="text-white mb-4 font-normal mx-0 text-7xl text-left">DISCOVER THE</h2>
+          <h2 className="text-white mb-4 mx-0 text-7xl text-left font-semibold">DISCOVER THE</h2>
           <h1 id="hero-destination" className="destination-text">{destination.name}</h1>
           <p className="safari-quote text-white text-xl mt-4 max-w-md">
             "{destination.description}"
