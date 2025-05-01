@@ -1,14 +1,12 @@
 
 import React from "react";
 import { Header } from "@/components/Safari/Header";
-import { Sidebar } from "@/components/Safari/Sidebar";
 
 const MeetTheHerd = () => {
   return (
     <div className="relative min-h-screen bg-black">
-      <Sidebar />
       <Header />
-      <div className="min-h-screen pl-[300px] pt-32 text-white">
+      <div className="min-h-screen pt-32 text-white">
         <div className="max-w-6xl mx-auto px-8">
           <h1 className="text-5xl font-bold text-safari-gold mb-8">Meet The Herd</h1>
           <p className="text-xl mb-8">

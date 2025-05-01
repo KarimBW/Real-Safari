@@ -1,13 +1,9 @@
 
 import { Header } from "@/components/Safari/Header";
-import { Sidebar } from "@/components/Safari/Sidebar";
 
 const Plan = () => {
   return (
     <div className="h-screen flex">
-      {/* Sidebar */}
-      <Sidebar />
-      
       {/* Main Content */}
       <div className="flex-1 relative">
         <Header />
