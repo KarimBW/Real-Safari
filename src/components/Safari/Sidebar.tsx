@@ -1,5 +1,6 @@
 
-import { Facebook, Twitter, Youtube } from "lucide-react";
+import { Facebook, Youtube } from "lucide-react";
+import { Twitter as X } from "lucide-react"; // Renamed import to clarify this is the X (formerly Twitter) icon
 
 export const Sidebar = () => {
   return (
@@ -25,7 +26,7 @@ export const Sidebar = () => {
             <Youtube size={24} />
           </a>
           <a href="#" className="hover:text-safari-gold transition-colors">
-            <Twitter size={24} />
+            <X size={24} />
           </a>
         </div>
         
