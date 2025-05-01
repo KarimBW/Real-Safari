@@ -21,36 +21,56 @@ const destinations: Destination[] = [{
 export const HeroSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [isTyping, setIsTyping] = useState(false);
+  
   const nextDestination = () => {
     setIsAnimating(true);
     setTimeout(() => {
       setCurrentIndex(prev => (prev + 1) % destinations.length);
       setIsAnimating(false);
+      // Start typewriter effect after changing destination
+      setIsTyping(true);
+      setTimeout(() => setIsTyping(false), 1000); // Reset typing state after animation completes
     }, 800); // Matches fade-out animation duration
   };
+  
   const prevDestination = () => {
     setIsAnimating(true);
     setTimeout(() => {
       setCurrentIndex(prev => (prev - 1 + destinations.length) % destinations.length);
       setIsAnimating(false);
+      // Start typewriter effect after changing destination
+      setIsTyping(true);
+      setTimeout(() => setIsTyping(false), 1000); // Reset typing state after animation completes
     }, 800); // Matches fade-out animation duration
   };
+  
   const goToDestination = (index: number) => {
     if (index === currentIndex) return;
     setIsAnimating(true);
     setTimeout(() => {
       setCurrentIndex(index);
       setIsAnimating(false);
+      // Start typewriter effect after changing destination
+      setIsTyping(true);
+      setTimeout(() => setIsTyping(false), 1000); // Reset typing state after animation completes
     }, 800);
   };
 
-  // Auto rotate every 3.5 seconds
+  // Auto rotate every 4.15 seconds (as requested)
   useEffect(() => {
     const interval = setInterval(() => {
       nextDestination();
-    }, 3500);
+    }, 4150);
     return () => clearInterval(interval);
   }, []);
+  
+  // Trigger typewriter effect on initial load
+  useEffect(() => {
+    setIsTyping(true);
+    setTimeout(() => setIsTyping(false), 1000);
+  }, []);
+
   const destination = destinations[currentIndex];
   return <div className="relative h-screen w-screen overflow-hidden">
       {/* Background image with overlay */}
@@ -60,14 +80,16 @@ export const HeroSection = () => {
       <div className="destination-overlay" />
       
       {/* Static H2 heading - moved outside the animating container and positioned 200px higher */}
-      <div className="absolute inset-0 flex flex-col justify-center items-start pl-[70px] md:pl-[120px] z-10 -mt-[200px]">
+      <div className="absolute inset-0 flex flex-col justify-center items-start pl-[170px] md:pl-[220px] z-10 -mt-[200px]">
         <h2 className="text-white mb-4 text-7xl text-left font-semibold my-0 mx-[2px]">DISCOVER THE</h2>
       </div>
 
       <div className="absolute inset-0 flex flex-col justify-center items-start pl-[85px] md:pl-[135px] z-10">
         <div className={`transition-opacity duration-800 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
-          {/* H2 is now removed from here and placed above */}
-          <h1 id="hero-destination" className="destination-text mx-[170px]">{destination.name}</h1>
+          {/* Destination name with typewriter effect */}
+          <h1 id="hero-destination" className={`destination-text mx-[170px] overflow-hidden whitespace-nowrap ${isTyping ? 'animated' : ''}`}>
+            {destination.name}
+          </h1>
           <p className="safari-quote text-white text-xl mt-4 max-w-md mx-[180px]">
             "{destination.description}"
           </p>

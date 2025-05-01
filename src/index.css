@@ -67,6 +67,20 @@
   @apply text-[11vw] font-bold leading-none tracking-tight text-white;
   -webkit-text-stroke: 1.5px white;
   color: transparent;
+  position: relative;
+}
+
+.destination-text.animated {
+  animation: typewriter 1s steps(20) forwards;
+}
+
+@keyframes typewriter {
+  from { 
+    width: 0; 
+  }
+  to { 
+    width: 100%; 
+  }
 }
 
 .safari-quote {
