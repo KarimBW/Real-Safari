@@ -79,18 +79,19 @@ export const HeroSection = () => {
     }} />
       <div className="destination-overlay" />
       
-      {/* Static H2 heading - moved outside the animating container and positioned 200px higher */}
-      <div className="absolute inset-0 flex flex-col justify-center items-start pl-[170px] md:pl-[220px] z-10 -mt-[200px]">
+      {/* Static H2 heading - moved left by 100px from previous position */}
+      <div className="absolute inset-0 flex flex-col justify-center items-start pl-[70px] md:pl-[120px] z-10 -mt-[200px]">
         <h2 className="text-white mb-4 text-7xl text-left font-semibold my-0 mx-[2px]">DISCOVER THE</h2>
       </div>
 
-      <div className="absolute inset-0 flex flex-col justify-center items-start pl-[85px] md:pl-[135px] z-10">
+      {/* H1 section - moved left by 20px and down by 15px */}
+      <div className="absolute inset-0 flex flex-col justify-center items-start pl-[65px] md:pl-[115px] z-10 mt-[15px]">
         <div className={`transition-opacity duration-800 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
           {/* Destination name with typewriter effect */}
-          <h1 id="hero-destination" className={`destination-text mx-[170px] overflow-hidden whitespace-nowrap ${isTyping ? 'animated' : ''}`}>
+          <h1 id="hero-destination" className={`destination-text mx-[150px] overflow-hidden whitespace-nowrap ${isTyping ? 'animated' : ''}`}>
             {destination.name}
           </h1>
-          <p className="safari-quote text-white text-xl mt-4 max-w-md mx-[180px]">
+          <p className="safari-quote text-white text-xl mt-4 max-w-md mx-[160px]">
             "{destination.description}"
           </p>
         </div>
