@@ -1,7 +1,6 @@
 
 import React, { useState } from 'react';
 import { useParams } from "react-router-dom";
-import { Header } from "@/components/Safari/Header";
 import { destinationData } from "@/data/destinationData";
 
 interface PanelData {
@@ -68,18 +67,20 @@ const DestinationLayout: React.FC = () => {
   return (
     <div className="flex h-screen w-screen overflow-hidden bg-black">
       {/* Left sidebar */}
-      <div className="w-[80px] bg-black text-white flex flex-col items-center justify-between py-8">
-        {/* Logo */}
-        <div>
-          <img 
-            src="/lovable-uploads/6f7ac6f4-6078-4baa-8ef8-1a5d7f4e8bc0.png" 
-            alt="Logo" 
-            className="w-12 h-12 object-contain"
-          />
+      <div className="w-[80px] bg-black text-white flex flex-col items-center justify-between py-8 relative">
+        {/* Logo with home link - positioned absolutely to allow overlap */}
+        <div className="absolute top-8 left-1/2 transform -translate-x-1/2 z-20">
+          <a href="/">
+            <img 
+              src="/lovable-uploads/2a2d1f68-3989-43eb-8054-5b6ce21d92bf.png" 
+              alt="Safari Logo" 
+              className="w-[75px] h-auto"
+            />
+          </a>
         </div>
         
         {/* Vertical destination name */}
-        <div className="flex-grow flex items-center">
+        <div className="flex-grow flex items-center mt-[100px]">
           <div className="transform -rotate-90 whitespace-nowrap text-2xl font-bold tracking-wider">
             {destination.title.toUpperCase()}
           </div>
