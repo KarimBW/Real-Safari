@@ -1,9 +1,31 @@
-
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Header } from "@/components/Safari/Header";
 
-const destinationData = {
+// Define the types for better TypeScript support
+interface Stats {
+  castles: string;
+  lakes: string;
+  islands: string;
+}
+
+interface Tour {
+  title: string;
+  days: string;
+  description: string;
+  price: string;
+}
+
+interface DestinationData {
+  title: string;
+  mainDescription: string;
+  stats: Stats;
+  descriptionTitle: string;
+  descriptionText: string[];
+  tours: Tour[];
+}
+
+const destinationData: Record<string, DestinationData> = {
   okavango: {
     title: "OKAVANGO",
     mainDescription: "Okavango is a paradise of extraordinary beauty, where you can find almost unlimited wildlife adventures, beautiful wetlands, and pristine wilderness.",
@@ -126,11 +148,23 @@ const destinationData = {
   }
 };
 
+type EditableData = {
+  title: string;
+  mainDescription: string;
+  stats: Stats;
+  descriptionTitle: string;
+  descriptionText: string[];
+  tours: Tour[];
+  [key: string]: any;
+};
+
 const DestinationPage = () => {
   const { id } = useParams();
   const destination = destinationData[id as keyof typeof destinationData] || destinationData.okavango;
   const [editMode, setEditMode] = useState(false);
-  const [editData, setEditData] = useState(destination);
+  const [editData, setEditData] = useState<EditableData>({
+    ...destination
+  });
 
   const handleEditToggle = () => {
     setEditMode(!editMode);
@@ -150,7 +184,7 @@ const DestinationPage = () => {
     setEditData({
       ...editData,
       [category]: {
-        ...editData[category as keyof typeof editData],
+        ...editData[category as keyof typeof editData] as Record<string, any>,
         [field]: value
       }
     });
