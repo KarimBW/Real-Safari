@@ -1,16 +1,18 @@
+
 import React, { useState } from 'react';
 import { useParams } from "react-router-dom";
 import { Header } from "@/components/Safari/Header";
 import { destinationData } from "@/data/destinationData";
+import FooterSection from "./FooterSection";
+
 interface PanelData {
   title: string;
   subtitle: string;
   image: string;
 }
+
 const DestinationLayout: React.FC = () => {
-  const {
-    id
-  } = useParams();
+  const { id } = useParams();
   const destination = destinationData[id as keyof typeof destinationData] || destinationData.okavango;
 
   // Define the camp names based on destination
@@ -45,60 +47,122 @@ const DestinationLayout: React.FC = () => {
     subtitle: "Official shop",
     image: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-4.0.3"
   }];
+  
   const [activePanel, setActivePanel] = useState<number | null>(null);
   const [backgroundImage, setBackgroundImage] = useState<string>(panels[0].image);
+  
   const handlePanelHover = (index: number) => {
     setActivePanel(index);
     setBackgroundImage(panels[index].image);
   };
+  
   const handlePanelLeave = () => {
     setActivePanel(null);
   };
-  return <div className="flex h-screen w-screen overflow-hidden bg-black">
-      {/* Left sidebar */}
-      <div className="w-[80px] bg-black text-white flex flex-col items-center justify-between py-8">
-        {/* Logo */}
-        <div>
-          
-        </div>
-        
-        {/* Vertical destination name */}
-        <div className="flex-grow flex items-center">
-          <div className="transform -rotate-90 whitespace-nowrap text-2xl font-bold tracking-wider">
-            {destination.title.toUpperCase()}
-          </div>
-        </div>
-        
-        {/* Bottom text */}
-        <div className="flex flex-col items-center gap-4">
-          
-          <div className="flex gap-2">
-            
+  
+  return (
+    <div className="flex flex-col min-h-screen">
+      {/* Hero section with panels */}
+      <div className="h-screen relative overflow-hidden">
+        {/* Left sidebar */}
+        <div className="w-[80px] h-full bg-black text-white flex flex-col items-center justify-between py-8 absolute left-0 top-0 z-10">
+          {/* Logo */}
+          <div>
             
           </div>
+          
+          {/* Vertical destination name */}
+          <div className="flex-grow flex items-center">
+            <div className="transform -rotate-90 whitespace-nowrap text-2xl font-bold tracking-wider">
+              {destination.title.toUpperCase()}
+            </div>
+          </div>
+          
+          {/* Bottom text */}
+          <div className="flex flex-col items-center gap-4">
+            
+            <div className="flex gap-2">
+              
+            </div>
+          </div>
         </div>
-      </div>
 
-      {/* Main content area with panels */}
-      <div className="flex-1 flex">
         {/* Background image that changes on hover */}
-        <div className="absolute inset-0 bg-cover bg-center transition-all duration-500 z-0" style={{
-        backgroundImage: `url(${backgroundImage})`,
-        left: '80px'
-      }}>
+        <div 
+          className="absolute inset-0 bg-cover bg-center transition-all duration-700 ease-in-out z-0" 
+          style={{
+            backgroundImage: `url(${backgroundImage})`,
+            left: '80px'
+          }}
+        >
           <div className="absolute inset-0 bg-black bg-opacity-40"></div>
         </div>
 
         {/* Panels */}
-        <div className="relative z-10 flex-1 flex">
-          {panels.map((panel, index) => <div key={index} className="flex-1 flex flex-col justify-end border-r border-gray-700 hover:bg-black hover:bg-opacity-20 transition-all duration-300" onMouseEnter={() => handlePanelHover(index)} onMouseLeave={handlePanelLeave}>
-              <div className="p-6 pb-12">
-                <h2 className="text-white text-2xl font-bold mb-1">{panel.title}</h2>
-                <p className="text-white text-sm opacity-80">{panel.subtitle}</p>
+        <div className="relative z-10 flex-1 flex h-full" style={{ marginLeft: '80px' }}>
+          {panels.map((panel, index) => (
+            <div 
+              key={index} 
+              className="flex-1 flex flex-col justify-end border-r border-gray-700 hover:bg-black hover:bg-opacity-20 transition-all duration-500" 
+              onMouseEnter={() => handlePanelHover(index)} 
+              onMouseLeave={handlePanelLeave}
+            >
+              <div className="p-6 pb-12 transition-all duration-500">
+                <h2 
+                  className={`text-white text-2xl font-bold mb-1 transition-all duration-500 ease-in-out transform ${
+                    activePanel === index ? 'translate-y-[-40px] text-safari-gold' : ''
+                  }`}
+                >
+                  {panel.title}
+                </h2>
+                <p className={`text-white text-sm opacity-80 transition-all duration-500 ease-in-out transform ${
+                  activePanel === index ? 'translate-y-[-40px]' : ''
+                }`}>
+                  {panel.subtitle}
+                </p>
               </div>
-            </div>)}
+            </div>
+          ))}
         </div>
       </div>
-    </div>;
+      
+      {/* Content section */}
+      <div className="bg-safari-cream min-h-screen">
+        <div className="container mx-auto py-16 px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div>
+              <h2 className="text-4xl font-bold mb-6 text-safari-dark-grey">Discover {destination.title}</h2>
+              <p className="text-safari-dark-grey mb-4">
+                Welcome to the magnificent {destination.title}, where adventure awaits at every turn. 
+                Our camps offer the perfect blend of luxury and wilderness, allowing you to experience 
+                the raw beauty of Africa while enjoying world-class amenities.
+              </p>
+              <p className="text-safari-dark-grey mb-4">
+                Each camp has its unique charm and offers different wildlife viewing opportunities. 
+                Whether you're interested in big cats, elephants, or rare bird species, 
+                our experienced guides will ensure you have the safari of a lifetime.
+              </p>
+              <button className="mt-6 bg-safari-gold hover:bg-safari-light-brown text-white py-3 px-8 transition-colors duration-300">
+                Book Your Safari
+              </button>
+            </div>
+            <div>
+              <div className="rounded-lg overflow-hidden h-full">
+                <img 
+                  src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?ixlib=rb-4.0.3" 
+                  alt={`${destination.title} landscape`} 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* Footer */}
+      <FooterSection />
+    </div>
+  );
 };
+
 export default DestinationLayout;
