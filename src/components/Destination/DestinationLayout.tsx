@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from "react-router-dom";
 import { Header } from "@/components/Safari/Header";
 import { destinationData } from "@/data/destinationData";
@@ -50,6 +50,8 @@ const DestinationLayout: React.FC = () => {
   
   const [activePanel, setActivePanel] = useState<number | null>(null);
   const [backgroundImage, setBackgroundImage] = useState<string>(panels[0].image);
+  const [showHeader, setShowHeader] = useState<boolean>(false);
+  const heroRef = useRef<HTMLDivElement>(null);
   
   const handlePanelHover = (index: number) => {
     setActivePanel(index);
@@ -59,11 +61,37 @@ const DestinationLayout: React.FC = () => {
   const handlePanelLeave = () => {
     setActivePanel(null);
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (heroRef.current) {
+        const heroHeight = heroRef.current.offsetHeight;
+        const scrollPosition = window.scrollY;
+        
+        // Show header only when scrolled past 80% of the hero section
+        setShowHeader(scrollPosition > heroHeight * 0.8);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   
   return (
     <div className="flex flex-col min-h-screen">
+      {/* Floating header that appears when scrolling */}
+      <div 
+        className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-500 ease-in-out ${
+          showHeader ? 'translate-y-0' : '-translate-y-full'
+        }`}
+      >
+        <Header className="bg-safari-dark-brown/95 backdrop-blur-sm py-4" menuElevated={true} />
+      </div>
+      
       {/* Hero section with panels */}
-      <div className="h-screen relative overflow-hidden">
+      <div className="h-screen relative overflow-hidden" ref={heroRef}>
         {/* Left sidebar */}
         <div className="w-[80px] h-full bg-black text-white flex flex-col items-center justify-between py-8 absolute left-0 top-0 z-10">
           {/* Logo */}
