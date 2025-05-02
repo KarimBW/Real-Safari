@@ -53,6 +53,10 @@ const Index = () => {
       "/lovable-uploads/091c1771-3e0c-47e3-ada4-5db9eedcd4bb.png", // Khama Rhino/Nxai Pan (rhino)
       "/lovable-uploads/16aba57c-38a1-4e65-91fe-9c9300bdb5ab.png", // Lion
       "/lovable-uploads/546765b3-8c8d-4fb7-856d-649d995deea7.png", // Elephant
+      
+      // New uploaded images
+      "/lovable-uploads/a25ce305-a695-4546-9fae-b8fdc60cc4d9.png", // New Makgadikgadi (elephant)
+      "/lovable-uploads/d02c9222-8e68-4653-b5ca-528385d274b4.png", // New Nxai Pan (lion)
     ];
     
     imageUrls.forEach(url => {

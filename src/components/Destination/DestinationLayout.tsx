@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from "react-router-dom";
 import { Header } from "@/components/Safari/Header";
@@ -79,12 +78,12 @@ const DestinationLayout: React.FC = () => {
       // Updated Makgadikgadi camps with new order and images
       return [{
         title: camps[0], // Makgadikgadi
-        subtitle: "Salt flat expanses",
-        image: "/lovable-uploads/52fba817-468b-49a9-827a-bb36b663d4b6.png" // Flamingo image
+        subtitle: "Elephant territory",
+        image: "/lovable-uploads/a25ce305-a695-4546-9fae-b8fdc60cc4d9.png" // New elephant image
       }, {
         title: camps[1], // Nxai Pan
-        subtitle: "Baobab landscapes",
-        image: "/lovable-uploads/091c1771-3e0c-47e3-ada4-5db9eedcd4bb.png" // Rhino image
+        subtitle: "Lion pride",
+        image: "/lovable-uploads/d02c9222-8e68-4653-b5ca-528385d274b4.png" // New lion image
       }, {
         title: camps[2], // Nata
         subtitle: "Flamingo gatherings",
