@@ -1,13 +1,14 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { useLocation } from "react-router-dom";
 import { 
-  Popover,
-  PopoverContent,
-  PopoverTrigger
-} from "@/components/ui/popover";
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger
+} from "@/components/ui/dropdown-menu";
 import { ChevronDown } from "lucide-react";
 
 interface HeaderProps {
@@ -21,16 +22,12 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   const location = useLocation();
   const isHomepage = location.pathname === "/";
-  
-  // Don't render header on homepage
-  if (isHomepage) {
-    return null;
-  }
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   
   return (
     <header className={cn(
       "flex justify-between items-center w-full px-6 py-4", 
-      "bg-safari-dark-grey/65", 
+      !isHomepage && "bg-safari-dark-grey/65",
       className
     )}>
       {/* Logo */}
@@ -45,28 +42,41 @@ export const Header: React.FC<HeaderProps> = ({
       {/* Menu Items */}
       <nav className="flex space-x-8">
         {/* Where To Next? with Dropdown */}
-        <Popover>
-          <PopoverTrigger className={`text-white font-medium hover:text-safari-gold transition-all duration-300 flex items-center gap-1 ${
-            menuElevated ? 'transform -translate-y-[15px]' : ''
-          }`}>
-            <span className="flex items-center gap-1 hover:text-safari-gold">
+        <DropdownMenu open={dropdownOpen} onOpenChange={setDropdownOpen}>
+          <DropdownMenuTrigger 
+            className={`text-white font-medium hover:text-safari-gold transition-all duration-300 ${
+              menuElevated ? 'transform -translate-y-[15px]' : ''
+            }`}
+            onMouseEnter={() => setDropdownOpen(true)}
+            onMouseLeave={() => setDropdownOpen(false)}
+            asChild
+          >
+            <div className="flex items-center gap-1 cursor-pointer">
               Where To Next? <ChevronDown className="w-4 h-4" />
-            </span>
-          </PopoverTrigger>
-          <PopoverContent className="bg-safari-dark-grey border-safari-gold p-0 w-48">
-            <div className="py-2">
-              <Link to="/destination/okavango" className="text-white block w-full px-4 py-2 hover:bg-safari-dark-brown">
-                Okavango
-              </Link>
-              <Link to="/destination/kalahari" className="text-white block w-full px-4 py-2 hover:bg-safari-dark-brown">
-                Kalahari
-              </Link>
-              <Link to="/destination/makgadikgadi" className="text-white block w-full px-4 py-2 hover:bg-safari-dark-brown">
-                Makgadikgadi
-              </Link>
             </div>
-          </PopoverContent>
-        </Popover>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent 
+            className="bg-safari-dark-grey border-safari-gold p-0 w-48"
+            onMouseEnter={() => setDropdownOpen(true)}
+            onMouseLeave={() => setDropdownOpen(false)}
+          >
+            <Link to="/destination/okavango" className="text-white block w-full px-4 py-2 hover:bg-safari-dark-brown">
+              <DropdownMenuItem className="cursor-pointer text-white hover:text-white focus:text-white">
+                Okavango
+              </DropdownMenuItem>
+            </Link>
+            <Link to="/destination/kalahari" className="text-white block w-full px-4 py-2 hover:bg-safari-dark-brown">
+              <DropdownMenuItem className="cursor-pointer text-white hover:text-white focus:text-white">
+                Kalahari
+              </DropdownMenuItem>
+            </Link>
+            <Link to="/destination/makgadikgadi" className="text-white block w-full px-4 py-2 hover:bg-safari-dark-brown">
+              <DropdownMenuItem className="cursor-pointer text-white hover:text-white focus:text-white">
+                Makgadikgadi
+              </DropdownMenuItem>
+            </Link>
+          </DropdownMenuContent>
+        </DropdownMenu>
         
         {/* Game Plan */}
         <Link 

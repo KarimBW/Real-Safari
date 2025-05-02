@@ -1,6 +1,7 @@
 
 import { HeroSection } from "@/components/Safari/HeroSection";
 import { Sidebar } from "@/components/Safari/Sidebar";
+import { Header } from "@/components/Safari/Header";
 import { useEffect } from "react";
 
 const Index = () => {
@@ -31,6 +32,7 @@ const Index = () => {
 
   return (
     <div className="relative h-screen w-screen overflow-hidden">
+      <Header />
       <Sidebar />
       <HeroSection />
     </div>
