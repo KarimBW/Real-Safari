@@ -33,7 +33,7 @@ const Index = () => {
   return (
     <div className="relative overflow-hidden h-screen w-screen flex">
       <Sidebar />
-      <div className="flex-1 relative">
+      <div className="flex-1 relative h-screen w-screen">
         <Header />
         <HeroSection />
       </div>

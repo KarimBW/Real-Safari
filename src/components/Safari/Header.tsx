@@ -2,6 +2,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import { useLocation } from "react-router-dom";
 
 interface HeaderProps {
   className?: string;
@@ -12,8 +13,15 @@ export const Header: React.FC<HeaderProps> = ({
   className = "", 
   menuElevated = false 
 }) => {
+  const location = useLocation();
+  const isHomepage = location.pathname === "/";
+  
   return (
-    <header className={cn("flex justify-between items-center w-full px-6 py-4", className)}>
+    <header className={cn(
+      "flex justify-between items-center w-full px-6 py-4", 
+      isHomepage ? "bg-transparent" : "bg-safari-dark-grey", 
+      className
+    )}>
       {/* Logo */}
       <Link to="/" className="z-10">
         <h1 className="text-3xl font-bold text-white">SAFARI</h1>
@@ -22,20 +30,12 @@ export const Header: React.FC<HeaderProps> = ({
       {/* Menu Items */}
       <nav className="flex space-x-8">
         <Link 
-          to="/" 
-          className={`text-white font-medium hover:text-safari-gold transition-all duration-300 ${
-            menuElevated ? 'transform -translate-y-[7px]' : ''
-          }`}
-        >
-          Home
-        </Link>
-        <Link 
           to="/plan" 
           className={`text-white font-medium hover:text-safari-gold transition-all duration-300 ${
             menuElevated ? 'transform -translate-y-[7px]' : ''
           }`}
         >
-          Plan Your Safari
+          Game Plan
         </Link>
         <Link 
           to="/destination/okavango" 
@@ -43,7 +43,7 @@ export const Header: React.FC<HeaderProps> = ({
             menuElevated ? 'transform -translate-y-[7px]' : ''
           }`}
         >
-          Destinations
+          Where To Next?
         </Link>
         <Link 
           to="/meet-the-herd" 
@@ -54,15 +54,6 @@ export const Header: React.FC<HeaderProps> = ({
           Meet the Herd
         </Link>
       </nav>
-
-      {/* Contact Button */}
-      <button 
-        className={`bg-safari-gold hover:bg-safari-light-brown text-white py-2 px-4 rounded transition-all duration-300 ${
-          menuElevated ? 'transform -translate-y-[7px]' : ''
-        }`}
-      >
-        Contact Us
-      </button>
     </header>
   );
 };
