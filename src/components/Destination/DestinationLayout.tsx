@@ -22,7 +22,7 @@ const DestinationLayout: React.FC = () => {
   } else if (id === 'kalahari') {
     camps = ['CKGR', 'MABUA', 'KHUTSE', 'Camp Four', 'Camp Five'];
   } else {
-    camps = ['Camp One', 'Camp Two', 'Camp Three', 'Camp Four', 'Camp Five'];
+    camps = ['Moremi', 'Chobe', 'Maun', 'Khwai', 'Savuti'];
   }
 
   // Panel data with placeholder images
@@ -87,7 +87,7 @@ const DestinationLayout: React.FC = () => {
           showHeader ? 'translate-y-0' : '-translate-y-full'
         }`}
       >
-        <Header className="bg-safari-dark-brown/95 backdrop-blur-sm py-4" menuElevated={true} />
+        <Header className="bg-safari-dark-grey/65 backdrop-blur-sm py-4" menuElevated={true} />
       </div>
       
       {/* Hero section with panels */}
