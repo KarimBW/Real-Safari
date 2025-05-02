@@ -18,7 +18,7 @@ const DestinationLayout: React.FC = () => {
   // Define the camp names based on destination
   let camps = [];
   if (id === 'makgadikgadi') {
-    camps = ['Salt Pan', 'Nxai Pan', 'Camp Three', 'Camp Four', 'Camp Five'];
+    camps = ['Makgadikgadi', 'Nxai Pan', 'Nata', 'Kubu Island', 'Khama Rhino'];
   } else if (id === 'kalahari') {
     camps = ['CKGR', 'Khutse', 'Ghanzi', 'Mabuasehube', 'Kgalagadi'];
   } else {
@@ -68,13 +68,36 @@ const DestinationLayout: React.FC = () => {
         }, {
           title: camps[3], // Mabuasehube
           subtitle: "Cheetah country",
-          image: "/lovable-uploads/8fa91479-08fa-445b-abad-047ba109fedf.png" // Mabuasehube image - Cheetah
+          image: "/lovable-uploads/09a00f34-b704-4711-88f5-929dbe49f205.png" // Mabuasehube image - Updated Cheetah
         }, {
           title: camps[4], // Kgalagadi
           subtitle: "Oryx plains",
-          image: "/lovable-uploads/cdf8c116-9e07-456b-9fd6-ba373ceb9d2d.png" // Kgalagadi image - Oryx
+          image: "/lovable-uploads/edda0aaf-7b54-41c7-afa2-5414f567fdf2.png" // Kgalagadi image - Updated Oryx
         }
       ];
+    } else if (id === 'makgadikgadi') {
+      // Updated Makgadikgadi camps with new order and images
+      return [{
+        title: camps[0], // Makgadikgadi
+        subtitle: "Salt flat expanses",
+        image: "/lovable-uploads/52fba817-468b-49a9-827a-bb36b663d4b6.png" // Flamingo image
+      }, {
+        title: camps[1], // Nxai Pan
+        subtitle: "Baobab landscapes",
+        image: "/lovable-uploads/091c1771-3e0c-47e3-ada4-5db9eedcd4bb.png" // Rhino image
+      }, {
+        title: camps[2], // Nata
+        subtitle: "Flamingo gatherings",
+        image: "/lovable-uploads/52fba817-468b-49a9-827a-bb36b663d4b6.png" // Flamingo image
+      }, {
+        title: camps[3], // Kubu Island
+        subtitle: "Ancient baobabs",
+        image: "/lovable-uploads/262d126c-8864-467a-a4dc-fa9033a12dc2.png" // Baobab image
+      }, {
+        title: camps[4], // Khama Rhino
+        subtitle: "Rhino sanctuary",
+        image: "/lovable-uploads/091c1771-3e0c-47e3-ada4-5db9eedcd4bb.png" // Rhino image
+      }];
     } else {
       // Default images for other destinations
       return [{

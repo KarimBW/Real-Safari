@@ -42,10 +42,17 @@ const Index = () => {
       
       // Wildlife images for Kalahari camps
       "/lovable-uploads/02233ed5-a1fa-40fd-a777-8e843f957aa6.png", // Khutse (ostrich)
-      "/lovable-uploads/8fa91479-08fa-445b-abad-047ba109fedf.png", // Mabuasehube (cheetah)
+      "/lovable-uploads/09a00f34-b704-4711-88f5-929dbe49f205.png", // Mabuasehube (cheetah) - Updated
       "/lovable-uploads/06030a97-1c87-470f-9e72-3e4704564718.png", // Ghanzi (people)
-      "/lovable-uploads/cdf8c116-9e07-456b-9fd6-ba373ceb9d2d.png", // Kgalagadi (oryx)
+      "/lovable-uploads/edda0aaf-7b54-41c7-afa2-5414f567fdf2.png", // Kgalagadi (oryx) - Updated
       "/lovable-uploads/a79c2903-be2b-4134-acd5-2baba07a13ab.png", // CKGR (zebras)
+      
+      // Wildlife images for Makgadikgadi camps
+      "/lovable-uploads/262d126c-8864-467a-a4dc-fa9033a12dc2.png", // Kubu Island (baobab)
+      "/lovable-uploads/52fba817-468b-49a9-827a-bb36b663d4b6.png", // Nata/Makgadikgadi (flamingo)
+      "/lovable-uploads/091c1771-3e0c-47e3-ada4-5db9eedcd4bb.png", // Khama Rhino/Nxai Pan (rhino)
+      "/lovable-uploads/16aba57c-38a1-4e65-91fe-9c9300bdb5ab.png", // Lion
+      "/lovable-uploads/546765b3-8c8d-4fb7-856d-649d995deea7.png", // Elephant
     ];
     
     imageUrls.forEach(url => {
