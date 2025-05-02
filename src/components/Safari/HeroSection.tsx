@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 type Destination = {
   name: string;
@@ -72,12 +71,19 @@ export const HeroSection = () => {
   }, []);
 
   const destination = destinations[currentIndex];
-  return <div className="relative h-screen w-screen overflow-hidden">
+  return (
+    <div className="absolute inset-0 h-screen w-screen overflow-hidden">
       {/* Background image with overlay */}
       <div className={`background-image ${isAnimating ? 'animate-fade-out' : 'animate-fade-in'}`} style={{
-      backgroundImage: `url(${destination.image})`
-    }} />
-      <div className="destination-overlay" />
+        backgroundImage: `url(${destination.image})`,
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        zIndex: -2
+      }} />
+      <div className="destination-overlay absolute inset-0 z-[-1]" />
       
       {/* Static H2 heading - moved right by 15px from previous position */}
       <div className="absolute inset-0 flex flex-col justify-center items-start pl-[85px] md:pl-[135px] z-10 -mt-[200px]">
@@ -119,5 +125,6 @@ export const HeroSection = () => {
           &gt;
         </button>
       </div>
-    </div>;
+    </div>
+  );
 };
