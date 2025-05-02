@@ -24,7 +24,7 @@ export const Header: React.FC<HeaderProps> = ({
         <Link 
           to="/" 
           className={`text-white font-medium hover:text-safari-gold transition-all duration-300 ${
-            menuElevated ? 'transform -translate-y-[25px]' : ''
+            menuElevated ? 'transform -translate-y-[7px]' : ''
           }`}
         >
           Home
@@ -32,7 +32,7 @@ export const Header: React.FC<HeaderProps> = ({
         <Link 
           to="/plan" 
           className={`text-white font-medium hover:text-safari-gold transition-all duration-300 ${
-            menuElevated ? 'transform -translate-y-[25px]' : ''
+            menuElevated ? 'transform -translate-y-[7px]' : ''
           }`}
         >
           Plan Your Safari
@@ -40,7 +40,7 @@ export const Header: React.FC<HeaderProps> = ({
         <Link 
           to="/destination/okavango" 
           className={`text-white font-medium hover:text-safari-gold transition-all duration-300 ${
-            menuElevated ? 'transform -translate-y-[25px]' : ''
+            menuElevated ? 'transform -translate-y-[7px]' : ''
           }`}
         >
           Destinations
@@ -48,7 +48,7 @@ export const Header: React.FC<HeaderProps> = ({
         <Link 
           to="/meet-the-herd" 
           className={`text-white font-medium hover:text-safari-gold transition-all duration-300 ${
-            menuElevated ? 'transform -translate-y-[25px]' : ''
+            menuElevated ? 'transform -translate-y-[7px]' : ''
           }`}
         >
           Meet the Herd
@@ -58,7 +58,7 @@ export const Header: React.FC<HeaderProps> = ({
       {/* Contact Button */}
       <button 
         className={`bg-safari-gold hover:bg-safari-light-brown text-white py-2 px-4 rounded transition-all duration-300 ${
-          menuElevated ? 'transform -translate-y-[25px]' : ''
+          menuElevated ? 'transform -translate-y-[7px]' : ''
         }`}
       >
         Contact Us
