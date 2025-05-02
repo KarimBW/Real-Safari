@@ -4,11 +4,10 @@ import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { useLocation } from "react-router-dom";
 import { 
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger
-} from "@/components/ui/dropdown-menu";
+  Popover,
+  PopoverContent,
+  PopoverTrigger
+} from "@/components/ui/popover";
 import { ChevronDown } from "lucide-react";
 
 interface HeaderProps {
@@ -23,44 +22,57 @@ export const Header: React.FC<HeaderProps> = ({
   const location = useLocation();
   const isHomepage = location.pathname === "/";
   
+  // Don't render header on homepage
+  if (isHomepage) {
+    return null;
+  }
+  
   return (
     <header className={cn(
       "flex justify-between items-center w-full px-6 py-4", 
-      isHomepage ? "bg-transparent" : "bg-safari-dark-grey/65", 
+      "bg-safari-dark-grey/65", 
       className
     )}>
       {/* Logo */}
       <Link to="/" className="z-10">
-        <h1 className="text-3xl font-bold text-white">SAFARI</h1>
+        <img 
+          src="/lovable-uploads/40b013e5-2309-4502-8173-45799a40ea4e.png" 
+          alt="SAFARI" 
+          className="h-12" 
+        />
       </Link>
 
       {/* Menu Items */}
       <nav className="flex space-x-8">
         {/* Where To Next? with Dropdown */}
-        <DropdownMenu>
-          <DropdownMenuTrigger className={`text-white font-medium hover:text-safari-gold transition-all duration-300 flex items-center gap-1 ${
-            menuElevated ? 'transform -translate-y-[7px]' : ''
+        <Popover>
+          <PopoverTrigger className={`text-white font-medium hover:text-safari-gold transition-all duration-300 flex items-center gap-1 ${
+            menuElevated ? 'transform -translate-y-[15px]' : ''
           }`}>
-            Where To Next? <ChevronDown className="w-4 h-4" />
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className="bg-safari-dark-grey border-safari-gold">
-            <DropdownMenuItem className="hover:bg-safari-dark-brown">
-              <Link to="/destination/okavango" className="text-white w-full">Okavango</Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem className="hover:bg-safari-dark-brown">
-              <Link to="/destination/kalahari" className="text-white w-full">Kalahari</Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem className="hover:bg-safari-dark-brown">
-              <Link to="/destination/makgadikgadi" className="text-white w-full">Makgadikgadi</Link>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+            <span className="flex items-center gap-1 hover:text-safari-gold">
+              Where To Next? <ChevronDown className="w-4 h-4" />
+            </span>
+          </PopoverTrigger>
+          <PopoverContent className="bg-safari-dark-grey border-safari-gold p-0 w-48">
+            <div className="py-2">
+              <Link to="/destination/okavango" className="text-white block w-full px-4 py-2 hover:bg-safari-dark-brown">
+                Okavango
+              </Link>
+              <Link to="/destination/kalahari" className="text-white block w-full px-4 py-2 hover:bg-safari-dark-brown">
+                Kalahari
+              </Link>
+              <Link to="/destination/makgadikgadi" className="text-white block w-full px-4 py-2 hover:bg-safari-dark-brown">
+                Makgadikgadi
+              </Link>
+            </div>
+          </PopoverContent>
+        </Popover>
         
         {/* Game Plan */}
         <Link 
           to="/plan" 
           className={`text-white font-medium hover:text-safari-gold transition-all duration-300 ${
-            menuElevated ? 'transform -translate-y-[7px]' : ''
+            menuElevated ? 'transform -translate-y-[15px]' : ''
           }`}
         >
           Game Plan
@@ -70,7 +82,7 @@ export const Header: React.FC<HeaderProps> = ({
         <Link 
           to="/meet-the-herd" 
           className={`text-white font-medium hover:text-safari-gold transition-all duration-300 ${
-            menuElevated ? 'transform -translate-y-[7px]' : ''
+            menuElevated ? 'transform -translate-y-[15px]' : ''
           }`}
         >
           Meet the Herd

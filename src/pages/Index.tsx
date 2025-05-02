@@ -1,5 +1,4 @@
 
-import { Header } from "@/components/Safari/Header";
 import { HeroSection } from "@/components/Safari/HeroSection";
 import { Sidebar } from "@/components/Safari/Sidebar";
 import { useEffect } from "react";
@@ -31,12 +30,9 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="relative overflow-hidden h-screen w-screen flex">
+    <div className="relative h-screen w-screen overflow-hidden">
       <Sidebar />
-      <div className="flex-1 relative h-screen w-screen">
-        <Header />
-        <HeroSection />
-      </div>
+      <HeroSection />
     </div>
   );
 };
