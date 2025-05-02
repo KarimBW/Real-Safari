@@ -10,29 +10,25 @@ import MeetTheHerd from "./pages/MeetTheHerd";
 import DestinationPage from "./pages/DestinationPage";
 import NotFound from "./pages/NotFound";
 
-// Create a client
 const queryClient = new QueryClient();
 
-// Define App as a function component to properly use React hooks
-function App() {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/plan" element={<Plan />} />
-            <Route path="/meet-the-herd" element={<MeetTheHerd />} />
-            <Route path="/destination/:id" element={<DestinationPage />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </QueryClientProvider>
-  );
-}
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <TooltipProvider>
+      <Toaster />
+      <Sonner />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/plan" element={<Plan />} />
+          <Route path="/meet-the-herd" element={<MeetTheHerd />} />
+          <Route path="/destination/:id" element={<DestinationPage />} />
+          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </TooltipProvider>
+  </QueryClientProvider>
+);
 
 export default App;
