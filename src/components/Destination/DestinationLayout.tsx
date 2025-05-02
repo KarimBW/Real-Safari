@@ -25,28 +25,59 @@ const DestinationLayout: React.FC = () => {
     camps = ['Moremi', 'Chobe', 'Maun', 'Khwai', 'Savuti'];
   }
 
-  // Panel data with placeholder images
-  const panels: PanelData[] = [{
-    title: camps[0],
-    subtitle: "My life in images",
-    image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?ixlib=rb-4.0.3"
-  }, {
-    title: camps[1],
-    subtitle: "All about me",
-    image: "https://images.unsplash.com/photo-1504193902866-31d5d1c28ca9?ixlib=rb-4.0.3"
-  }, {
-    title: camps[2],
-    subtitle: "Quoting what I've learnt",
-    image: "https://images.unsplash.com/photo-1473580044384-7ba9967e16a0?ixlib=rb-4.0.3"
-  }, {
-    title: camps[3],
-    subtitle: "You and I",
-    image: "https://images.unsplash.com/photo-1507272931001-fc06c17e4f43?ixlib=rb-4.0.3"
-  }, {
-    title: camps[4],
-    subtitle: "Official shop",
-    image: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-4.0.3"
-  }];
+  // Panel data with wildlife images for Okavango camps
+  const getPanelImages = () => {
+    if (id === 'okavango') {
+      return [
+        {
+          title: camps[0], // Moremi
+          subtitle: "Leopard territory",
+          image: "/lovable-uploads/c49f95ad-a567-416a-b70c-bef52f68f29a.png" // Leopard image
+        }, {
+          title: camps[1], // Chobe
+          subtitle: "Giraffe sanctuary",
+          image: "/lovable-uploads/8a3c95d1-48d1-4c2c-b36c-d8accf95133d.png" // Giraffes image
+        }, {
+          title: camps[2], // Maun
+          subtitle: "Delta views",
+          image: "/lovable-uploads/59f35e67-5f3a-4177-b4a1-53e4389fee2d.png" // Delta image
+        }, {
+          title: camps[3], // Khwai
+          subtitle: "Wild dog haven",
+          image: "/lovable-uploads/5c9ac31f-a57c-43ee-adb0-a97c4ededc98.png" // Wild dog image
+        }, {
+          title: camps[4], // Savuti
+          subtitle: "Elephant paradise",
+          image: "/lovable-uploads/13144fc7-d253-4fd1-997d-96c622d2754d.png" // Elephant image
+        }
+      ];
+    } else {
+      // Default images for other destinations
+      return [{
+        title: camps[0],
+        subtitle: "My life in images",
+        image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?ixlib=rb-4.0.3"
+      }, {
+        title: camps[1],
+        subtitle: "All about me",
+        image: "https://images.unsplash.com/photo-1504193902866-31d5d1c28ca9?ixlib=rb-4.0.3"
+      }, {
+        title: camps[2],
+        subtitle: "Quoting what I've learnt",
+        image: "https://images.unsplash.com/photo-1473580044384-7ba9967e16a0?ixlib=rb-4.0.3"
+      }, {
+        title: camps[3],
+        subtitle: "You and I",
+        image: "https://images.unsplash.com/photo-1507272931001-fc06c17e4f43?ixlib=rb-4.0.3"
+      }, {
+        title: camps[4],
+        subtitle: "Official shop",
+        image: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-4.0.3"
+      }];
+    }
+  };
+  
+  const panels: PanelData[] = getPanelImages();
   
   const [activePanel, setActivePanel] = useState<number | null>(null);
   const [backgroundImage, setBackgroundImage] = useState<string>(panels[0].image);
@@ -78,6 +109,12 @@ const DestinationLayout: React.FC = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  // Update panels when destination changes
+  useEffect(() => {
+    const updatedPanels = getPanelImages();
+    setBackgroundImage(updatedPanels[0].image);
+  }, [id]);
   
   return (
     <div className="flex flex-col min-h-screen">
