@@ -19,6 +19,9 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'cinzel': ['Cinzel', 'serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -69,6 +72,7 @@ export default {
 					'light-brown': '#A58B69',
 					'cream': '#F5F3F0',
 					'sand': '#E5D0B1',
+					'dark-brown': '#30281e',
 				}
 			},
 			borderRadius: {
