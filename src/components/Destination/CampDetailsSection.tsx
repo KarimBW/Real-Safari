@@ -51,12 +51,14 @@ const CampDetailsSection = forwardRef<HTMLDivElement, CampDetailsSectionProps>((
   }, [carouselImages.length]);
   
   const goToNextCamp = () => {
-    setActiveCampIndex((prevIndex) => (prevIndex + 1) % camps.length);
+    const nextIndex = (activeCampIndex + 1) % camps.length;
+    setActiveCampIndex(nextIndex);
     setActiveImageIndex(0); // Reset image index when changing camps
   };
   
   const goToPreviousCamp = () => {
-    setActiveCampIndex((prevIndex) => (prevIndex - 1 + camps.length) % camps.length);
+    const prevIndex = (activeCampIndex - 1 + camps.length) % camps.length;
+    setActiveCampIndex(prevIndex);
     setActiveImageIndex(0); // Reset image index when changing camps
   };
   
