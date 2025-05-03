@@ -1,7 +1,5 @@
-
 import { HeroSection } from "@/components/Safari/HeroSection";
 import { Sidebar } from "@/components/Safari/Sidebar";
-import { Header } from "@/components/Safari/Header";
 import { useEffect } from "react";
 
 const Index = () => {
@@ -19,9 +17,16 @@ const Index = () => {
     cinzelLink.rel = "stylesheet";
     document.head.appendChild(cinzelLink);
     
+    // Add Quicksand font for the "MEET THE HERD" text
+    const quicksandLink = document.createElement('link');
+    quicksandLink.href = "https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap";
+    quicksandLink.rel = "stylesheet";
+    document.head.appendChild(quicksandLink);
+    
     return () => {
       document.head.removeChild(playfairLink);
       document.head.removeChild(cinzelLink);
+      document.head.removeChild(quicksandLink);
     };
   }, []);
 
@@ -67,7 +72,6 @@ const Index = () => {
 
   return (
     <div className="relative h-screen w-screen overflow-hidden">
-      <Header className="z-20" />
       <Sidebar />
       <HeroSection />
     </div>
