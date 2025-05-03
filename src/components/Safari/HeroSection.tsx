@@ -108,12 +108,12 @@ export const HeroSection = () => {
         <div className="absolute right-[355px] top-[65px]">
           <DropdownMenu open={dropdownOpen} onOpenChange={setDropdownOpen}>
             <DropdownMenuTrigger 
-              className="font-quicksand text-white text-xs hover:text-safari-gold transition-colors"
+              className="font-quicksand text-white text-[120px] hover:text-safari-gold transition-colors"
               onMouseEnter={() => setDropdownOpen(true)}
               onMouseLeave={() => setDropdownOpen(false)}
             >
               <div className="flex items-center gap-1 cursor-pointer">
-                WHERE TO NEXT? <ChevronDown className="w-3 h-3" />
+                WHERE TO NEXT? <ChevronDown className="w-12 h-12" />
               </div>
             </DropdownMenuTrigger>
             <DropdownMenuContent 
@@ -135,7 +135,7 @@ export const HeroSection = () => {
         {/* Game Plan link */}
         <div className="absolute right-[235px] top-[65px]">
           <Link to="/plan">
-            <h3 className="font-quicksand text-white text-xs hover:text-safari-gold transition-colors">
+            <h3 className="font-quicksand text-white text-[120px] hover:text-safari-gold transition-colors">
               GAME PLAN
             </h3>
           </Link>
@@ -144,7 +144,7 @@ export const HeroSection = () => {
         {/* Meet The Herd text - repositioned */}
         <div className="absolute right-[55px] top-[65px]">
           <Link to="/meet-the-herd">
-            <h3 className="font-quicksand text-white text-xs hover:text-safari-gold transition-colors">
+            <h3 className="font-quicksand text-white text-[120px] hover:text-safari-gold transition-colors">
               MEET THE HERD
             </h3>
           </Link>
