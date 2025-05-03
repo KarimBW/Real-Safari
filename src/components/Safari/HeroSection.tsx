@@ -1,5 +1,13 @@
+
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { 
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger
+} from "@/components/ui/dropdown-menu";
+import { ChevronDown } from "lucide-react";
 
 type Destination = {
   name: string;
@@ -29,6 +37,7 @@ export const HeroSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   
   const nextDestination = () => {
     setIsAnimating(true);
@@ -93,11 +102,53 @@ export const HeroSection = () => {
       }} />
       <div className="destination-overlay absolute inset-0 z-[-1]" />
       
-      {/* Meet The Herd text in Quicksand font - top right corner */}
-      <div className="absolute right-[85px] top-[75px] z-10">
-        <Link to="/meet-the-herd">
-          <h3 className="font-quicksand text-white text-xl hover:text-safari-gold transition-colors">MEET THE HERD</h3>
-        </Link>
+      {/* Top navigation section with all three menu items */}
+      <div className="absolute z-10">
+        {/* Where To Next? with Dropdown */}
+        <div className="absolute right-[355px] top-[65px]">
+          <DropdownMenu open={dropdownOpen} onOpenChange={setDropdownOpen}>
+            <DropdownMenuTrigger 
+              className="font-quicksand text-white text-xs hover:text-safari-gold transition-colors"
+              onMouseEnter={() => setDropdownOpen(true)}
+              onMouseLeave={() => setDropdownOpen(false)}
+            >
+              <div className="flex items-center gap-1 cursor-pointer">
+                WHERE TO NEXT? <ChevronDown className="w-3 h-3" />
+              </div>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent 
+              className="bg-safari-dark-grey border-safari-gold"
+              onMouseEnter={() => setDropdownOpen(true)}
+              onMouseLeave={() => setDropdownOpen(false)}
+            >
+              {destinations.map((dest) => (
+                <Link key={dest.slug} to={`/destination/${dest.slug}`}>
+                  <DropdownMenuItem className="text-white hover:bg-safari-dark-brown hover:text-white focus:text-white cursor-pointer">
+                    {dest.name}
+                  </DropdownMenuItem>
+                </Link>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+        
+        {/* Game Plan link */}
+        <div className="absolute right-[235px] top-[65px]">
+          <Link to="/plan">
+            <h3 className="font-quicksand text-white text-xs hover:text-safari-gold transition-colors">
+              GAME PLAN
+            </h3>
+          </Link>
+        </div>
+        
+        {/* Meet The Herd text - repositioned */}
+        <div className="absolute right-[55px] top-[65px]">
+          <Link to="/meet-the-herd">
+            <h3 className="font-quicksand text-white text-xs hover:text-safari-gold transition-colors">
+              MEET THE HERD
+            </h3>
+          </Link>
+        </div>
       </div>
       
       {/* Static H2 heading - moved right by 15px from previous position */}
