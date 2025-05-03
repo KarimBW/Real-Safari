@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
@@ -114,8 +113,8 @@ export const HeroSection = () => {
                 onMouseLeave={() => setDropdownOpen(false)}
               >
                 <div className="flex items-center gap-2 cursor-pointer">
-                  <h3 className="font-quicksand text-white text-[120px]">WHERE TO NEXT?</h3>
-                  <ChevronDown className="w-12 h-12" />
+                  <h3 className="font-quicksand text-white text-[20px]">WHERE TO NEXT?</h3>
+                  <ChevronDown className="w-4 h-4" />
                 </div>
               </DropdownMenuTrigger>
               <DropdownMenuContent 
@@ -137,7 +136,7 @@ export const HeroSection = () => {
           {/* GAME PLAN link */}
           <div className="mr-32">
             <Link to="/plan">
-              <h3 className="font-quicksand text-white text-[120px] hover:text-safari-gold transition-colors">
+              <h3 className="font-quicksand text-white text-[20px] hover:text-safari-gold transition-colors">
                 GAME PLAN
               </h3>
             </Link>
@@ -146,7 +145,7 @@ export const HeroSection = () => {
           {/* MEET THE HERD link */}
           <div>
             <Link to="/meet-the-herd">
-              <h3 className="font-quicksand text-white text-[120px] hover:text-safari-gold transition-colors">
+              <h3 className="font-quicksand text-white text-[20px] hover:text-safari-gold transition-colors">
                 MEET THE HERD
               </h3>
             </Link>
