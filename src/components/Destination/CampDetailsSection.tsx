@@ -1,6 +1,5 @@
 
 import React, { useState, useEffect } from 'react';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { campData } from '@/data/campData';
 
@@ -11,6 +10,7 @@ interface CampDetailsSectionProps {
 
 const CampDetailsSection: React.FC<CampDetailsSectionProps> = ({ destinationId, camps }) => {
   const [activeCampIndex, setActiveCampIndex] = useState(0);
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
   const activeCamp = camps[activeCampIndex];
   const campInfo = campData[destinationId]?.[activeCamp.toLowerCase()] || 
     { description: "Information about this camp is coming soon!", features: ["Wildlife viewing", "Guided safaris", "Stargazing"] };
@@ -29,12 +29,27 @@ const CampDetailsSection: React.FC<CampDetailsSectionProps> = ({ destinationId, 
 
   const carouselImages = getCarouselImages(destinationId, activeCamp);
   
+  // Auto-rotate functionality
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveImageIndex(prevIndex => (prevIndex + 1) % carouselImages.length);
+    }, 3500);
+    
+    return () => clearInterval(interval);
+  }, [carouselImages.length]);
+  
   const goToNextCamp = () => {
     setActiveCampIndex((prevIndex) => (prevIndex + 1) % camps.length);
+    setActiveImageIndex(0); // Reset image index when changing camps
   };
   
   const goToPreviousCamp = () => {
     setActiveCampIndex((prevIndex) => (prevIndex - 1 + camps.length) % camps.length);
+    setActiveImageIndex(0); // Reset image index when changing camps
+  };
+  
+  const goToImage = (index: number) => {
+    setActiveImageIndex(index);
   };
 
   return (
@@ -64,35 +79,60 @@ const CampDetailsSection: React.FC<CampDetailsSectionProps> = ({ destinationId, 
             </div>
           </div>
           
-          {/* Camp Preview Area with Carousel */}
-          <div className="camp-preview relative">
-            <Carousel 
-              className="w-full" 
-              opts={{
-                loop: true,
-                align: "start",
-                dragFree: true,
-              }}
-              autoplay={{ delayInMs: 3500, direction: "forward" }}
-            >
-              <CarouselContent>
-                {carouselImages.map((image, index) => (
-                  <CarouselItem key={index}>
-                    <div className="p-1">
-                      <div className="overflow-hidden rounded-lg aspect-[4/3]">
-                        <img 
-                          src={`${image}?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80`} 
-                          alt={`${activeCamp} camp view ${index + 1}`} 
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
+          {/* Camp Preview Area with Overlapping Images Carousel */}
+          <div className="camp-preview relative h-[400px]">
+            {/* Overlapping images carousel */}
+            <div className="relative w-full h-full">
+              {carouselImages.map((image, index) => {
+                // Calculate z-index and position for overlapping effect
+                const isActive = index === activeImageIndex;
+                const zIndex = isActive ? 30 : 10 - index;
+                const translateX = isActive ? '0' : `${(index - activeImageIndex) * 40}px`;
+                const opacity = isActive ? 1 : 0.7;
+                const scale = isActive ? 1 : 0.9;
+                
+                return (
+                  <div 
+                    key={index}
+                    className="absolute transition-all duration-500 ease-in-out rounded-lg overflow-hidden shadow-xl"
+                    style={{ 
+                      zIndex,
+                      transform: `translateX(${translateX}) scale(${scale})`,
+                      opacity,
+                      width: '90%',
+                      height: '90%',
+                      top: '5%',
+                      left: isActive ? '5%' : `${5 + (index - activeImageIndex) * 2}%`
+                    }}
+                  >
+                    <img 
+                      src={`${image}?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80`}
+                      alt={`${activeCamp} camp view ${index + 1}`}
+                      className="w-full h-full object-cover rounded-lg"
+                    />
+                    
+                    {/* Image number indicator */}
+                    <div className="absolute bottom-4 right-4 bg-black bg-opacity-50 text-white py-1 px-3 rounded-full text-sm">
+                      {index + 1} / {carouselImages.length}
                     </div>
-                  </CarouselItem>
+                  </div>
+                );
+              })}
+              
+              {/* Navigation dots */}
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-40">
+                {carouselImages.map((_, index) => (
+                  <button
+                    key={index}
+                    className={`w-2 h-2 rounded-full transition-all ${
+                      index === activeImageIndex ? 'bg-white scale-125' : 'bg-white bg-opacity-50'
+                    }`}
+                    onClick={() => goToImage(index)}
+                    aria-label={`Go to image ${index + 1}`}
+                  />
                 ))}
-              </CarouselContent>
-              <CarouselPrevious className="absolute left-4 top-1/2" />
-              <CarouselNext className="absolute right-4 top-1/2" />
-            </Carousel>
+              </div>
+            </div>
           </div>
         </div>
         
