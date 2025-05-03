@@ -102,61 +102,64 @@ export const HeroSection = () => {
       }} />
       <div className="destination-overlay absolute inset-0 z-[-1]" />
       
-      {/* Top navigation section with all three menu items */}
-      <div className="absolute z-10">
-        {/* Where To Next? with Dropdown */}
-        <div className="absolute right-[355px] top-[65px]">
-          <DropdownMenu open={dropdownOpen} onOpenChange={setDropdownOpen}>
-            <DropdownMenuTrigger 
-              className="font-quicksand text-white text-[120px] hover:text-safari-gold transition-colors"
-              onMouseEnter={() => setDropdownOpen(true)}
-              onMouseLeave={() => setDropdownOpen(false)}
-            >
-              <div className="flex items-center gap-1 cursor-pointer">
-                WHERE TO NEXT? <ChevronDown className="w-12 h-12" />
-              </div>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent 
-              className="bg-safari-dark-grey border-safari-gold"
-              onMouseEnter={() => setDropdownOpen(true)}
-              onMouseLeave={() => setDropdownOpen(false)}
-            >
-              {destinations.map((dest) => (
-                <Link key={dest.slug} to={`/destination/${dest.slug}`}>
-                  <DropdownMenuItem className="text-white hover:bg-safari-dark-brown hover:text-white focus:text-white cursor-pointer">
-                    {dest.name}
-                  </DropdownMenuItem>
-                </Link>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </div>
-        
-        {/* Game Plan link */}
-        <div className="absolute right-[235px] top-[65px]">
-          <Link to="/plan">
-            <h3 className="font-quicksand text-white text-[120px] hover:text-safari-gold transition-colors">
-              GAME PLAN
-            </h3>
-          </Link>
-        </div>
-        
-        {/* Meet The Herd text - repositioned */}
-        <div className="absolute right-[55px] top-[65px]">
-          <Link to="/meet-the-herd">
-            <h3 className="font-quicksand text-white text-[120px] hover:text-safari-gold transition-colors">
-              MEET THE HERD
-            </h3>
-          </Link>
+      {/* Top navigation section */}
+      <div className="absolute top-0 left-0 w-full z-50">
+        <div className="flex justify-end pr-16 pt-16">
+          {/* WHERE TO NEXT? with Dropdown */}
+          <div className="mr-32">
+            <DropdownMenu open={dropdownOpen} onOpenChange={setDropdownOpen}>
+              <DropdownMenuTrigger 
+                className="text-white hover:text-safari-gold transition-colors"
+                onMouseEnter={() => setDropdownOpen(true)}
+                onMouseLeave={() => setDropdownOpen(false)}
+              >
+                <div className="flex items-center gap-2 cursor-pointer">
+                  <h3 className="font-quicksand text-white text-[120px]">WHERE TO NEXT?</h3>
+                  <ChevronDown className="w-12 h-12" />
+                </div>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent 
+                className="bg-safari-dark-grey border-safari-gold"
+                onMouseEnter={() => setDropdownOpen(true)}
+                onMouseLeave={() => setDropdownOpen(false)}
+              >
+                {destinations.map((dest) => (
+                  <Link key={dest.slug} to={`/destination/${dest.slug}`}>
+                    <DropdownMenuItem className="text-white hover:bg-safari-dark-brown hover:text-white focus:text-white cursor-pointer">
+                      {dest.name}
+                    </DropdownMenuItem>
+                  </Link>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
+          
+          {/* GAME PLAN link */}
+          <div className="mr-32">
+            <Link to="/plan">
+              <h3 className="font-quicksand text-white text-[120px] hover:text-safari-gold transition-colors">
+                GAME PLAN
+              </h3>
+            </Link>
+          </div>
+          
+          {/* MEET THE HERD link */}
+          <div>
+            <Link to="/meet-the-herd">
+              <h3 className="font-quicksand text-white text-[120px] hover:text-safari-gold transition-colors">
+                MEET THE HERD
+              </h3>
+            </Link>
+          </div>
         </div>
       </div>
       
-      {/* Static H2 heading - moved right by 15px from previous position */}
+      {/* Static H2 heading */}
       <div className="absolute inset-0 flex flex-col justify-center items-start pl-[85px] md:pl-[135px] z-10 -mt-[200px]">
         <h2 className="text-white mb-4 text-7xl text-left font-semibold my-0 mx-[2px]">DISCOVER THE</h2>
       </div>
 
-      {/* H1 section - moved right by 18px from previous position */}
+      {/* H1 section */}
       <div className="absolute inset-0 flex flex-col justify-center items-start pl-[83px] md:pl-[133px] z-10 mt-[15px]">
         <div className={`transition-opacity duration-800 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
           {/* Destination name with typewriter effect - now wrapped in Link */}
