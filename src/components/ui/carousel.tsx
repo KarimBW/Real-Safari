@@ -1,3 +1,4 @@
+
 import * as React from "react"
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
@@ -6,6 +7,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+import useInterval from "@/hooks/useInterval"
 
 type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
@@ -17,6 +19,11 @@ type CarouselProps = {
   plugins?: CarouselPlugin
   orientation?: "horizontal" | "vertical"
   setApi?: (api: CarouselApi) => void
+  autoplay?: {
+    delayInMs: number
+    direction?: "forward" | "backward"
+    stopOnInteraction?: boolean
+  }
 }
 
 type CarouselContextProps = {
@@ -52,6 +59,7 @@ const Carousel = React.forwardRef<
       plugins,
       className,
       children,
+      autoplay,
       ...props
     },
     ref
@@ -96,6 +104,50 @@ const Carousel = React.forwardRef<
       [scrollPrev, scrollNext]
     )
 
+    // Handle autoplay
+    const [shouldAutoplay, setShouldAutoplay] = React.useState<boolean>(
+      !!autoplay
+    )
+
+    const autoplayFn = React.useCallback(() => {
+      if (!api || !shouldAutoplay) return
+      
+      if (autoplay?.direction === "backward") {
+        api.scrollPrev()
+      } else {
+        api.scrollNext()
+      }
+    }, [api, shouldAutoplay, autoplay])
+
+    useInterval(autoplayFn, shouldAutoplay ? autoplay?.delayInMs : null)
+
+    // Handle interaction pausing autoplay
+    React.useEffect(() => {
+      if (!api || !autoplay?.stopOnInteraction) return
+
+      const handleInteraction = () => {
+        setShouldAutoplay(false)
+
+        // Re-enable autoplay after a short delay
+        const timer = setTimeout(() => {
+          setShouldAutoplay(true)
+        }, 5000) // Resume autoplay after 5 seconds
+
+        return () => clearTimeout(timer)
+      }
+
+      const emblaNode = api.containerNode()
+      if (emblaNode) {
+        emblaNode.addEventListener('mousedown', handleInteraction)
+        emblaNode.addEventListener('touchstart', handleInteraction)
+
+        return () => {
+          emblaNode.removeEventListener('mousedown', handleInteraction)
+          emblaNode.removeEventListener('touchstart', handleInteraction)
+        }
+      }
+    }, [api, autoplay])
+
     React.useEffect(() => {
       if (!api || !setApi) {
         return
@@ -130,6 +182,7 @@ const Carousel = React.forwardRef<
           scrollNext,
           canScrollPrev,
           canScrollNext,
+          autoplay,
         }}
       >
         <div
