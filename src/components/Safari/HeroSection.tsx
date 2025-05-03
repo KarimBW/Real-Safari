@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -94,6 +93,13 @@ export const HeroSection = () => {
       }} />
       <div className="destination-overlay absolute inset-0 z-[-1]" />
       
+      {/* Meet The Herd text in Quicksand font - top right corner */}
+      <div className="absolute right-[85px] top-[75px] z-10">
+        <Link to="/meet-the-herd">
+          <h3 className="font-quicksand text-white text-xl hover:text-safari-gold transition-colors">MEET THE HERD</h3>
+        </Link>
+      </div>
+      
       {/* Static H2 heading - moved right by 15px from previous position */}
       <div className="absolute inset-0 flex flex-col justify-center items-start pl-[85px] md:pl-[135px] z-10 -mt-[200px]">
         <h2 className="text-white mb-4 text-7xl text-left font-semibold my-0 mx-[2px]">DISCOVER THE</h2>
@@ -106,7 +112,7 @@ export const HeroSection = () => {
           <Link to={`/destination/${destination.slug}`}>
             <h1 
               id="hero-destination" 
-              className={`destination-text mx-[168px] overflow-hidden whitespace-nowrap ${isTyping ? 'animated' : ''} hover:text-amber-300 transition-colors cursor-pointer`}
+              className={`destination-text mx-[168px] overflow-hidden whitespace-nowrap ${isTyping ? 'animated' : ''} hover:text-gray-500 hover:opacity-55 transition-colors cursor-pointer`}
             >
               {destination.name}
             </h1>
