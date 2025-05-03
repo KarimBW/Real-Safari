@@ -1,20 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger
-} from "@/components/ui/dropdown-menu";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { ChevronDown } from "lucide-react";
-
 type Destination = {
   name: string;
   image: string;
   description: string;
   slug: string; // Add slug for URL routing
 };
-
 const destinations: Destination[] = [{
   name: "OKAVANGO",
   image: "/lovable-uploads/ebab21c9-3137-406f-b457-4a345b28c6ab.png",
@@ -31,13 +24,11 @@ const destinations: Destination[] = [{
   description: "Where elephants throw dust parties and have trunk-to-trunk conversations!",
   slug: "makgadikgadi"
 }];
-
 export const HeroSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  
   const nextDestination = () => {
     setIsAnimating(true);
     setTimeout(() => {
@@ -48,7 +39,6 @@ export const HeroSection = () => {
       setTimeout(() => setIsTyping(false), 1000); // Reset typing state after animation completes
     }, 800); // Matches fade-out animation duration
   };
-  
   const prevDestination = () => {
     setIsAnimating(true);
     setTimeout(() => {
@@ -59,7 +49,6 @@ export const HeroSection = () => {
       setTimeout(() => setIsTyping(false), 1000); // Reset typing state after animation completes
     }, 800); // Matches fade-out animation duration
   };
-  
   const goToDestination = (index: number) => {
     if (index === currentIndex) return;
     setIsAnimating(true);
@@ -79,26 +68,24 @@ export const HeroSection = () => {
     }, 4150);
     return () => clearInterval(interval);
   }, []);
-  
+
   // Trigger typewriter effect on initial load
   useEffect(() => {
     setIsTyping(true);
     setTimeout(() => setIsTyping(false), 1000);
   }, []);
-
   const destination = destinations[currentIndex];
-  return (
-    <div className="absolute inset-0 h-screen w-screen overflow-hidden">
+  return <div className="absolute inset-0 h-screen w-screen overflow-hidden">
       {/* Background image with overlay */}
       <div className={`background-image ${isAnimating ? 'animate-fade-out' : 'animate-fade-in'}`} style={{
-        backgroundImage: `url(${destination.image})`,
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        zIndex: -2
-      }} />
+      backgroundImage: `url(${destination.image})`,
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      zIndex: -2
+    }} />
       <div className="destination-overlay absolute inset-0 z-[-1]" />
       
       {/* Top navigation section */}
@@ -107,28 +94,18 @@ export const HeroSection = () => {
           {/* WHERE TO NEXT? with Dropdown */}
           <div className="mr-32">
             <DropdownMenu open={dropdownOpen} onOpenChange={setDropdownOpen}>
-              <DropdownMenuTrigger 
-                className="text-white hover:text-safari-gold transition-colors"
-                onMouseEnter={() => setDropdownOpen(true)}
-                onMouseLeave={() => setDropdownOpen(false)}
-              >
+              <DropdownMenuTrigger className="text-white hover:text-safari-gold transition-colors" onMouseEnter={() => setDropdownOpen(true)} onMouseLeave={() => setDropdownOpen(false)}>
                 <div className="flex items-center gap-2 cursor-pointer">
-                  <h3 className="font-quicksand text-white text-[20px]">WHERE TO NEXT?</h3>
+                  <h3 className="font-quicksand text-white text-sm">WHERE TO NEXT?</h3>
                   <ChevronDown className="w-4 h-4" />
                 </div>
               </DropdownMenuTrigger>
-              <DropdownMenuContent 
-                className="bg-safari-dark-grey border-safari-gold"
-                onMouseEnter={() => setDropdownOpen(true)}
-                onMouseLeave={() => setDropdownOpen(false)}
-              >
-                {destinations.map((dest) => (
-                  <Link key={dest.slug} to={`/destination/${dest.slug}`}>
+              <DropdownMenuContent className="bg-safari-dark-grey border-safari-gold" onMouseEnter={() => setDropdownOpen(true)} onMouseLeave={() => setDropdownOpen(false)}>
+                {destinations.map(dest => <Link key={dest.slug} to={`/destination/${dest.slug}`}>
                     <DropdownMenuItem className="text-white hover:bg-safari-dark-brown hover:text-white focus:text-white cursor-pointer">
                       {dest.name}
                     </DropdownMenuItem>
-                  </Link>
-                ))}
+                  </Link>)}
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
@@ -136,7 +113,7 @@ export const HeroSection = () => {
           {/* GAME PLAN link */}
           <div className="mr-32">
             <Link to="/plan">
-              <h3 className="font-quicksand text-white text-[20px] hover:text-safari-gold transition-colors">
+              <h3 className="font-quicksand text-white hover:text-safari-gold transition-colors text-sm">
                 GAME PLAN
               </h3>
             </Link>
@@ -145,7 +122,7 @@ export const HeroSection = () => {
           {/* MEET THE HERD link */}
           <div>
             <Link to="/meet-the-herd">
-              <h3 className="font-quicksand text-white text-[20px] hover:text-safari-gold transition-colors">
+              <h3 className="font-quicksand text-white hover:text-safari-gold transition-colors text-sm">
                 MEET THE HERD
               </h3>
             </Link>
@@ -163,10 +140,7 @@ export const HeroSection = () => {
         <div className={`transition-opacity duration-800 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
           {/* Destination name with typewriter effect - now wrapped in Link */}
           <Link to={`/destination/${destination.slug}`}>
-            <h1 
-              id="hero-destination" 
-              className={`destination-text mx-[168px] overflow-hidden whitespace-nowrap ${isTyping ? 'animated' : ''} hover:text-gray-500 hover:opacity-55 transition-colors cursor-pointer`}
-            >
+            <h1 id="hero-destination" className={`destination-text mx-[168px] overflow-hidden whitespace-nowrap ${isTyping ? 'animated' : ''} hover:text-gray-500 hover:opacity-55 transition-colors cursor-pointer`}>
               {destination.name}
             </h1>
           </Link>
@@ -198,6 +172,5 @@ export const HeroSection = () => {
           &gt;
         </button>
       </div>
-    </div>
-  );
+    </div>;
 };
