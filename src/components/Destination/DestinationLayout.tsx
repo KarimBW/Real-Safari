@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from "react-router-dom";
 import { Header } from "@/components/Safari/Header";
@@ -128,9 +127,11 @@ const DestinationLayout: React.FC = () => {
   const panels: PanelData[] = getPanelImages();
   
   const [activePanel, setActivePanel] = useState<number | null>(null);
+  const [activeCampIndex, setActiveCampIndex] = useState(0);
   const [backgroundImage, setBackgroundImage] = useState<string>(panels[0].image);
   const [showHeader, setShowHeader] = useState<boolean>(false);
   const heroRef = useRef<HTMLDivElement>(null);
+  const campDetailsSectionRef = useRef<HTMLDivElement>(null);
   
   const handlePanelHover = (index: number) => {
     setActivePanel(index);
@@ -139,6 +140,18 @@ const DestinationLayout: React.FC = () => {
   
   const handlePanelLeave = () => {
     setActivePanel(null);
+  };
+  
+  const handlePanelClick = (index: number) => {
+    setActiveCampIndex(index);
+    
+    // Scroll to the camp details section
+    if (campDetailsSectionRef.current) {
+      campDetailsSectionRef.current.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
   };
 
   useEffect(() => {
@@ -216,9 +229,10 @@ const DestinationLayout: React.FC = () => {
           {panels.map((panel, index) => (
             <div 
               key={index} 
-              className="flex-1 flex flex-col justify-end border-r border-gray-700 hover:bg-black hover:bg-opacity-20 transition-all duration-500" 
+              className="flex-1 flex flex-col justify-end border-r border-gray-700 hover:bg-black hover:bg-opacity-20 transition-all duration-500 cursor-pointer" 
               onMouseEnter={() => handlePanelHover(index)} 
               onMouseLeave={handlePanelLeave}
+              onClick={() => handlePanelClick(index)}
             >
               <div className="p-6 pb-12 transition-all duration-500">
                 <h2 
@@ -240,7 +254,13 @@ const DestinationLayout: React.FC = () => {
       </div>
       
       {/* Camp Details Section - New component */}
-      <CampDetailsSection destinationId={id || 'okavango'} camps={camps} />
+      <CampDetailsSection 
+        ref={campDetailsSectionRef}
+        destinationId={id || 'okavango'} 
+        camps={camps} 
+        activeCampIndex={activeCampIndex}
+        setActiveCampIndex={setActiveCampIndex}
+      />
       
       {/* Footer */}
       <FooterSection />

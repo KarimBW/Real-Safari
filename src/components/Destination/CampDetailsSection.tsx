@@ -1,16 +1,28 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, forwardRef } from 'react';
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { campData } from '@/data/campData';
 
 interface CampDetailsSectionProps {
   destinationId: string;
   camps: string[];
+  activeCampIndex?: number;
+  setActiveCampIndex?: (index: number) => void;
 }
 
-const CampDetailsSection: React.FC<CampDetailsSectionProps> = ({ destinationId, camps }) => {
-  const [activeCampIndex, setActiveCampIndex] = useState(0);
+const CampDetailsSection = forwardRef<HTMLDivElement, CampDetailsSectionProps>(({ 
+  destinationId, 
+  camps, 
+  activeCampIndex: propActiveCampIndex, 
+  setActiveCampIndex: propSetActiveCampIndex 
+}, ref) => {
+  const [internalActiveCampIndex, setInternalActiveCampIndex] = useState(0);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
+  
+  // Use either the prop or internal state
+  const activeCampIndex = propActiveCampIndex !== undefined ? propActiveCampIndex : internalActiveCampIndex;
+  const setActiveCampIndex = propSetActiveCampIndex || setInternalActiveCampIndex;
+  
   const activeCamp = camps[activeCampIndex];
   const campInfo = campData[destinationId]?.[activeCamp.toLowerCase()] || 
     { description: "Information about this camp is coming soon!", features: ["Wildlife viewing", "Guided safaris", "Stargazing"] };
@@ -53,7 +65,7 @@ const CampDetailsSection: React.FC<CampDetailsSectionProps> = ({ destinationId, 
   };
 
   return (
-    <div className="bg-safari-cream py-16 px-8">
+    <div ref={ref} className="bg-safari-cream py-16 px-8" id="camp-details-section">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Camp Info Area */}
@@ -156,6 +168,8 @@ const CampDetailsSection: React.FC<CampDetailsSectionProps> = ({ destinationId, 
       </div>
     </div>
   );
-};
+});
+
+CampDetailsSection.displayName = "CampDetailsSection";
 
 export default CampDetailsSection;
