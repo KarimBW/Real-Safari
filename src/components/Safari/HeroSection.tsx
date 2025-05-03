@@ -1,22 +1,31 @@
+
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
 type Destination = {
   name: string;
   image: string;
   description: string;
+  slug: string; // Add slug for URL routing
 };
+
 const destinations: Destination[] = [{
   name: "OKAVANGO",
   image: "/lovable-uploads/ebab21c9-3137-406f-b457-4a345b28c6ab.png",
-  description: "Where lions roam and whisper tales of the wild savanna!"
+  description: "Where lions roam and whisper tales of the wild savanna!",
+  slug: "okavango"
 }, {
   name: "KALAHARI",
   image: "/lovable-uploads/c574e67a-51c3-442e-b68e-89788ccfb439.png",
-  description: "It's so hot even the sand gets a sunburn!"
+  description: "It's so hot even the sand gets a sunburn!",
+  slug: "kalahari"
 }, {
   name: "MAKGADIKGADI",
   image: "/lovable-uploads/44660527-d212-4dc7-a061-b9879acf0e93.png",
-  description: "Where elephants throw dust parties and have trunk-to-trunk conversations!"
+  description: "Where elephants throw dust parties and have trunk-to-trunk conversations!",
+  slug: "makgadikgadi"
 }];
+
 export const HeroSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -93,10 +102,15 @@ export const HeroSection = () => {
       {/* H1 section - moved right by 18px from previous position */}
       <div className="absolute inset-0 flex flex-col justify-center items-start pl-[83px] md:pl-[133px] z-10 mt-[15px]">
         <div className={`transition-opacity duration-800 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
-          {/* Destination name with typewriter effect */}
-          <h1 id="hero-destination" className={`destination-text mx-[168px] overflow-hidden whitespace-nowrap ${isTyping ? 'animated' : ''}`}>
-            {destination.name}
-          </h1>
+          {/* Destination name with typewriter effect - now wrapped in Link */}
+          <Link to={`/destination/${destination.slug}`}>
+            <h1 
+              id="hero-destination" 
+              className={`destination-text mx-[168px] overflow-hidden whitespace-nowrap ${isTyping ? 'animated' : ''} hover:text-amber-300 transition-colors cursor-pointer`}
+            >
+              {destination.name}
+            </h1>
+          </Link>
           <p className="safari-quote text-white text-xl mt-4 max-w-md mx-[178px]">
             "{destination.description}"
           </p>
