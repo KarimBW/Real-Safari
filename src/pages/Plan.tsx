@@ -1,114 +1,54 @@
 
-import { useState } from "react";
 import { Header } from "@/components/Safari/Header";
 
 const Plan = () => {
-  const [activePanel, setActivePanel] = useState<string | null>(null);
-  
   return (
     <div className="h-screen flex">
-      {/* Left sidebar */}
-      <div className="w-[80px] h-full bg-black text-white flex flex-col items-center justify-between py-8 z-10">
-        {/* Vertical text */}
-        <div className="flex-grow flex items-center">
-          <div className="transform -rotate-90 whitespace-nowrap text-2xl font-bold tracking-wider">
-            CHOOSE YOUR STYLE
-          </div>
-        </div>
-      </div>
-      
       {/* Main Content */}
       <div className="flex-1 relative">
         <Header />
         
-        {/* Background images that change on hover */}
-        <div 
-          className={`absolute inset-0 bg-cover bg-center transition-all duration-700 ease-in-out z-0 ${
-            activePanel === "guided" ? "opacity-100" : "opacity-0"
-          }`}
-          style={{
-            backgroundImage: `url(/lovable-uploads/c93ccf5a-3f2a-4d60-abef-f2ecc4b333cf.png)`,
-            left: '80px'
-          }}
-        >
-          <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-        </div>
-        
-        <div 
-          className={`absolute inset-0 bg-cover bg-center transition-all duration-700 ease-in-out z-0 ${
-            activePanel === "unguided" ? "opacity-100" : activePanel === null ? "opacity-100" : "opacity-0"
-          }`}
-          style={{
-            backgroundImage: `url(/lovable-uploads/bde8de13-3929-41b5-b056-9726f95358ff.png)`,
-            left: '80px'
-          }}
-        >
-          <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-        </div>
-        
-        {/* Diagonal panels container */}
-        <div className="absolute inset-0 left-[80px] flex" style={{ zIndex: 1 }}>
-          {/* Guided panel (top-left triangle) */}
-          <div 
-            id="guided_panel"
-            className="absolute inset-0 cursor-pointer overflow-hidden"
-            onMouseEnter={() => setActivePanel("guided")}
-            onMouseLeave={() => setActivePanel(null)}
-            onClick={() => console.log("Guided Safari clicked")}
-          >
-            {/* Clip-path creates the diagonal triangle */}
-            <div className="relative h-full w-full" style={{ clipPath: 'polygon(0 0, 100% 0, 0 100%)' }}>
-              <div className="absolute inset-0 hover:bg-black hover:bg-opacity-20 transition-all duration-500">
-                {/* Panel content - positioned for the animation effect */}
-                <div 
-                  className={`absolute top-1/2 left-[30%] transform -translate-y-1/2 transition-all duration-500 ${
-                    activePanel === "guided" 
-                      ? "translate-x-0 opacity-100" 
-                      : "-translate-x-16 opacity-0"
-                  }`}
-                >
-                  <h2 className="text-white text-4xl md:text-5xl font-bold mb-2">Guided & Glorious</h2>
-                  <p className="text-white text-xl opacity-80">Travel with a Guide</p>
+        <div className="pt-32 px-16 h-full bg-gradient-to-r from-safari-dark-grey/90 to-safari-dark-grey/60">
+          <div className="max-w-4xl mx-auto text-white">
+            <h1 className="text-5xl font-bold mb-8 text-safari-gold">Safari Plan</h1>
+            
+            <div className="space-y-8">
+              <section className="bg-safari-dark-grey/50 p-8 rounded-lg backdrop-blur-sm">
+                <h2 className="text-3xl mb-4 font-semibold">Plan Your Safari Adventure</h2>
+                <p className="text-lg mb-6">
+                  Choose from our carefully curated safari packages or create a custom itinerary tailored to your preferences.
+                </p>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="border border-safari-gold p-6 rounded-md">
+                    <h3 className="text-2xl mb-2 text-safari-gold">Okavango Experience</h3>
+                    <p className="mb-4">7 days exploring the rich wildlife of the Okavango Delta.</p>
+                    <button className="bg-safari-gold text-white py-2 px-4 rounded hover:bg-opacity-80 transition-colors">
+                      View Details
+                    </button>
+                  </div>
+                  
+                  <div className="border border-safari-gold p-6 rounded-md">
+                    <h3 className="text-2xl mb-2 text-safari-gold">Kalahari Adventure</h3>
+                    <p className="mb-4">5 days discovering the unique ecosystem of the Kalahari Desert.</p>
+                    <button className="bg-safari-gold text-white py-2 px-4 rounded hover:bg-opacity-80 transition-colors">
+                      View Details
+                    </button>
+                  </div>
                 </div>
-              </div>
+              </section>
+              
+              <section className="bg-safari-dark-grey/50 p-8 rounded-lg backdrop-blur-sm">
+                <h2 className="text-3xl mb-4 font-semibold">Custom Safari</h2>
+                <p className="text-lg mb-6">
+                  Contact us to create your personalized safari experience. Our experts will help you design the perfect adventure.
+                </p>
+                <button className="bg-safari-gold text-white py-2 px-4 rounded hover:bg-opacity-80 transition-colors">
+                  Get Started
+                </button>
+              </section>
             </div>
           </div>
-          
-          {/* Unguided panel (bottom-right triangle) */}
-          <div 
-            id="unguided_panel"
-            className="absolute inset-0 cursor-pointer overflow-hidden"
-            onMouseEnter={() => setActivePanel("unguided")}
-            onMouseLeave={() => setActivePanel(null)}
-            onClick={() => console.log("Self-Guided Safari clicked")}
-          >
-            {/* Clip-path creates the diagonal triangle */}
-            <div className="relative h-full w-full" style={{ clipPath: 'polygon(100% 0, 100% 100%, 0 100%)' }}>
-              <div className="absolute inset-0 hover:bg-black hover:bg-opacity-20 transition-all duration-500">
-                {/* Panel content - positioned for the animation effect */}
-                <div 
-                  className={`absolute top-1/2 right-[30%] transform -translate-y-1/2 transition-all duration-500 ${
-                    activePanel === "unguided" 
-                      ? "translate-x-0 opacity-100" 
-                      : "translate-x-16 opacity-0"
-                  }`}
-                >
-                  <h2 className="text-white text-4xl md:text-5xl font-bold mb-2">Lone & Wild</h2>
-                  <p className="text-white text-xl opacity-80">Travel without a Guide</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          {/* Dividing line */}
-          <div 
-            className="absolute h-[142%] w-0.5 bg-white bg-opacity-40 z-10 pointer-events-none"
-            style={{ 
-              top: '-21%',
-              left: '50%',
-              transform: 'rotate(45deg) translateX(-50%)'
-            }}
-          ></div>
         </div>
       </div>
     </div>
