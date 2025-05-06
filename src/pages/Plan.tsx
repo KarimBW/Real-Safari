@@ -5,9 +5,9 @@ import { Header } from "@/components/Safari/Header";
 const Plan = () => {
   const [activePanel, setActivePanel] = useState<string | null>(null);
 
-  // Background images for panels
-  const guidedPanelBg = "/lovable-uploads/05f57e3b-c61c-420f-ba8a-1226a9bd30d3.png"; // Using the uploaded image for guided panel
-  const unguidedPanelBg = "/lovable-uploads/05f57e3b-c61c-420f-ba8a-1226a9bd30d3.png"; // Using the same image for unguided panel as a placeholder
+  // Background images for panels using the uploaded images
+  const guidedPanelBg = "/lovable-uploads/10876708-3c0c-40d1-9c65-dab5ff494de6.png"; // Person driving (Photo 1)
+  const unguidedPanelBg = "/lovable-uploads/a02a96c4-6bb6-45d6-a50c-97f0cf620edb.png"; // Vehicle in desert (Photo 2)
 
   const handlePanelHover = (panel: string) => {
     setActivePanel(panel);
