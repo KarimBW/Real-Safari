@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import Plan from "./pages/Plan";
 import MeetTheHerd from "./pages/MeetTheHerd";
 import DestinationPage from "./pages/DestinationPage";
+import GamePlan from "./pages/GamePlan"; // Add the import for the new page
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,6 +24,7 @@ const App = () => (
           <Route path="/plan" element={<Plan />} />
           <Route path="/meet-the-herd" element={<MeetTheHerd />} />
           <Route path="/destination/:id" element={<DestinationPage />} />
+          <Route path="/game-plan" element={<GamePlan />} /> {/* Add the new route */}
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
