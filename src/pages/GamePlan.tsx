@@ -24,12 +24,13 @@ const GamePlan = () => {
   
   const guidedSectionRef = useRef<HTMLDivElement>(null);
   const selfGuidedSectionRef = useRef<HTMLDivElement>(null);
+  const choosePanelRef = useRef<HTMLDivElement>(null);
 
   const styleOptions: StyleOption[] = [
     {
       title: "Guided & Glorious",
       subtitle: "Travel with a Guide",
-      image: "/lovable-uploads/deccfb04-3b08-496e-a655-8c4af36ea54a.png",
+      image: "/lovable-uploads/691157be-fdd5-4b67-811b-9f440014bdeb.png",
       content: {
         title: "Ride with a Legend at the Wheel",
         subtitle: "aka The Guided Safari",
@@ -51,7 +52,7 @@ const GamePlan = () => {
     {
       title: "Lone & Wild",
       subtitle: "Travel without a Guide",
-      image: "/lovable-uploads/53775a51-edf9-4574-8b2a-fdbd4b68604a.png",
+      image: "/lovable-uploads/dc4b122a-37bd-449b-8540-8e783ee9b508.png",
       content: {
         title: "Solo, But Not Sorry",
         subtitle: "aka The Self-Guided Safari",
@@ -80,6 +81,18 @@ const GamePlan = () => {
       const scrollThreshold = windowHeight * 0.8; // 80% of viewport height
       
       setShowMenu(scrollPosition > scrollThreshold);
+      
+      // Hide the choose panel when scrolled past it
+      if (choosePanelRef.current) {
+        const choosePanelHeight = choosePanelRef.current.offsetHeight;
+        if (scrollPosition > choosePanelHeight * 0.5) {
+          choosePanelRef.current.style.transform = `translateY(-${Math.min(scrollPosition - (choosePanelHeight * 0.3), choosePanelHeight)}px)`;
+          choosePanelRef.current.style.opacity = `${1 - Math.min(scrollPosition / choosePanelHeight, 1)}`;
+        } else {
+          choosePanelRef.current.style.transform = 'translateY(0)';
+          choosePanelRef.current.style.opacity = '1';
+        }
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -144,7 +157,11 @@ const GamePlan = () => {
       </div>
       
       {/* Main content with panels */}
-      <div className="flex h-screen" style={{ marginLeft: '80px' }}>
+      <div 
+        ref={choosePanelRef} 
+        className="flex h-screen transition-all duration-500 ease-out"
+        style={{ marginLeft: '80px' }}
+      >
         {/* Guided Safari Panel (Left) */}
         <div 
           id="guided_panel"
