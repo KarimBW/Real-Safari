@@ -13,14 +13,14 @@ const GamePlan = () => {
 
   const styleOptions: StyleOption[] = [
     {
-      title: "Lone & Wild",
-      subtitle: "Travel without a Guide",
-      image: "/lovable-uploads/53775a51-edf9-4574-8b2a-fdbd4b68604a.png" // Updated to Photo 1
-    },
-    {
       title: "Guided & Glorious",
       subtitle: "Travel with a Guide",
-      image: "/lovable-uploads/deccfb04-3b08-496e-a655-8c4af36ea54a.png" // Updated to Photo 2
+      image: "/lovable-uploads/deccfb04-3b08-496e-a655-8c4af36ea54a.png" // Photo 2
+    },
+    {
+      title: "Lone & Wild",
+      subtitle: "Travel without a Guide",
+      image: "/lovable-uploads/53775a51-edf9-4574-8b2a-fdbd4b68604a.png" // Photo 1
     }
   ];
 
