@@ -1,112 +1,52 @@
 
-import { useState } from "react";
 import { Header } from "@/components/Safari/Header";
 
 const Plan = () => {
-  const [activePanel, setActivePanel] = useState<string | null>(null);
-
-  // Background images for panels using the uploaded images
-  const guidedPanelBg = "/lovable-uploads/10876708-3c0c-40d1-9c65-dab5ff494de6.png"; // Person driving (Photo 1)
-  const unguidedPanelBg = "/lovable-uploads/a02a96c4-6bb6-45d6-a50c-97f0cf620edb.png"; // Vehicle in desert (Photo 2)
-
-  const handlePanelHover = (panel: string) => {
-    setActivePanel(panel);
-  };
-
-  const handlePanelLeave = () => {
-    setActivePanel(null);
-  };
-
-  const handlePanelClick = (panel: string) => {
-    console.log(`${panel} clicked`);
-    // We'll add navigation or other actions here later
-  };
-
   return (
     <div className="h-screen flex">
-      {/* Left sidebar */}
-      <div className="w-[80px] h-full bg-black text-white flex flex-col items-center justify-between py-8 fixed left-0 top-0 z-10">
-        {/* Vertical text */}
-        <div className="flex-grow flex items-center">
-          <div className="transform -rotate-90 whitespace-nowrap text-2xl font-bold tracking-wider">
-            CHOOSE YOUR STYLE
-          </div>
-        </div>
-      </div>
-
-      {/* Main Content with diagonal panels */}
-      <div className="flex-1 relative ml-[80px]">
+      {/* Main Content */}
+      <div className="flex-1 relative">
         <Header />
         
-        {/* Background image that changes on hover */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center transition-all duration-700 ease-in-out z-0" 
-          style={{
-            backgroundImage: `url(${activePanel === 'guided' ? guidedPanelBg : activePanel === 'unguided' ? unguidedPanelBg : guidedPanelBg})`,
-          }}
-        >
-          <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-        </div>
-
-        <div className="relative h-screen flex flex-col z-10">
-          {/* Panel container */}
-          <div className="flex-1 flex relative overflow-hidden">
-            {/* Diagonal divider */}
-            <div 
-              className="absolute inset-0 z-10 pointer-events-none"
-              style={{
-                background: 'linear-gradient(to bottom right, transparent calc(50% - 1px), rgba(255,255,255,0.3), transparent calc(50% + 1px))'
-              }}
-            ></div>
+        <div className="pt-32 px-16 h-full bg-gradient-to-r from-safari-dark-grey/90 to-safari-dark-grey/60">
+          <div className="max-w-4xl mx-auto text-white">
+            <h1 className="text-5xl font-bold mb-8 text-safari-gold">Safari Plan</h1>
             
-            {/* Top-left triangular panel (guided) */}
-            <div 
-              className="absolute inset-0 cursor-pointer z-20"
-              style={{ 
-                clipPath: 'polygon(0% 0%, 100% 0%, 0% 100%)',
-              }}
-              onMouseEnter={() => handlePanelHover('guided')}
-              onMouseLeave={handlePanelLeave}
-              onClick={() => handlePanelClick('guided')}
-            >
-              {/* This is a transparent overlay for the clickable area */}
-            </div>
-            
-            {/* Bottom-right triangular panel (unguided) */}
-            <div 
-              className="absolute inset-0 cursor-pointer z-20"
-              style={{ 
-                clipPath: 'polygon(100% 0%, 100% 100%, 0% 100%)',
-              }}
-              onMouseEnter={() => handlePanelHover('unguided')}
-              onMouseLeave={handlePanelLeave}
-              onClick={() => handlePanelClick('unguided')}
-            >
-              {/* This is a transparent overlay for the clickable area */}
-            </div>
-            
-            {/* Panel content - guided panel */}
-            <div 
-              className={`absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-full transition-all duration-500 ease-in-out z-30 ${
-                activePanel === 'guided' 
-                  ? 'opacity-100 -translate-x-[60%]' 
-                  : 'opacity-0 -translate-x-full'
-              }`}
-            >
-              <h2 className="text-4xl font-bold text-white mb-2">Guided & Glorious</h2>
-              <p className="text-xl text-white/80">Travel with a Guide</p>
-            </div>
-            
-            {/* Panel content - unguided panel */}
-            <div 
-              className={`absolute top-1/2 left-1/2 transform -translate-y-1/2 translate-x-0 transition-all duration-500 ease-in-out z-30 ${
-                activePanel === 'unguided' 
-                  ? 'opacity-100 translate-x-[10%]' 
-                  : 'opacity-0 translate-x-0'
-              }`}
-            >
-              <h2 className="text-4xl font-bold text-white mb-2">Lone & Wild</h2>
-              <p className="text-xl text-white/80">Travel without a Guide</p>
+            <div className="space-y-8">
+              <section className="bg-safari-dark-grey/50 p-8 rounded-lg backdrop-blur-sm">
+                <h2 className="text-3xl mb-4 font-semibold">Plan Your Safari Adventure</h2>
+                <p className="text-lg mb-6">
+                  Choose from our carefully curated safari packages or create a custom itinerary tailored to your preferences.
+                </p>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="border border-safari-gold p-6 rounded-md">
+                    <h3 className="text-2xl mb-2 text-safari-gold">Okavango Experience</h3>
+                    <p className="mb-4">7 days exploring the rich wildlife of the Okavango Delta.</p>
+                    <button className="bg-safari-gold text-white py-2 px-4 rounded hover:bg-opacity-80 transition-colors">
+                      View Details
+                    </button>
+                  </div>
+                  
+                  <div className="border border-safari-gold p-6 rounded-md">
+                    <h3 className="text-2xl mb-2 text-safari-gold">Kalahari Adventure</h3>
+                    <p className="mb-4">5 days discovering the unique ecosystem of the Kalahari Desert.</p>
+                    <button className="bg-safari-gold text-white py-2 px-4 rounded hover:bg-opacity-80 transition-colors">
+                      View Details
+                    </button>
+                  </div>
+                </div>
+              </section>
+              
+              <section className="bg-safari-dark-grey/50 p-8 rounded-lg backdrop-blur-sm">
+                <h2 className="text-3xl mb-4 font-semibold">Custom Safari</h2>
+                <p className="text-lg mb-6">
+                  Contact us to create your personalized safari experience. Our experts will help you design the perfect adventure.
+                </p>
+                <button className="bg-safari-gold text-white py-2 px-4 rounded hover:bg-opacity-80 transition-colors">
+                  Get Started
+                </button>
+              </section>
             </div>
           </div>
         </div>
