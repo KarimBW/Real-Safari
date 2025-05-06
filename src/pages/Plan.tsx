@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Header } from "@/components/Safari/Header";
 import { Button } from "@/components/ui/button";
@@ -37,83 +36,6 @@ const Plan = () => {
                 className="rounded-full border-white text-white hover:bg-white hover:text-safari-dark-grey px-8 py-6 h-auto"
               >
                 OUR OFFERS
-              </Button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* License to Live Section */}
-      <div className="py-20 px-6 md:px-12 lg:px-24 bg-gray-100">
-        <div className="container mx-auto">
-          <h2 className="text-4xl font-cinzel text-safari-dark-grey text-center mb-16">
-            LICENCE TO EXPLORE
-          </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Adventure Card */}
-            <div className="flex flex-col items-center">
-              <div className="w-full mb-6">
-                <AspectRatio ratio={1 / 1} className="bg-gray-200 rounded-lg overflow-hidden">
-                  <img 
-                    src="/lovable-uploads/c574e67a-51c3-442e-b68e-89788ccfb439.png" 
-                    alt="Adventure" 
-                    className="w-full h-full object-cover"
-                  />
-                </AspectRatio>
-              </div>
-              <h3 className="text-xl font-cinzel text-safari-dark-grey uppercase mb-4">
-                ADVENTURE
-              </h3>
-              <Button 
-                variant="outline" 
-                className="rounded-full border-safari-dark-grey text-safari-dark-grey hover:bg-safari-dark-grey hover:text-white"
-              >
-                EXPLORE SAFARI
-              </Button>
-            </div>
-
-            {/* Culture Card */}
-            <div className="flex flex-col items-center">
-              <div className="w-full mb-6">
-                <AspectRatio ratio={1 / 1} className="bg-gray-200 rounded-lg overflow-hidden">
-                  <img 
-                    src="/lovable-uploads/44660527-d212-4dc7-a061-b9879acf0e93.png" 
-                    alt="Culture" 
-                    className="w-full h-full object-cover"
-                  />
-                </AspectRatio>
-              </div>
-              <h3 className="text-xl font-cinzel text-safari-dark-grey uppercase mb-4">
-                CULTURE
-              </h3>
-              <Button 
-                variant="outline" 
-                className="rounded-full border-safari-dark-grey text-safari-dark-grey hover:bg-safari-dark-grey hover:text-white"
-              >
-                UNDERSTAND SAFARI
-              </Button>
-            </div>
-
-            {/* Relaxation Card */}
-            <div className="flex flex-col items-center">
-              <div className="w-full mb-6">
-                <AspectRatio ratio={1 / 1} className="bg-gray-200 rounded-lg overflow-hidden">
-                  <img 
-                    src="/lovable-uploads/09a00f34-b704-4711-88f5-929dbe49f205.png" 
-                    alt="Relaxation" 
-                    className="w-full h-full object-cover"
-                  />
-                </AspectRatio>
-              </div>
-              <h3 className="text-xl font-cinzel text-safari-dark-grey uppercase mb-4">
-                RELAXATION
-              </h3>
-              <Button 
-                variant="outline" 
-                className="rounded-full border-safari-dark-grey text-safari-dark-grey hover:bg-safari-dark-grey hover:text-white"
-              >
-                RELAX IN SAFARI
               </Button>
             </div>
           </div>
@@ -191,6 +113,83 @@ const Plan = () => {
                   className="w-full h-full object-cover"
                 />
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* License to Live Section - Moved to bottom */}
+      <div className="py-20 px-6 md:px-12 lg:px-24 bg-gray-100">
+        <div className="container mx-auto">
+          <h2 className="text-4xl font-cinzel text-safari-dark-grey text-center mb-16">
+            LICENCE TO EXPLORE
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Adventure Card */}
+            <div className="flex flex-col items-center">
+              <div className="w-full mb-6">
+                <AspectRatio ratio={1 / 1} className="bg-gray-200 rounded-lg overflow-hidden">
+                  <img 
+                    src="/lovable-uploads/c574e67a-51c3-442e-b68e-89788ccfb439.png" 
+                    alt="Adventure" 
+                    className="w-full h-full object-cover"
+                  />
+                </AspectRatio>
+              </div>
+              <h3 className="text-xl font-cinzel text-safari-dark-grey uppercase mb-4">
+                ADVENTURE
+              </h3>
+              <Button 
+                variant="outline" 
+                className="rounded-full border-safari-dark-grey text-safari-dark-grey hover:bg-safari-dark-grey hover:text-white"
+              >
+                EXPLORE SAFARI
+              </Button>
+            </div>
+
+            {/* Culture Card */}
+            <div className="flex flex-col items-center">
+              <div className="w-full mb-6">
+                <AspectRatio ratio={1 / 1} className="bg-gray-200 rounded-lg overflow-hidden">
+                  <img 
+                    src="/lovable-uploads/44660527-d212-4dc7-a061-b9879acf0e93.png" 
+                    alt="Culture" 
+                    className="w-full h-full object-cover"
+                  />
+                </AspectRatio>
+              </div>
+              <h3 className="text-xl font-cinzel text-safari-dark-grey uppercase mb-4">
+                CULTURE
+              </h3>
+              <Button 
+                variant="outline" 
+                className="rounded-full border-safari-dark-grey text-safari-dark-grey hover:bg-safari-dark-grey hover:text-white"
+              >
+                UNDERSTAND SAFARI
+              </Button>
+            </div>
+
+            {/* Relaxation Card */}
+            <div className="flex flex-col items-center">
+              <div className="w-full mb-6">
+                <AspectRatio ratio={1 / 1} className="bg-gray-200 rounded-lg overflow-hidden">
+                  <img 
+                    src="/lovable-uploads/09a00f34-b704-4711-88f5-929dbe49f205.png" 
+                    alt="Relaxation" 
+                    className="w-full h-full object-cover"
+                  />
+                </AspectRatio>
+              </div>
+              <h3 className="text-xl font-cinzel text-safari-dark-grey uppercase mb-4">
+                RELAXATION
+              </h3>
+              <Button 
+                variant="outline" 
+                className="rounded-full border-safari-dark-grey text-safari-dark-grey hover:bg-safari-dark-grey hover:text-white"
+              >
+                RELAX IN SAFARI
+              </Button>
             </div>
           </div>
         </div>
