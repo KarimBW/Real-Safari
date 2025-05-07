@@ -10,6 +10,8 @@ import {
   DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 import { ChevronDown } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { MobileHeader } from "./MobileHeader";
 
 interface HeaderProps {
   className?: string;
@@ -23,6 +25,11 @@ export const Header: React.FC<HeaderProps> = ({
   const location = useLocation();
   const isHomepage = location.pathname === "/";
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const isMobile = useIsMobile();
+  
+  if (isMobile) {
+    return <MobileHeader className={className} />;
+  }
   
   return (
     <header className={cn(
