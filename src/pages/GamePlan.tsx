@@ -82,7 +82,7 @@ const GamePlan = () => {
       
       setShowMenu(scrollPosition > scrollThreshold);
       
-      // Hide the choose panel when scrolled past it
+      // Hide the entire choose panel section (including sidebar) when scrolled past it
       if (choosePanelRef.current) {
         const choosePanelHeight = choosePanelRef.current.offsetHeight;
         if (scrollPosition > choosePanelHeight * 0.5) {
@@ -145,115 +145,117 @@ const GamePlan = () => {
       >
         <Header className="bg-black bg-opacity-80" />
       </div>
-
-      {/* Left sidebar */}
-      <div className="w-[80px] h-full bg-black text-white flex flex-col items-center justify-between py-8 fixed left-0 top-0 z-50">
-        {/* Vertical title */}
-        <div className="flex-grow flex items-center">
-          <div className="transform -rotate-90 whitespace-nowrap text-2xl font-bold tracking-wider">
-            CHOOSE YOUR STYLE
-          </div>
-        </div>
-      </div>
       
-      {/* Main content with panels */}
+      {/* Panel section (including the sidebar and panels) */}
       <div 
         ref={choosePanelRef} 
         className="flex h-screen transition-all duration-500 ease-out"
-        style={{ marginLeft: '80px' }}
       >
-        {/* Guided Safari Panel (Left) */}
-        <div 
-          id="guided_panel"
-          className="flex-1 h-full bg-cover bg-center relative cursor-pointer transition-all duration-500 ease-in-out"
-          style={{ 
-            backgroundImage: `url(${styleOptions[0].image})`,
-            flex: activePanel === 0 ? '1.5' : activePanel === 1 ? '0.5' : '1'
-          }}
-          onMouseEnter={() => handlePanelHover(0)}
-          onMouseLeave={handlePanelLeave}
-          onClick={() => scrollToSection(0)}
-        >
-          <div className={`absolute inset-0 bg-black transition-opacity duration-300 ${
-            activePanel === 0 ? 'bg-opacity-20' : 'bg-opacity-40'
-          }`}></div>
-          
-          <div className="absolute bottom-0 left-0 right-0 p-10 z-10">
-            <h2 
-              className={`text-white text-4xl font-bold mb-2 transition-all duration-500 ease-in-out transform ${
-                activePanel === 0 ? 'translate-y-[-40px] text-safari-gold' : ''
-              }`}
-            >
-              {styleOptions[0].title}
-            </h2>
-            <p 
-              className={`text-white text-lg opacity-80 transition-all duration-500 ease-in-out transform ${
-                activePanel === 0 ? 'translate-y-[-40px]' : ''
-              }`}
-            >
-              {styleOptions[0].subtitle}
-            </p>
-            
-            {activePanel === 0 && (
-              <div className="mt-6 animate-fade-in">
-                <Button 
-                  variant="outline" 
-                  className="bg-safari-gold border-safari-gold text-white hover:bg-safari-light-brown"
-                >
-                  Discover More <ChevronDown className="ml-2 h-4 w-4" />
-                </Button>
-              </div>
-            )}
+        {/* Left sidebar - now part of the panel section that disappears on scroll */}
+        <div className="w-[80px] h-screen bg-black text-white flex flex-col items-center justify-between py-8">
+          {/* Vertical title */}
+          <div className="flex-grow flex items-center">
+            <div className="transform -rotate-90 whitespace-nowrap text-2xl font-bold tracking-wider">
+              CHOOSE YOUR STYLE
+            </div>
           </div>
         </div>
         
-        {/* Self-Guided Safari Panel (Right) */}
-        <div 
-          id="unguided_panel"
-          className="flex-1 h-full bg-cover bg-center relative cursor-pointer transition-all duration-500 ease-in-out"
-          style={{ 
-            backgroundImage: `url(${styleOptions[1].image})`,
-            flex: activePanel === 1 ? '1.5' : activePanel === 0 ? '0.5' : '1'
-          }}
-          onMouseEnter={() => handlePanelHover(1)}
-          onMouseLeave={handlePanelLeave}
-          onClick={() => scrollToSection(1)}
-        >
-          <div className={`absolute inset-0 bg-black transition-opacity duration-300 ${
-            activePanel === 1 ? 'bg-opacity-20' : 'bg-opacity-40'
-          }`}></div>
-          
-          <div className="absolute bottom-0 left-0 right-0 p-10 z-10">
-            <h2 
-              className={`text-white text-4xl font-bold mb-2 transition-all duration-500 ease-in-out transform ${
-                activePanel === 1 ? 'translate-y-[-40px] text-safari-gold' : ''
-              }`}
-            >
-              {styleOptions[1].title}
-            </h2>
-            <p 
-              className={`text-white text-lg opacity-80 transition-all duration-500 ease-in-out transform ${
-                activePanel === 1 ? 'translate-y-[-40px]' : ''
-              }`}
-            >
-              {styleOptions[1].subtitle}
-            </p>
+        {/* Main content with panels */}
+        <div className="flex flex-1 h-screen">
+          {/* Guided Safari Panel (Left) */}
+          <div 
+            id="guided_panel"
+            className="flex-1 h-full bg-cover bg-center relative cursor-pointer transition-all duration-500 ease-in-out"
+            style={{ 
+              backgroundImage: `url(${styleOptions[0].image})`,
+              flex: activePanel === 0 ? '1.5' : activePanel === 1 ? '0.5' : '1'
+            }}
+            onMouseEnter={() => handlePanelHover(0)}
+            onMouseLeave={handlePanelLeave}
+            onClick={() => scrollToSection(0)}
+          >
+            <div className={`absolute inset-0 bg-black transition-opacity duration-300 ${
+              activePanel === 0 ? 'bg-opacity-20' : 'bg-opacity-40'
+            }`}></div>
             
-            {activePanel === 1 && (
-              <div className="mt-6 animate-fade-in">
-                <Button 
-                  variant="outline" 
-                  className="bg-safari-gold border-safari-gold text-white hover:bg-safari-light-brown"
-                >
-                  Discover More <ChevronDown className="ml-2 h-4 w-4" />
-                </Button>
-              </div>
-            )}
+            <div className="absolute bottom-0 left-0 right-0 p-10 z-10">
+              <h2 
+                className={`text-white text-4xl font-bold mb-2 transition-all duration-500 ease-in-out transform ${
+                  activePanel === 0 ? 'translate-y-[-40px] text-safari-gold' : ''
+                }`}
+              >
+                {styleOptions[0].title}
+              </h2>
+              <p 
+                className={`text-white text-lg opacity-80 transition-all duration-500 ease-in-out transform ${
+                  activePanel === 0 ? 'translate-y-[-40px]' : ''
+                }`}
+              >
+                {styleOptions[0].subtitle}
+              </p>
+              
+              {activePanel === 0 && (
+                <div className="mt-6 animate-fade-in">
+                  <Button 
+                    variant="outline" 
+                    className="bg-safari-gold border-safari-gold text-white hover:bg-safari-light-brown"
+                  >
+                    Discover More <ChevronDown className="ml-2 h-4 w-4" />
+                  </Button>
+                </div>
+              )}
+            </div>
+          </div>
+          
+          {/* Self-Guided Safari Panel (Right) */}
+          <div 
+            id="unguided_panel"
+            className="flex-1 h-full bg-cover bg-center relative cursor-pointer transition-all duration-500 ease-in-out"
+            style={{ 
+              backgroundImage: `url(${styleOptions[1].image})`,
+              flex: activePanel === 1 ? '1.5' : activePanel === 0 ? '0.5' : '1'
+            }}
+            onMouseEnter={() => handlePanelHover(1)}
+            onMouseLeave={handlePanelLeave}
+            onClick={() => scrollToSection(1)}
+          >
+            <div className={`absolute inset-0 bg-black transition-opacity duration-300 ${
+              activePanel === 1 ? 'bg-opacity-20' : 'bg-opacity-40'
+            }`}></div>
+            
+            <div className="absolute bottom-0 left-0 right-0 p-10 z-10">
+              <h2 
+                className={`text-white text-4xl font-bold mb-2 transition-all duration-500 ease-in-out transform ${
+                  activePanel === 1 ? 'translate-y-[-40px] text-safari-gold' : ''
+                }`}
+              >
+                {styleOptions[1].title}
+              </h2>
+              <p 
+                className={`text-white text-lg opacity-80 transition-all duration-500 ease-in-out transform ${
+                  activePanel === 1 ? 'translate-y-[-40px]' : ''
+                }`}
+              >
+                {styleOptions[1].subtitle}
+              </p>
+              
+              {activePanel === 1 && (
+                <div className="mt-6 animate-fade-in">
+                  <Button 
+                    variant="outline" 
+                    className="bg-safari-gold border-safari-gold text-white hover:bg-safari-light-brown"
+                  >
+                    Discover More <ChevronDown className="ml-2 h-4 w-4" />
+                  </Button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Details sections */}
+      {/* Details sections - these appear below the panel section */}
       <div className="mt-0">
         {/* Guided Safari Details Section */}
         <div 
