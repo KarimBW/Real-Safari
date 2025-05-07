@@ -86,9 +86,9 @@ export const Header: React.FC<HeaderProps> = ({
           </DropdownMenuContent>
         </DropdownMenu>
         
-        {/* Game Plan */}
+        {/* Game Plan - Updated link to /game-plan instead of /plan */}
         <Link 
-          to="/plan" 
+          to="/game-plan" 
           className={`text-white font-cinzel hover:text-safari-gold transition-all duration-300 text-sm md:text-base ${
             menuElevated ? 'transform -translate-y-[15px]' : ''
           }`}
