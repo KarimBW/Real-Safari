@@ -59,7 +59,7 @@ export const Header: React.FC<HeaderProps> = ({
         {/* Where To Next? with Dropdown */}
         <DropdownMenu open={dropdownOpen} onOpenChange={setDropdownOpen}>
           <DropdownMenuTrigger 
-            className={`text-white font-cinzel hover:text-safari-gold transition-all duration-300 text-sm md:text-base ${
+            className={`text-white font-quicksand hover:text-safari-gold transition-all duration-300 text-sm md:text-base ${
               menuElevated ? 'transform -translate-y-[15px]' : ''
             }`}
             onMouseEnter={() => setDropdownOpen(true)}
@@ -96,7 +96,7 @@ export const Header: React.FC<HeaderProps> = ({
         {/* Game Plan - Updated link to /game-plan instead of /plan */}
         <Link 
           to="/game-plan" 
-          className={`text-white font-cinzel hover:text-safari-gold transition-all duration-300 text-sm md:text-base ${
+          className={`text-white font-quicksand hover:text-safari-gold transition-all duration-300 text-sm md:text-base ${
             menuElevated ? 'transform -translate-y-[15px]' : ''
           }`}
         >
@@ -106,7 +106,7 @@ export const Header: React.FC<HeaderProps> = ({
         {/* Meet the Herd */}
         <Link 
           to="/meet-the-herd" 
-          className={`text-white font-cinzel hover:text-safari-gold transition-all duration-300 text-sm md:text-base ${
+          className={`text-white font-quicksand hover:text-safari-gold transition-all duration-300 text-sm md:text-base ${
             menuElevated ? 'transform -translate-y-[15px]' : ''
           }`}
         >

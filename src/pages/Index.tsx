@@ -1,8 +1,12 @@
+
 import { HeroSection } from "@/components/Safari/HeroSection";
 import { Sidebar } from "@/components/Safari/Sidebar";
 import { useEffect } from "react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Index = () => {
+  const isMobile = useIsMobile();
+  
   // Add Google Fonts for the styling
   useEffect(() => {
     // Add the existing Playfair Display font
@@ -17,7 +21,7 @@ const Index = () => {
     cinzelLink.rel = "stylesheet";
     document.head.appendChild(cinzelLink);
     
-    // Add Quicksand font for the "MEET THE HERD" text
+    // Add Quicksand font for the menus and headers
     const quicksandLink = document.createElement('link');
     quicksandLink.href = "https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap";
     quicksandLink.rel = "stylesheet";
@@ -72,7 +76,7 @@ const Index = () => {
 
   return (
     <div className="relative h-screen w-screen overflow-hidden">
-      <Sidebar />
+      {!isMobile && <Sidebar />}
       <HeroSection />
     </div>
   );

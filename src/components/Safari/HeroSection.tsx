@@ -1,13 +1,18 @@
+
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { ChevronDown } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { Header } from "@/components/Safari/Header";
+
 type Destination = {
   name: string;
   image: string;
   description: string;
   slug: string; // Add slug for URL routing
 };
+
 const destinations: Destination[] = [{
   name: "OKAVANGO",
   image: "/lovable-uploads/ebab21c9-3137-406f-b457-4a345b28c6ab.png",
@@ -24,11 +29,14 @@ const destinations: Destination[] = [{
   description: "Where elephants throw dust parties and have trunk-to-trunk conversations!",
   slug: "makgadikgadi"
 }];
+
 export const HeroSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const isMobile = useIsMobile();
+  
   const nextDestination = () => {
     setIsAnimating(true);
     setTimeout(() => {
@@ -39,6 +47,7 @@ export const HeroSection = () => {
       setTimeout(() => setIsTyping(false), 1000); // Reset typing state after animation completes
     }, 800); // Matches fade-out animation duration
   };
+  
   const prevDestination = () => {
     setIsAnimating(true);
     setTimeout(() => {
@@ -49,6 +58,7 @@ export const HeroSection = () => {
       setTimeout(() => setIsTyping(false), 1000); // Reset typing state after animation completes
     }, 800); // Matches fade-out animation duration
   };
+  
   const goToDestination = (index: number) => {
     if (index === currentIndex) return;
     setIsAnimating(true);
@@ -74,77 +84,107 @@ export const HeroSection = () => {
     setIsTyping(true);
     setTimeout(() => setIsTyping(false), 1000);
   }, []);
+  
   const destination = destinations[currentIndex];
-  return <div className="absolute inset-0 h-screen w-screen overflow-hidden">
+  
+  return (
+    <div className="absolute inset-0 h-screen w-screen overflow-hidden">
       {/* Background image with overlay */}
-      <div className={`background-image ${isAnimating ? 'animate-fade-out' : 'animate-fade-in'}`} style={{
-      backgroundImage: `url(${destination.image})`,
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '100%',
-      zIndex: -2
-    }} />
+      <div 
+        className={`background-image ${isAnimating ? 'animate-fade-out' : 'animate-fade-in'}`} 
+        style={{
+          backgroundImage: `url(${destination.image})`,
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          zIndex: -2
+        }} 
+      />
       <div className="destination-overlay absolute inset-0 z-[-1]" />
       
-      {/* Top navigation section */}
-      <div className="absolute top-0 left-0 w-full z-50">
-        <div className="flex justify-end pr-16 pt-16">
-          {/* WHERE TO NEXT? with Dropdown */}
-          <div className="mr-32">
-            <DropdownMenu open={dropdownOpen} onOpenChange={setDropdownOpen}>
-              <DropdownMenuTrigger className="text-white hover:text-safari-gold transition-colors" onMouseEnter={() => setDropdownOpen(true)} onMouseLeave={() => setDropdownOpen(false)}>
-                <div className="flex items-center gap-2 cursor-pointer">
-                  <h3 className="font-quicksand text-white text-sm">WHERE TO NEXT?</h3>
-                  <ChevronDown className="w-4 h-4" />
-                </div>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-safari-dark-grey border-safari-gold" onMouseEnter={() => setDropdownOpen(true)} onMouseLeave={() => setDropdownOpen(false)}>
-                {destinations.map(dest => <Link key={dest.slug} to={`/destination/${dest.slug}`}>
-                    <DropdownMenuItem className="text-white hover:bg-safari-dark-brown hover:text-white focus:text-white cursor-pointer">
-                      {dest.name}
-                    </DropdownMenuItem>
-                  </Link>)}
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </div>
-          
-          {/* GAME PLAN link */}
-          <div className="mr-32">
-            <Link to="/plan">
-              <h3 className="font-quicksand text-white hover:text-safari-gold transition-colors text-sm">
-                GAME PLAN
-              </h3>
-            </Link>
-          </div>
-          
-          {/* MEET THE HERD link */}
-          <div>
-            <Link to="/meet-the-herd">
-              <h3 className="font-quicksand text-white hover:text-safari-gold transition-colors text-sm">
-                MEET THE HERD
-              </h3>
-            </Link>
+      {/* Mobile header */}
+      {isMobile && (
+        <div className="absolute top-0 left-0 w-full z-50">
+          <Header />
+        </div>
+      )}
+      
+      {/* Top navigation section - only on desktop */}
+      {!isMobile && (
+        <div className="absolute top-0 left-0 w-full z-50">
+          <div className="flex justify-end pr-16 pt-16">
+            {/* WHERE TO NEXT? with Dropdown */}
+            <div className="mr-32">
+              <DropdownMenu open={dropdownOpen} onOpenChange={setDropdownOpen}>
+                <DropdownMenuTrigger 
+                  className="text-white hover:text-safari-gold transition-colors" 
+                  onMouseEnter={() => setDropdownOpen(true)} 
+                  onMouseLeave={() => setDropdownOpen(false)}
+                >
+                  <div className="flex items-center gap-2 cursor-pointer">
+                    <h3 className="font-quicksand text-white text-sm">WHERE TO NEXT?</h3>
+                    <ChevronDown className="w-4 h-4" />
+                  </div>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent 
+                  className="bg-safari-dark-grey border-safari-gold" 
+                  onMouseEnter={() => setDropdownOpen(true)} 
+                  onMouseLeave={() => setDropdownOpen(false)}
+                >
+                  {destinations.map(dest => (
+                    <Link key={dest.slug} to={`/destination/${dest.slug}`}>
+                      <DropdownMenuItem className="text-white hover:bg-safari-dark-brown hover:text-white focus:text-white cursor-pointer">
+                        {dest.name}
+                      </DropdownMenuItem>
+                    </Link>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+            
+            {/* GAME PLAN link */}
+            <div className="mr-32">
+              <Link to="/game-plan">
+                <h3 className="font-quicksand text-white hover:text-safari-gold transition-colors text-sm">
+                  GAME PLAN
+                </h3>
+              </Link>
+            </div>
+            
+            {/* MEET THE HERD link */}
+            <div>
+              <Link to="/meet-the-herd">
+                <h3 className="font-quicksand text-white hover:text-safari-gold transition-colors text-sm">
+                  MEET THE HERD
+                </h3>
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
+      )}
       
       {/* Static H2 heading */}
-      <div className="absolute inset-0 flex flex-col justify-center items-start pl-[85px] md:pl-[135px] z-10 -mt-[200px]">
-        <h2 className="text-white mb-4 text-7xl text-left font-semibold my-0 mx-[2px]">DISCOVER THE</h2>
+      <div className={`absolute inset-0 flex flex-col justify-center items-start ${isMobile ? 'pl-6' : 'pl-[85px] md:pl-[135px]'} z-10 ${isMobile ? '-mt-[120px]' : '-mt-[200px]'}`}>
+        <h2 className={`text-white mb-4 ${isMobile ? 'text-4xl' : 'text-7xl'} text-left font-semibold my-0 mx-[2px]`}>
+          DISCOVER THE
+        </h2>
       </div>
 
       {/* H1 section */}
-      <div className="absolute inset-0 flex flex-col justify-center items-start pl-[83px] md:pl-[133px] z-10 mt-[15px]">
+      <div className={`absolute inset-0 flex flex-col justify-center items-start ${isMobile ? 'pl-4' : 'pl-[83px] md:pl-[133px]'} z-10 ${isMobile ? 'mt-[10px]' : 'mt-[15px]'}`}>
         <div className={`transition-opacity duration-800 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
           {/* Destination name with typewriter effect - now wrapped in Link */}
           <Link to={`/destination/${destination.slug}`}>
-            <h1 id="hero-destination" className={`destination-text mx-[168px] overflow-hidden whitespace-nowrap ${isTyping ? 'animated' : ''} hover:text-gray-500 hover:opacity-55 transition-colors cursor-pointer`}>
+            <h1 
+              id="hero-destination" 
+              className={`destination-text ${isMobile ? 'mx-2 text-[10vw]' : 'mx-[168px]'} overflow-hidden whitespace-nowrap ${isTyping ? 'animated' : ''} hover:text-gray-500 hover:opacity-55 transition-colors cursor-pointer`}
+            >
               {destination.name}
             </h1>
           </Link>
-          <p className="safari-quote text-white text-xl mt-4 max-w-md mx-[178px]">
+          <p className={`safari-quote text-white ${isMobile ? 'text-base mx-2 mt-2 max-w-xs' : 'text-xl mt-4 max-w-md mx-[178px]'}`}>
             "{destination.description}"
           </p>
         </div>
@@ -152,11 +192,17 @@ export const HeroSection = () => {
 
       {/* Navigation dots */}
       <div className="absolute bottom-8 right-8 flex space-x-2">
-        {destinations.map((_, index) => <div key={index} className={`dot-indicator ${index === currentIndex ? 'active' : ''}`} onClick={() => goToDestination(index)} />)}
+        {destinations.map((_, index) => (
+          <div 
+            key={index} 
+            className={`dot-indicator ${index === currentIndex ? 'active' : ''}`} 
+            onClick={() => goToDestination(index)} 
+          />
+        ))}
       </div>
 
-      {/* Navigation arrows */}
-      <div className="navigation-arrows absolute bottom-8 left-[350px] flex space-x-8 items-center">
+      {/* Navigation arrows - adjust position for mobile */}
+      <div className={`navigation-arrows absolute bottom-8 ${isMobile ? 'left-6' : 'left-[350px]'} flex space-x-8 items-center`}>
         <button onClick={prevDestination} aria-label="Previous destination">
           &lt;
         </button>
@@ -172,5 +218,6 @@ export const HeroSection = () => {
           &gt;
         </button>
       </div>
-    </div>;
+    </div>
+  );
 };

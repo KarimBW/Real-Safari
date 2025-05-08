@@ -1,9 +1,12 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from "react-router-dom";
 import { Header } from "@/components/Safari/Header";
 import { destinationData } from "@/data/destinationData";
 import FooterSection from "./FooterSection";
 import CampDetailsSection from "./CampDetailsSection";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { DestinationMobileLayout } from "./DestinationMobileLayout";
 
 interface PanelData {
   title: string;
@@ -14,6 +17,7 @@ interface PanelData {
 const DestinationLayout: React.FC = () => {
   const { id } = useParams();
   const destination = destinationData[id as keyof typeof destinationData] || destinationData.okavango;
+  const isMobile = useIsMobile();
 
   // Define the camp names based on destination
   let camps = [];
@@ -190,67 +194,79 @@ const DestinationLayout: React.FC = () => {
       
       {/* Hero section with panels */}
       <div className="h-screen relative overflow-hidden" ref={heroRef}>
-        {/* Left sidebar */}
-        <div className="w-[80px] h-full bg-black text-white flex flex-col items-center justify-between py-8 absolute left-0 top-0 z-10">
-          {/* Logo */}
-          <div>
-            
-          </div>
-          
-          {/* Vertical destination name */}
-          <div className="flex-grow flex items-center">
-            <div className="transform -rotate-90 whitespace-nowrap text-2xl font-bold tracking-wider">
-              {destination.title.toUpperCase()}
-            </div>
-          </div>
-          
-          {/* Bottom text */}
-          <div className="flex flex-col items-center gap-4">
-            
-            <div className="flex gap-2">
+        {!isMobile && (
+          <>
+            {/* Left sidebar */}
+            <div className="w-[80px] h-full bg-black text-white flex flex-col items-center justify-between py-8 absolute left-0 top-0 z-10">
+              {/* Logo */}
+              <div></div>
               
-            </div>
-          </div>
-        </div>
-
-        {/* Background image that changes on hover */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center transition-all duration-700 ease-in-out z-0" 
-          style={{
-            backgroundImage: `url(${backgroundImage})`,
-            left: '80px'
-          }}
-        >
-          <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-        </div>
-
-        {/* Panels */}
-        <div className="relative z-10 flex-1 flex h-full" style={{ marginLeft: '80px' }}>
-          {panels.map((panel, index) => (
-            <div 
-              key={index} 
-              className="flex-1 flex flex-col justify-end border-r border-gray-700 hover:bg-black hover:bg-opacity-20 transition-all duration-500 cursor-pointer" 
-              onMouseEnter={() => handlePanelHover(index)} 
-              onMouseLeave={handlePanelLeave}
-              onClick={() => handlePanelClick(index)}
-            >
-              <div className="p-6 pb-12 transition-all duration-500">
-                <h2 
-                  className={`text-white text-2xl font-bold mb-1 transition-all duration-500 ease-in-out transform ${
-                    activePanel === index ? 'translate-y-[-40px] text-safari-gold' : ''
-                  }`}
-                >
-                  {panel.title}
-                </h2>
-                <p className={`text-white text-sm opacity-80 transition-all duration-500 ease-in-out transform ${
-                  activePanel === index ? 'translate-y-[-40px]' : ''
-                }`}>
-                  {panel.subtitle}
-                </p>
+              {/* Vertical destination name */}
+              <div className="flex-grow flex items-center">
+                <div className="transform -rotate-90 whitespace-nowrap text-2xl font-bold tracking-wider">
+                  {destination.title.toUpperCase()}
+                </div>
               </div>
+              
+              {/* Bottom text */}
+              <div className="flex flex-col items-center gap-4"></div>
             </div>
-          ))}
-        </div>
+
+            {/* Background image that changes on hover */}
+            <div 
+              className="absolute inset-0 bg-cover bg-center transition-all duration-700 ease-in-out z-0" 
+              style={{
+                backgroundImage: `url(${backgroundImage})`,
+                left: '80px'
+              }}
+            >
+              <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+            </div>
+
+            {/* Desktop Panels */}
+            <div className="relative z-10 flex-1 flex h-full" style={{ marginLeft: '80px' }}>
+              {panels.map((panel, index) => (
+                <div 
+                  key={index} 
+                  className="flex-1 flex flex-col justify-end border-r border-gray-700 hover:bg-black hover:bg-opacity-20 transition-all duration-500 cursor-pointer" 
+                  onMouseEnter={() => handlePanelHover(index)} 
+                  onMouseLeave={handlePanelLeave}
+                  onClick={() => handlePanelClick(index)}
+                >
+                  <div className="p-6 pb-12 transition-all duration-500">
+                    <h2 
+                      className={`text-white text-2xl font-bold mb-1 transition-all duration-500 ease-in-out transform ${
+                        activePanel === index ? 'translate-y-[-40px] text-safari-gold' : ''
+                      }`}
+                    >
+                      {panel.title}
+                    </h2>
+                    <p className={`text-white text-sm opacity-80 transition-all duration-500 ease-in-out transform ${
+                      activePanel === index ? 'translate-y-[-40px]' : ''
+                    }`}>
+                      {panel.subtitle}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </>
+        )}
+
+        {/* Mobile Panels */}
+        {isMobile && (
+          <div className="relative z-10 w-full h-full">
+            {/* Mobile header with destination title */}
+            <div className="bg-black text-white p-4 text-center">
+              <h2 className="text-xl font-bold tracking-wider">{destination.title.toUpperCase()}</h2>
+            </div>
+            
+            <DestinationMobileLayout 
+              panels={panels} 
+              onPanelClick={handlePanelClick}
+            />
+          </div>
+        )}
       </div>
       
       {/* Camp Details Section - New component */}

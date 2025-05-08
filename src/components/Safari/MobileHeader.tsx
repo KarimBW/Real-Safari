@@ -9,7 +9,7 @@ import {
   DrawerTrigger,
   DrawerClose
 } from "@/components/ui/drawer";
-import { ChevronDown, Menu } from "lucide-react";
+import { Menu } from "lucide-react";
 
 interface MobileHeaderProps {
   className?: string;
@@ -56,7 +56,7 @@ export const MobileHeader: React.FC<MobileHeaderProps> = ({ className = "" }) =>
         <DrawerContent className="bg-safari-dark-grey border-safari-gold text-white h-[85vh]">
           <div className="flex flex-col space-y-6 p-6">
             <div className="flex justify-between items-center">
-              <h3 className="text-xl font-cinzel text-safari-gold">Navigation</h3>
+              <h3 className="text-xl font-quicksand text-safari-gold">Navigation</h3>
               <DrawerClose className="text-white hover:text-safari-gold">
                 ✕
               </DrawerClose>
@@ -65,25 +65,25 @@ export const MobileHeader: React.FC<MobileHeaderProps> = ({ className = "" }) =>
             <nav className="flex flex-col space-y-8 pt-4">
               {/* Where To Next? */}
               <div className="space-y-4">
-                <h4 className="text-safari-gold font-cinzel text-lg">Where To Next?</h4>
+                <h4 className="text-safari-gold font-quicksand text-lg">Where To Next?</h4>
                 <div className="flex flex-col space-y-3 pl-4">
                   <Link 
                     to="/destination/okavango" 
-                    className="text-white font-cinzel hover:text-safari-gold py-2"
+                    className="text-white font-quicksand hover:text-safari-gold py-2"
                     onClick={() => setIsOpen(false)}
                   >
                     Okavango
                   </Link>
                   <Link 
                     to="/destination/kalahari" 
-                    className="text-white font-cinzel hover:text-safari-gold py-2"
+                    className="text-white font-quicksand hover:text-safari-gold py-2"
                     onClick={() => setIsOpen(false)}
                   >
                     Kalahari
                   </Link>
                   <Link 
                     to="/destination/makgadikgadi" 
-                    className="text-white font-cinzel hover:text-safari-gold py-2"
+                    className="text-white font-quicksand hover:text-safari-gold py-2"
                     onClick={() => setIsOpen(false)}
                   >
                     Makgadikgadi
@@ -94,7 +94,7 @@ export const MobileHeader: React.FC<MobileHeaderProps> = ({ className = "" }) =>
               {/* Game Plan */}
               <Link 
                 to="/game-plan" 
-                className="text-white font-cinzel text-lg hover:text-safari-gold"
+                className="text-white font-quicksand text-lg hover:text-safari-gold"
                 onClick={() => setIsOpen(false)}
               >
                 Game Plan
@@ -103,7 +103,7 @@ export const MobileHeader: React.FC<MobileHeaderProps> = ({ className = "" }) =>
               {/* Meet the Herd */}
               <Link 
                 to="/meet-the-herd" 
-                className="text-white font-cinzel text-lg hover:text-safari-gold"
+                className="text-white font-quicksand text-lg hover:text-safari-gold"
                 onClick={() => setIsOpen(false)}
               >
                 Meet the Herd
