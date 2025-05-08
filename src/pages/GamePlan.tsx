@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { Header } from "@/components/Safari/Header";
 import { Button } from "@/components/ui/button";
@@ -33,7 +32,7 @@ const GamePlan = () => {
     {
       title: "Guided & Glorious",
       subtitle: "Travel with a Guide",
-      image: "/lovable-uploads/691157be-fdd5-4b67-811b-9f440014bdeb.png",
+      image: "/lovable-uploads/be7118a7-97ba-4213-8b48-cb5810666f96.png",
       content: {
         title: "Ride with a Legend at the Wheel",
         subtitle: "aka The Guided Safari",
