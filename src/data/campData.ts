@@ -2,6 +2,16 @@
 interface CampInfo {
   description: string;
   features: string[];
+  quickNotes?: {
+    bestSeason: string;
+    dayTemps: string;
+    nightTemps: string;
+    terrain: string;
+    highlights: string;
+    driving: string;
+    mood: string;
+    vibe: string;
+  };
 }
 
 type CampDataType = {
@@ -35,46 +45,146 @@ export const campData: CampDataType = {
   },
   kalahari: {
     ckgr: {
-      description: "CKGR Camp brings you front-row seats to the greatest zebra show on Earth. Our solar-powered oasis in the Central Kalahari Game Reserve features zebra-striped everything (we got a great bulk discount). The camp's watering hole attracts so many zebras that guests often report feeling dizzy from all the stripes. Our unique 'Stripe-Spotting Challenge' rewards guests who can accurately count individual zebras—current record is 342 before the counter fell asleep from the hypnotic pattern. Don't miss our famous 'Zebra Crossing' sundowners, where drinks are served as herds migrate past.",
-      features: ["Zebra migration viewing", "Desert-adapted wildlife safaris", "San Bushmen cultural experiences", "Star gazing with astronomer guides", "4x4 adventures through ancient riverbeds"]
+      description: "This isn't just the heart of the desert—it's the soul of solitude. CKGR is where the horizon forgets to end and the road becomes your story. One minute you're alone on the pan, the next you're sharing it with a herd of zebra moving like wind. Lions lurk in Deception Valley, springbok bolt across the open, and the silence? It's not empty—it's electric. There's no rush here. You set the pace, roll down the windows, and become part of the rhythm. Evenings are for campfires under a galaxy you didn't know existed, mornings for tracking fresh spoor before the heat kicks in. It's not curated. It's not filtered. It's wild, and it's waiting.",
+      features: ["Zebra migration viewing", "Desert-adapted wildlife safaris", "San Bushmen cultural experiences", "Star gazing with astronomer guides", "4x4 adventures through ancient riverbeds"],
+      quickNotes: {
+        bestSeason: "May–September (dry, cooler, migration in motion)",
+        dayTemps: "22–32°C",
+        nightTemps: "5–15°C",
+        terrain: "Open pans, fossil riverbeds, sandy tracks",
+        highlights: "Zebra, oryx, lion, cheetah, springbok",
+        driving: "4×4 essential; long distances between camps",
+        mood: "Remote, raw, meditative",
+        vibe: "For travellers who like their solitude shaken, not stirred"
+      }
     },
     khutse: {
-      description: "Khutse Camp is ostrich territory, where these bizarre birds add comic relief to the dramatic desert landscape. Our elevated suites offer panoramic views of ostriches performing what we call 'desert disco'—sprinting in circles for no apparent reason. Breakfast includes our world-famous ostrich egg omelets (each serving 8-10 people—bring friends). Our popular 'Head in Sand' meditation retreats were inspired by the local birds, though we promise the technique works better for stress relief than actual hiding. Just remember, ostriches can outrun you, so keep compliments ready if you encounter one with an attitude.",
-      features: ["Ostrich behavior research tours", "Desert adaptation workshops", "Guided fossil walks", "Traditional hunting techniques demonstrations", "Pan photography excursions"]
+      description: "Khutse is the quieter cousin of CKGR—a desert retreat where the sand gets deeper, the skies feel wider, and the ostriches own the runway. This is where self-drive safari meets soul detox. No fences, no rush, and no one around for miles. Just you, your rooftop tent, and the kind of silence that resets something inside. Expect sudden bursts of springbok, massive ostrich parades, and the occasional big cat trace. But mostly, expect to slow down. A sunrise coffee on the bonnet. A walk to check tracks in the sand. The thrill of hearing nothing but your own heartbeat.",
+      features: ["Ostrich behavior research tours", "Desert adaptation workshops", "Guided fossil walks", "Traditional hunting techniques demonstrations", "Pan photography excursions"],
+      quickNotes: {
+        bestSeason: "April–October (cooler, dry roads)",
+        dayTemps: "25–35°C",
+        nightTemps: "7–17°C",
+        terrain: "Deep Kalahari sand, rolling dunes, open woodland",
+        highlights: "Ostrich, springbok, jackal, leopard (if lucky)",
+        driving: "Deep sand sections, recovery gear advised",
+        mood: "Isolated, introspective, slightly surreal",
+        vibe: "Where birdwatchers meet bush philosophers"
+      }
     },
     ghanzi: {
-      description: "Ghanzi Camp offers the ultimate cultural immersion, where San Bushmen share ancient wisdom and occasionally judge your poor life choices (in clicks, so you won't understand). Our traditionally inspired lodges feature modern comforts alongside authentic design elements. Learn to track animals by the faintest signs—soon you'll be pointing out three-day-old lizard tracks while your friends just want to spot lions. The nightly traditional dances often end with guests attempting to join in, creating memories the San people will laugh about for generations. Our bush tucker food experiences come with a satisfaction guarantee—or at least a good story.",
-      features: ["San Bushmen guided walks", "Traditional craft workshops", "Bush survival skills training", "Story evening with tribal elders", "Medicinal plant identification tours"]
+      description: "Ghanzi is less about chasing lions, more about meeting legends. It's the cultural heartbeat of the Kalahari, where the San Bushmen still read the land like a living map. This is where you trade game drives for ancient wisdom, fire-making lessons, and traditional dances under moonlight. It's a perfect stopover between game reserves or a base for slow exploration. Sit with elders, learn to track scorpions in the sand, and discover how a people survived for thousands of years without Wi-Fi. Ghanzi is not a detour—it's a perspective shift.",
+      features: ["San Bushmen guided walks", "Traditional craft workshops", "Bush survival skills training", "Story evening with tribal elders", "Medicinal plant identification tours"],
+      quickNotes: {
+        bestSeason: "Year-round, but cooler months (May–Aug) offer best comfort",
+        dayTemps: "25–37°C",
+        nightTemps: "10–20°C",
+        terrain: "Flat savannah, shrubland, cultural homesteads",
+        highlights: "Cultural focus – but keep an eye out for kudu and bat-eared foxes",
+        driving: "Accessible by 2x4, but 4x4 ideal for onward Kalahari travel",
+        mood: "Grounded, human, timeless",
+        vibe: "For travellers curious about the people as much as the predators"
+      }
     },
     mabuasehube: {
-      description: "Mabuasehube Camp is cheetah country, where everything is designed for speed—except our relaxed service pace. Our eco-tents are strategically positioned near cheetah hunting grounds, offering views so spectacular you'll forget to breathe (don't worry, our staff is trained in CPR). The camp's unique 'Cheetah Fitness Challenge' lets guests race against recorded cheetah times—spoiler alert: you'll lose magnificently. Our sunset lounge features specially designed 'cheetah spots' furniture that perfectly camouflages any food stains from your enthusiastic eating. Remember, if something zooms past your tent at night, it's either a cheetah or our overeager night porter.",
-      features: ["Cheetah research participation", "Pan game drives", "Predator conservation talks", "Special photography vehicles", "Desert sleep-outs under the stars"]
+      description: "This is for the true wild at heart. Mabuasehube is a remote pocket of Kgalagadi where cheetah roam wide, waterholes are sacred, and the sunsets come with goosebumps. No facilities. No fences. No fluff. Just a patch of land, your 4x4, and the kind of quiet you feel in your bones. Here, you don't follow a guide—you follow your instincts. Set up your rooftop tent near the pan and watch the world come to drink. Hyenas laugh in the night, cheetahs prowl at dawn, and sometimes you'll just sit... because it's too beautiful to move.",
+      features: ["Cheetah research participation", "Pan game drives", "Predator conservation talks", "Special photography vehicles", "Desert sleep-outs under the stars"],
+      quickNotes: {
+        bestSeason: "May–August (cool, dry, and dramatic light)",
+        dayTemps: "20–30°C",
+        nightTemps: "5–15°C",
+        terrain: "Arid pans, scrub, occasional dunes",
+        highlights: "Cheetah, hyena, wildebeest, lion",
+        driving: "Very remote, deep sand, high clearance essential",
+        mood: "Raw, alert, wildly satisfying",
+        vibe: "For purists who want to feel like the only humans left"
+      }
     },
     kgalagadi: {
-      description: "Kgalagadi Camp celebrates the majestic oryx, nature's unicorn prototype that decided two horns were better than one. Our desert-adapted luxury lodge sits amid red dunes where oryx traverse like desert nobility. The camp's infinity pool creates the illusion that you're swimming with oryx (though they're too dignified to actually join you). Our professional guides can spot an oryx from 5 miles away, mostly because nothing else out here is quite so pointy. The camp's signature 'Oryx Gaze' sundowners happen at precisely the moment when the setting sun aligns with oryx horns, creating natural sundials. Just don't mention unicorns around them—they're sensitive about the comparison.",
-      features: ["Oryx migration tracking", "Kalahari black-maned lion searches", "Desert ecology workshops", "Dune sunrise breakfasts", "Cross-border safaris into South Africa"]
+      description: "Kgalagadi is desert drama at its finest. The land glows red, the lions wear black manes like royal cloaks, and the sky always looks like it's up to something. It's a shared park with South Africa, but the Botswana side? That's where the wild things are. Oryx cruise past like ancient spirits, and every dune could hide a surprise. Your rooftop tent becomes a front-row seat to Africa's quiet theatre. Sleep above the sand, drive the dry riverbeds, and let the wilderness remind you what real space feels like.",
+      features: ["Oryx migration tracking", "Kalahari black-maned lion searches", "Desert ecology workshops", "Dune sunrise breakfasts", "Cross-border safaris into South Africa"],
+      quickNotes: {
+        bestSeason: "March–October (dry, clear skies, best predator sightings)",
+        dayTemps: "25–38°C",
+        nightTemps: "8–20°C",
+        terrain: "Red sand dunes, dry riverbeds, open veld",
+        highlights: "Black-maned lions, oryx, jackal, meerkat",
+        driving: "Cross-border access possible; wild camps remote and unfenced",
+        mood: "Majestic, cinematic, slightly primal",
+        vibe: "For travellers chasing drama without crowds"
+      }
     }
   },
   makgadikgadi: {
     makgadikgadi: {
-      description: "Makgadikgadi Camp puts you in elephant territory where these giants have been known to review the camp on 'TrunkAdvisor' (their ratings system involves how many trees we let them eat). Our luxury salt pan suites feature special elephant-watching decks where you can observe these magnificent creatures pretending not to notice you noticing them. The camp's famous 'Elephant Whisperer' guides can translate elephant rumbles—mostly complaints about tourist fashion choices. Our unique 'Ellies and Wellies' excursion lets you track elephant footprints across the pans after rains, though the elephants find human footprint collections equally fascinating.",
-      features: ["Elephant behavior studies", "Salt pan quad biking adventures", "Wet season water hole gatherings", "Ancient elephant migration route walks", "Baobab sundowners with elephant views"]
+      description: "Imagine a land so flat, it fools your sense of scale. The Makgadikgadi Pans are ancient salt flats where elephants march like ghosts and silence makes itself at home. Drive long enough and you'll hit the edge of forever. This is not a place you visit. It's a place you feel. And when the rains come? Flamingos. Thousands. The whole pan shifts from cracked white to soft pink. Stick to the edges or venture boldly inward—just you, your rig, and a sky that never blinks.",
+      features: ["Elephant behavior studies", "Salt pan quad biking adventures", "Wet season water hole gatherings", "Ancient elephant migration route walks", "Baobab sundowners with elephant views"],
+      quickNotes: {
+        bestSeason: "Dry (June–Oct) for open pans; wet (Dec–Mar) for birdlife",
+        dayTemps: "25–37°C",
+        nightTemps: "10–22°C",
+        terrain: "Hard-packed salt, dusty tracks, soft edges after rain",
+        highlights: "Elephants, zebra, flamingos (wet season), brown hyena",
+        driving: "Avoid center pans in rainy season; stick to marked tracks",
+        mood: "Otherworldly, reflective, wide open",
+        vibe: "For dreamers chasing horizons"
+      }
     },
     "nxai pan": {
-      description: "Nxai Pan Camp is lion country, where these majestic cats have learned that vehicles make excellent shade providers. Our raised platforms feature the revolutionary 'Lion Alarm' system—basically other guests screaming excitedly when lions walk through camp. The camp's unique location means lions often use our pathways as their personal catwalks, striking poses as they saunter past slack-jawed guests. Our famous 'Roar and Snore' overnight experiences let you sleep in secure sky beds while listening to the lion choir practice their dawn chorus. Just remember, the lions were here first—we're just renting space in their living room.",
-      features: ["Lion pride monitoring", "Baobab forest excursions", "Legendary Baines' Baobabs visits", "Nxai Pan game drives", "Seasonal zebra migration viewing"]
+      description: "Nxai Pan is where drama meets elegance. Lions snooze in tall grass. Elephants march through fossil flats. And the famous Baines' Baobabs stand like desert statues, keeping secrets older than memory. This is where you come to see Africa move slowly—and powerfully. Pull up to a pan and wait. Everything happens in stillness here. Herds arrive in a cloud of dust, predators follow quietly behind, and your camera barely keeps up.",
+      features: ["Lion pride monitoring", "Baobab forest excursions", "Legendary Baines' Baobabs visits", "Nxai Pan game drives", "Seasonal zebra migration viewing"],
+      quickNotes: {
+        bestSeason: "Dec–Mar (zebra migration); May–Aug (cool & dry)",
+        dayTemps: "24–36°C",
+        nightTemps: "8–18°C",
+        terrain: "Flat pans, scattered woodland, baobab stands",
+        highlights: "Lion, zebra, elephant, giraffe",
+        driving: "Soft in wet season; dry tracks in winter",
+        mood: "Gentle, timeless, visually stunning",
+        vibe: "For slow movers and still shooters"
+      }
     },
     nata: {
-      description: "Nata Camp is flamingo headquarters, where thousands of pink birds create nature's most flamboyant convention. Our overwater bungalows sit at the perfect distance for flamingo viewing without smelling flamingo neighborhoods (you're welcome). The camp's 'Fifty Shades of Pink' sunset tours have become Instagram legends, with filters entirely unnecessary. Our guides have perfected flamingo impersonations for calling birds closer—a skill as ridiculous to watch as it is effective. The camp's signature cocktail, the 'Flaming-go', turns your tongue pink in solidarity with our feathered neighbors. We cannot, however, teach you to stand on one leg after drinking it.",
-      features: ["Flamingo migration spectacles", "Bird photography workshops", "Specialized birding guides", "Sanctuary conservation tours", "Sunset boat cruises through bird colonies"]
+      description: "Nata is all about the skies. And the skies are full of wings. This little corner of the pans explodes with birdlife during the wet season, especially flamingos turning shallow pools into pink-painted watercolour scenes. Bring your binoculars. And your best 'wow' face. It's a place to camp light, rise early, and catch the golden glow off the pans before the heat kicks in. You don't just visit Nata—you perch.",
+      features: ["Flamingo migration spectacles", "Bird photography workshops", "Specialized birding guides", "Sanctuary conservation tours", "Sunset boat cruises through bird colonies"],
+      quickNotes: {
+        bestSeason: "Dec–Apr (wet season, max birdlife)",
+        dayTemps: "26–37°C",
+        nightTemps: "12–22°C",
+        terrain: "Shallow pans, grassland, acacia fringes",
+        highlights: "Flamingos, pelicans, storks, raptors",
+        driving: "Good access; nearby fuel and town services",
+        mood: "Light, twitchy, sunrise-chasing",
+        vibe: "For those who love feathers more than fur"
+      }
     },
     "kubu island": {
-      description: "Kubu Island Camp is baobab central, where these ancient trees gather to exchange gossip collected over thousands of years. Our stone-and-thatch chalets are built between baobabs so old they remember when the pans were lakes and crocodiles ruled the waves. The camp's 'Baobab Whispering' sessions connect guests with these gentle giants—mostly complaints about how humans have terrible posture compared to trees. Our night tours feature the 'Avenue of Ancestors', where baobabs illuminated by starlight create a mystical experience so profound that guests often return home and immediately start yoga practices. Just remember to ask permission before hugging the trees—they value consent and personal space.",
-      features: ["Ancient baobab tours", "Granite outcrop explorations", "Archaeological site visits", "Night sky photography", "Cultural heritage experiences"]
+      description: "Kubu is what happens when nature writes poetry. Giant baobabs sit atop granite outcrops, surrounded by the white shimmer of the pans. It's still. It's sacred. And it feels like stepping out of time. Set up camp between stone and sky, cook over coals, and fall asleep where generations once held ritual. Whether it's the surreal views, the ancient energy, or just the way your tyres crunch the salt, Kubu changes you. Quietly.",
+      features: ["Ancient baobab tours", "Granite outcrop explorations", "Archaeological site visits", "Night sky photography", "Cultural heritage experiences"],
+      quickNotes: {
+        bestSeason: "May–October (dry, firm surface)",
+        dayTemps: "22–36°C",
+        nightTemps: "9–19°C",
+        terrain: "Rocky outcrop, wide-open salt flats, low scrub",
+        highlights: "Baobabs, golden light, silence",
+        driving: "Dry season only; pans impassable when wet",
+        mood: "Sacred, surreal, slow-motion",
+        vibe: "For wanderers who hear the hush"
+      }
     },
     "khama rhino": {
-      description: "Khama Rhino Camp puts you face-to-horn with nature's tank-unicorn hybrids. Our fortified luxury lodges feature special rhino-viewing bunkers where you can safely watch these nearsighted giants debate whether you're a peculiar bush or potential date. The camp's famous 'Rhino Rumble' ground vibrations serve as our natural alarm clock when these heavyweights go for their morning jog. Our unique 'Rhino Radar' tracking systems help guests spot these surprisingly stealthy creatures—turns out two tons of prehistoric armor can move quite quietly when it wants to. Just remember the camp rules: no red clothing (rhinos are surprisingly fashion-critical) and no impersonating a rhino call (they know you're faking and find it mildly offensive).",
-      features: ["Rhino conservation experiences", "Protected sanctuary walks", "Anti-poaching demonstrations", "Behind-the-scenes sanctuary tours", "Rhino tracking and monitoring participation"]
+      description: "Khama isn't about chasing. It's about witnessing. This is where white rhinos roam safely, and conservation isn't a slogan—it's the setting. A fenced reserve with heart, Khama gives you front-row access to one of Africa's most vulnerable giants. Drive your own route through woodland and savannah. Camp under starlight. And know that every sighting here is more than just a photo op—it's part of something bigger.",
+      features: ["Rhino conservation experiences", "Protected sanctuary walks", "Anti-poaching demonstrations", "Behind-the-scenes sanctuary tours", "Rhino tracking and monitoring participation"],
+      quickNotes: {
+        bestSeason: "Year-round; clear views May–Oct",
+        dayTemps: "24–36°C",
+        nightTemps: "10–22°C",
+        terrain: "Grassland, woodland, rocky tracks",
+        highlights: "Rhino, zebra, giraffe, wildebeest",
+        driving: "Easy access, marked roads, good for first-timers",
+        mood: "Hopeful, peaceful, purposeful",
+        vibe: "For conscious travellers who care"
+      }
     }
   }
 };

@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, forwardRef } from 'react';
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { campData } from '@/data/campData';
@@ -75,6 +76,47 @@ const CampDetailsSection = forwardRef<HTMLDivElement, CampDetailsSectionProps>((
             <p className="text-safari-dark-grey leading-relaxed">
               {campInfo.description}
             </p>
+            
+            {/* Quick Notes Section */}
+            {campInfo.quickNotes && (
+              <div className="mt-8 bg-white/50 backdrop-blur-sm rounded-lg p-6 space-y-4">
+                <h3 className="text-xl font-semibold text-safari-dark-grey border-b border-safari-gold pb-2">
+                  Quick Notes for the Road
+                </h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+                  <div>
+                    <span className="font-medium text-safari-dark-grey">Best Season:</span>
+                    <p className="text-safari-dark-grey/80">{campInfo.quickNotes.bestSeason}</p>
+                  </div>
+                  <div>
+                    <span className="font-medium text-safari-dark-grey">Temperatures:</span>
+                    <p className="text-safari-dark-grey/80">
+                      Day: {campInfo.quickNotes.dayTemps} | Night: {campInfo.quickNotes.nightTemps}
+                    </p>
+                  </div>
+                  <div>
+                    <span className="font-medium text-safari-dark-grey">Terrain:</span>
+                    <p className="text-safari-dark-grey/80">{campInfo.quickNotes.terrain}</p>
+                  </div>
+                  <div>
+                    <span className="font-medium text-safari-dark-grey">Wildlife:</span>
+                    <p className="text-safari-dark-grey/80">{campInfo.quickNotes.highlights}</p>
+                  </div>
+                  <div>
+                    <span className="font-medium text-safari-dark-grey">Driving:</span>
+                    <p className="text-safari-dark-grey/80">{campInfo.quickNotes.driving}</p>
+                  </div>
+                  <div>
+                    <span className="font-medium text-safari-dark-grey">Mood:</span>
+                    <p className="text-safari-dark-grey/80">{campInfo.quickNotes.mood}</p>
+                  </div>
+                </div>
+                <div className="pt-3 border-t border-safari-gold/30">
+                  <span className="font-medium text-safari-dark-grey">Vibe:</span>
+                  <p className="text-safari-dark-grey/80 italic">{campInfo.quickNotes.vibe}</p>
+                </div>
+              </div>
+            )}
             
             <div className="mt-6 space-y-4">
               <h3 className="text-xl font-semibold text-safari-dark-grey">Camp Features:</h3>
