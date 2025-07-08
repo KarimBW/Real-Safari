@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, forwardRef } from 'react';
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { campData } from '@/data/campData';
@@ -72,7 +71,7 @@ const CampDetailsSection = forwardRef<HTMLDivElement, CampDetailsSectionProps>((
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Camp Info Area */}
           <div className="camp-info space-y-6">
-            <h2 className="text-4xl font-bold text-safari-dark-grey">{activeCamp} Camp</h2>
+            <h2 className="text-4xl font-bold text-safari-dark-grey">{activeCamp}</h2>
             <p className="text-safari-dark-grey leading-relaxed">
               {campInfo.description}
             </p>
