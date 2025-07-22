@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
@@ -179,7 +178,7 @@ export const HeroSection = () => {
           <Link to={`/destination/${destination.slug}`}>
             <h1 
               id="hero-destination" 
-              className={`destination-text ${isMobile ? 'mx-2 text-[10vw]' : 'mx-[168px]'} overflow-hidden whitespace-nowrap ${isTyping ? 'animated' : ''} hover:text-gray-500 hover:opacity-55 transition-colors cursor-pointer`}
+              className={`destination-text ${isMobile ? 'mx-2 text-[10vw]' : 'mx-[168px]'} overflow-hidden whitespace-nowrap ${isTyping ? 'animated' : ''} transition-colors cursor-pointer`}
             >
               {destination.name}
             </h1>
