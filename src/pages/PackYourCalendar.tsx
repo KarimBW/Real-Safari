@@ -91,7 +91,7 @@ const PackYourCalendar = () => {
   const [selectedSeason, setSelectedSeason] = useState<'brown' | 'green' | null>(null);
   const [groupSize, setGroupSize] = useState<number>(2);
   const [activeSection, setActiveSection] = useState<string | null>(null);
-  const [includeGuide, setIncludeGuide] = useState<boolean>(false);
+  // Guide is determined by style selection, not a toggle
   const [vehicleConfigs, setVehicleConfigs] = useState<{[key: number]: number[]}>({});
   const isMobile = useIsMobile();
   
@@ -136,7 +136,7 @@ const PackYourCalendar = () => {
     }
   ];
 
-  // Get available vehicle configurations for a group size
+  // Get available vehicle configurations for a group size (max 5 people per vehicle)
   const getVehicleConfigurations = (people: number): number[][] => {
     const configs: number[][] = [];
     
@@ -144,9 +144,9 @@ const PackYourCalendar = () => {
     if (people === 3) configs.push([3]);
     if (people === 4) configs.push([2, 2], [4]);
     if (people === 5) configs.push([2, 3], [5]);
-    if (people === 6) configs.push([2, 2, 2], [3, 3], [6]);
-    if (people === 7) configs.push([2, 2, 3], [7]);
-    if (people === 8) configs.push([2, 3, 3], [8]);
+    if (people === 6) configs.push([2, 2, 2], [3, 3]);
+    if (people === 7) configs.push([2, 2, 3], [2, 5]);
+    if (people === 8) configs.push([2, 3, 3], [3, 5]);
     
     return configs;
   };
@@ -189,10 +189,7 @@ const PackYourCalendar = () => {
       }
     });
     
-    // Add guide fee if selected
-    if (includeGuide) {
-      totalCost += 1500;
-    }
+    // Guide fee will be added based on style selection (guided vs solo)
     
     return totalCost;
   };
@@ -216,7 +213,7 @@ const PackYourCalendar = () => {
         : seasonPricing.pricing.threePersons * vehiclePeople
     }));
 
-    const guideFee = includeGuide ? 1500 : 0;
+    const guideFee = 0; // Guide fee determined by style selection
     const total = vehicles.reduce((sum, v) => sum + v.cost, 0) + guideFee;
 
     return { vehicles, guideFee, total };
@@ -520,19 +517,6 @@ const PackYourCalendar = () => {
                           </div>
                         </div>
                         
-                        {/* Guide Option */}
-                        <div className="flex items-center justify-between">
-                          <label className="text-safari-dark-grey font-medium">Include Guide:</label>
-                          <div className="flex items-center space-x-2">
-                            <input
-                              type="checkbox"
-                              checked={includeGuide}
-                              onChange={(e) => setIncludeGuide(e.target.checked)}
-                              className="w-5 h-5 text-safari-gold bg-white border-2 border-safari-gold rounded focus:ring-safari-gold focus:ring-2"
-                            />
-                            <span className="text-sm text-safari-dark-grey">+RM 1,500</span>
-                          </div>
-                        </div>
                       </div>
                     </div>
 
@@ -627,12 +611,6 @@ const PackYourCalendar = () => {
                                   </span>
                                 </div>
                               ))}
-                              {includeGuide && (
-                                <div className="flex justify-between text-sm">
-                                  <span className="text-safari-dark-grey">Guide Fee:</span>
-                                  <span className="text-safari-dark-grey">RM 1,500</span>
-                                </div>
-                              )}
                             </div>
                             
                             <div className="border-t pt-2">
