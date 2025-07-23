@@ -91,6 +91,8 @@ const PackYourCalendar = () => {
   const [selectedSeason, setSelectedSeason] = useState<'brown' | 'green' | null>(null);
   const [groupSize, setGroupSize] = useState<number>(2);
   const [activeSection, setActiveSection] = useState<string | null>(null);
+  const [includeGuide, setIncludeGuide] = useState<boolean>(false);
+  const [vehicleConfigs, setVehicleConfigs] = useState<{[key: number]: number[]}>({});
   const isMobile = useIsMobile();
   
   const itinerarySectionRef = useRef<HTMLDivElement>(null);
@@ -134,34 +136,90 @@ const PackYourCalendar = () => {
     }
   ];
 
+  // Get available vehicle configurations for a group size
+  const getVehicleConfigurations = (people: number): number[][] => {
+    const configs: number[][] = [];
+    
+    if (people === 2) configs.push([2]);
+    if (people === 3) configs.push([3]);
+    if (people === 4) configs.push([2, 2], [4]);
+    if (people === 5) configs.push([2, 3], [5]);
+    if (people === 6) configs.push([2, 2, 2], [3, 3], [6]);
+    if (people === 7) configs.push([2, 2, 3], [7]);
+    if (people === 8) configs.push([2, 3, 3], [8]);
+    
+    return configs;
+  };
+
+  // Get the selected vehicle configuration or the most economical one
+  const getSelectedVehicleConfig = (people: number): number[] => {
+    const configs = getVehicleConfigurations(people);
+    const selected = vehicleConfigs[people];
+    
+    if (selected && configs.some(config => JSON.stringify(config) === JSON.stringify(selected))) {
+      return selected;
+    }
+    
+    // Return most economical configuration (prioritize 3-person vehicles)
+    return configs.find(config => config.includes(3)) || configs[0] || [people];
+  };
+
   // Calculate vehicles needed based on group size
   const calculateVehicles = (people: number): number => {
-    if (people <= 3) return 1;
-    if (people <= 6) return 2;
-    return 3; // Max 8 people, max 3 vehicles
+    return getSelectedVehicleConfig(people).length;
   };
 
   // Calculate total cost
   const calculateTotalCost = (season: 'brown' | 'green', people: number): number => {
-    const vehicles = calculateVehicles(people);
-    const seasonData = seasonOptions.find(s => s.title.toLowerCase().includes(season));
-    if (!seasonData) return 0;
+    const seasonPricing = seasonOptions.find(option => 
+      (season === 'brown' && option.title === 'Brown Season') ||
+      (season === 'green' && option.title === 'Green Season')
+    );
+    
+    if (!seasonPricing) return 0;
 
+    const config = getSelectedVehicleConfig(people);
     let totalCost = 0;
-    let remainingPeople = people;
-
-    // Optimize pricing: try to put 3 people per vehicle when possible
-    for (let i = 0; i < vehicles; i++) {
-      if (remainingPeople >= 3) {
-        totalCost += seasonData.pricing.threePersons * 3;
-        remainingPeople -= 3;
+    
+    config.forEach(vehiclePeople => {
+      if (vehiclePeople === 2) {
+        totalCost += seasonPricing.pricing.twoPersons * 2;
       } else {
-        totalCost += seasonData.pricing.twoPersons * remainingPeople;
-        remainingPeople = 0;
+        totalCost += seasonPricing.pricing.threePersons * vehiclePeople;
       }
+    });
+    
+    // Add guide fee if selected
+    if (includeGuide) {
+      totalCost += 1500;
     }
-
+    
     return totalCost;
+  };
+
+  // Calculate cost breakdown for transparency
+  const getCostBreakdown = (season: 'brown' | 'green', people: number) => {
+    const seasonPricing = seasonOptions.find(option => 
+      (season === 'brown' && option.title === 'Brown Season') ||
+      (season === 'green' && option.title === 'Green Season')
+    );
+    
+    if (!seasonPricing) return { vehicles: [], guideFee: 0, total: 0 };
+
+    const config = getSelectedVehicleConfig(people);
+    const vehicles = config.map((vehiclePeople, index) => ({
+      id: index + 1,
+      people: vehiclePeople,
+      rate: vehiclePeople === 2 ? seasonPricing.pricing.twoPersons : seasonPricing.pricing.threePersons,
+      cost: vehiclePeople === 2 
+        ? seasonPricing.pricing.twoPersons * 2 
+        : seasonPricing.pricing.threePersons * vehiclePeople
+    }));
+
+    const guideFee = includeGuide ? 1500 : 0;
+    const total = vehicles.reduce((sum, v) => sum + v.cost, 0) + guideFee;
+
+    return { vehicles, guideFee, total };
   };
 
   // Handle scroll behavior for desktop
@@ -434,89 +492,180 @@ const PackYourCalendar = () => {
             <p className="text-lg text-safari-dark-grey">Select your group size and see pricing</p>
           </div>
           
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-safari-cream rounded-lg p-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {/* Group Size Selector */}
-                <div>
-                  <h3 className="text-2xl font-bold text-safari-dark-grey mb-6">Group Size</h3>
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <label className="text-safari-dark-grey font-medium">Number of People:</label>
-                      <div className="flex items-center space-x-4">
-                        <button 
-                          onClick={() => setGroupSize(Math.max(2, groupSize - 1))}
-                          className="bg-safari-gold text-white w-10 h-10 rounded-full hover:bg-safari-light-brown transition-colors"
-                        >
-                          -
-                        </button>
-                        <span className="text-xl font-bold text-safari-dark-grey w-8 text-center">
-                          {groupSize}
-                        </span>
-                        <button 
-                          onClick={() => setGroupSize(Math.min(8, groupSize + 1))}
-                          className="bg-safari-gold text-white w-10 h-10 rounded-full hover:bg-safari-light-brown transition-colors"
-                        >
-                          +
-                        </button>
+              <div className="max-w-4xl mx-auto">
+                <div className="bg-safari-cream rounded-lg p-8">
+                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    {/* Group Size Selector */}
+                    <div>
+                      <h3 className="text-2xl font-bold text-safari-dark-grey mb-6">Group Size</h3>
+                      <div className="space-y-4">
+                        <div className="flex items-center justify-between">
+                          <label className="text-safari-dark-grey font-medium">Number of People:</label>
+                          <div className="flex items-center space-x-4">
+                            <button 
+                              onClick={() => setGroupSize(Math.max(2, groupSize - 1))}
+                              className="bg-safari-gold text-white w-10 h-10 rounded-full hover:bg-safari-light-brown transition-colors"
+                            >
+                              -
+                            </button>
+                            <span className="text-xl font-bold text-safari-dark-grey w-8 text-center">
+                              {groupSize}
+                            </span>
+                            <button 
+                              onClick={() => setGroupSize(Math.min(8, groupSize + 1))}
+                              className="bg-safari-gold text-white w-10 h-10 rounded-full hover:bg-safari-light-brown transition-colors"
+                            >
+                              +
+                            </button>
+                          </div>
+                        </div>
+                        
+                        {/* Guide Option */}
+                        <div className="flex items-center justify-between">
+                          <label className="text-safari-dark-grey font-medium">Include Guide:</label>
+                          <div className="flex items-center space-x-2">
+                            <input
+                              type="checkbox"
+                              checked={includeGuide}
+                              onChange={(e) => setIncludeGuide(e.target.checked)}
+                              className="w-5 h-5 text-safari-gold bg-white border-2 border-safari-gold rounded focus:ring-safari-gold focus:ring-2"
+                            />
+                            <span className="text-sm text-safari-dark-grey">+RM 1,500</span>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    
-                    <div className="flex items-center justify-between">
-                      <span className="text-safari-dark-grey font-medium">Vehicles Needed:</span>
-                      <div className="flex items-center space-x-2">
-                        <Car className="h-5 w-5 text-safari-gold" />
-                        <span className="text-xl font-bold text-safari-gold">
-                          {calculateVehicles(groupSize)}
-                        </span>
+
+                    {/* Vehicle Configuration */}
+                    <div>
+                      <h3 className="text-2xl font-bold text-safari-dark-grey mb-6">Vehicle Setup</h3>
+                      <div className="space-y-4">
+                        <div className="flex items-center justify-between">
+                          <span className="text-safari-dark-grey font-medium">Vehicles Needed:</span>
+                          <div className="flex items-center space-x-2">
+                            <Car className="h-5 w-5 text-safari-gold" />
+                            <span className="text-xl font-bold text-safari-gold">
+                              {calculateVehicles(groupSize)}
+                            </span>
+                          </div>
+                        </div>
+                        
+                        {/* Vehicle Configuration Options */}
+                        {getVehicleConfigurations(groupSize).length > 1 && (
+                          <div>
+                            <label className="text-safari-dark-grey font-medium mb-2 block">Configuration:</label>
+                            <div className="space-y-2">
+                              {getVehicleConfigurations(groupSize).map((config, index) => (
+                                <div key={index} className="flex items-center space-x-2">
+                                  <input
+                                    type="radio"
+                                    name="vehicleConfig"
+                                    checked={JSON.stringify(getSelectedVehicleConfig(groupSize)) === JSON.stringify(config)}
+                                    onChange={() => setVehicleConfigs(prev => ({ ...prev, [groupSize]: config }))}
+                                    className="w-4 h-4 text-safari-gold"
+                                  />
+                                  <span className="text-sm text-safari-dark-grey">
+                                    {config.map((people, i) => (
+                                      <span key={i}>
+                                        {people} pax{i < config.length - 1 ? ' + ' : ''}
+                                      </span>
+                                    ))}
+                                  </span>
+                                  {config.includes(3) && (
+                                    <span className="text-xs bg-safari-gold text-white px-2 py-1 rounded">
+                                      Most Economical
+                                    </span>
+                                  )}
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                        
+                        {/* Visual Vehicle Display */}
+                        <div className="mt-4">
+                          <div className="flex flex-wrap gap-2">
+                            {getSelectedVehicleConfig(groupSize).map((people, index) => (
+                              <div key={index} className="bg-white rounded-lg p-3 border border-safari-gold">
+                                <div className="flex items-center space-x-2">
+                                  <Car className="h-4 w-4 text-safari-gold" />
+                                  <span className="text-sm font-medium text-safari-dark-grey">
+                                    Vehicle {index + 1}: {people} pax
+                                  </span>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
                 
-                {/* Pricing Display */}
-                <div>
-                  <h3 className="text-2xl font-bold text-safari-dark-grey mb-6">Pricing</h3>
-                  <div className="space-y-4">
-                    {selectedSeason && (
-                      <div className="bg-white rounded-lg p-4">
-                        <div className="flex justify-between items-center mb-2">
-                          <span className="font-medium text-safari-dark-grey">
-                            {selectedSeason === 'brown' ? 'Brown Season' : 'Green Season'}
-                          </span>
-                          <span className="text-safari-gold font-bold">
-                            {selectedSeason === 'brown' ? 'High Season' : 'Low Season'}
-                          </span>
+                    {/* Pricing Display */}
+                    <div>
+                      <h3 className="text-2xl font-bold text-safari-dark-grey mb-6">Pricing</h3>
+                      <div className="space-y-4">
+                        {selectedSeason && (
+                          <div className="bg-white rounded-lg p-4">
+                            <div className="flex justify-between items-center mb-4">
+                              <span className="font-medium text-safari-dark-grey">
+                                {selectedSeason === 'brown' ? 'Brown Season' : 'Green Season'}
+                              </span>
+                              <span className="text-safari-gold font-bold">
+                                {selectedSeason === 'brown' ? 'High Season' : 'Low Season'}
+                              </span>
+                            </div>
+                            
+                            {/* Cost Breakdown */}
+                            <div className="space-y-2 mb-4">
+                              {getCostBreakdown(selectedSeason, groupSize).vehicles.map((vehicle) => (
+                                <div key={vehicle.id} className="flex justify-between text-sm">
+                                  <span className="text-safari-dark-grey">
+                                    Vehicle {vehicle.id} ({vehicle.people} pax):
+                                  </span>
+                                  <span className="text-safari-dark-grey">
+                                    RM {vehicle.cost.toLocaleString()}
+                                  </span>
+                                </div>
+                              ))}
+                              {includeGuide && (
+                                <div className="flex justify-between text-sm">
+                                  <span className="text-safari-dark-grey">Guide Fee:</span>
+                                  <span className="text-safari-dark-grey">RM 1,500</span>
+                                </div>
+                              )}
+                            </div>
+                            
+                            <div className="border-t pt-2">
+                              <div className="flex justify-between items-center">
+                                <span className="text-safari-dark-grey font-medium">
+                                  Total Cost ({groupSize} people):
+                                </span>
+                                <span className="text-2xl font-bold text-safari-gold">
+                                  RM {calculateTotalCost(selectedSeason, groupSize).toLocaleString()}
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                        
+                        <div className="grid grid-cols-2 gap-4">
+                          <div className="bg-white rounded-lg p-4 text-center">
+                            <h4 className="font-bold text-safari-dark-grey mb-2">Brown Season</h4>
+                            <p className="text-sm text-safari-dark-grey mb-2">July - October</p>
+                            <p className="text-lg font-bold text-safari-gold">
+                              RM {calculateTotalCost('brown', groupSize).toLocaleString()}
+                            </p>
+                          </div>
+                          <div className="bg-white rounded-lg p-4 text-center">
+                            <h4 className="font-bold text-safari-dark-grey mb-2">Green Season</h4>
+                            <p className="text-sm text-safari-dark-grey mb-2">November - June</p>
+                            <p className="text-lg font-bold text-safari-gold">
+                              RM {calculateTotalCost('green', groupSize).toLocaleString()}
+                            </p>
+                          </div>
                         </div>
-                        <div className="flex justify-between items-center">
-                          <span className="text-safari-dark-grey">
-                            Total Cost ({groupSize} people):
-                          </span>
-                          <span className="text-2xl font-bold text-safari-gold">
-                            RM {calculateTotalCost(selectedSeason, groupSize).toLocaleString()}
-                          </span>
-                        </div>
-                      </div>
-                    )}
-                    
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="bg-white rounded-lg p-4 text-center">
-                        <h4 className="font-bold text-safari-dark-grey mb-2">Brown Season</h4>
-                        <p className="text-sm text-safari-dark-grey mb-2">July - October</p>
-                        <p className="text-lg font-bold text-safari-gold">
-                          RM {calculateTotalCost('brown', groupSize).toLocaleString()}
-                        </p>
-                      </div>
-                      <div className="bg-white rounded-lg p-4 text-center">
-                        <h4 className="font-bold text-safari-dark-grey mb-2">Green Season</h4>
-                        <p className="text-sm text-safari-dark-grey mb-2">November - June</p>
-                        <p className="text-lg font-bold text-safari-gold">
-                          RM {calculateTotalCost('green', groupSize).toLocaleString()}
-                        </p>
                       </div>
                     </div>
-                  </div>
-                </div>
               </div>
               
               <div className="mt-8 text-center">
