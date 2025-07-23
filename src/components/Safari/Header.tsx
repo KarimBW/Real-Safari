@@ -93,7 +93,7 @@ export const Header: React.FC<HeaderProps> = ({
           </DropdownMenuContent>
         </DropdownMenu>
         
-        {/* Game Plan - Updated link to /game-plan instead of /plan */}
+        {/* Game Plan */}
         <Link 
           to="/game-plan" 
           className={`text-white font-quicksand hover:text-safari-gold transition-all duration-300 text-sm md:text-base ${
@@ -103,14 +103,14 @@ export const Header: React.FC<HeaderProps> = ({
           Game Plan
         </Link>
         
-        {/* Meet the Herd */}
+        {/* Pack Your Calendar */}
         <Link 
-          to="/meet-the-herd" 
+          to="/pack-your-calendar" 
           className={`text-white font-quicksand hover:text-safari-gold transition-all duration-300 text-sm md:text-base ${
             menuElevated ? 'transform -translate-y-[15px]' : ''
           }`}
         >
-          Meet the Herd
+          Pack Your Calendar
         </Link>
       </nav>
     </header>

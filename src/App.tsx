@@ -5,7 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Index from "./pages/Index";
-import MeetTheHerd from "./pages/MeetTheHerd";
+import PackYourCalendar from "./pages/PackYourCalendar";
 import DestinationPage from "./pages/DestinationPage";
 import GamePlan from "./pages/GamePlan";
 import NotFound from "./pages/NotFound";
@@ -22,7 +22,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           {/* Redirect /plan to /game-plan */}
           <Route path="/plan" element={<Navigate to="/game-plan" replace />} />
-          <Route path="/meet-the-herd" element={<MeetTheHerd />} />
+          <Route path="/pack-your-calendar" element={<PackYourCalendar />} />
           <Route path="/destination/:id" element={<DestinationPage />} />
           <Route path="/game-plan" element={<GamePlan />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

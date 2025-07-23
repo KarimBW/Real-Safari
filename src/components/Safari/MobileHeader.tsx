@@ -100,13 +100,13 @@ export const MobileHeader: React.FC<MobileHeaderProps> = ({ className = "" }) =>
                 Game Plan
               </Link>
               
-              {/* Meet the Herd */}
+              {/* Pack Your Calendar */}
               <Link 
-                to="/meet-the-herd" 
+                to="/pack-your-calendar" 
                 className="text-white font-quicksand text-lg hover:text-safari-gold"
                 onClick={() => setIsOpen(false)}
               >
-                Meet the Herd
+                Pack Your Calendar
               </Link>
             </nav>
           </div>
