@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Header } from "@/components/Safari/Header";
 import { Button } from "@/components/ui/button";
-import { ChevronDown, Users, Car, Calendar, MapPin } from "lucide-react";
+import { ChevronDown, Users, Car, Calendar, MapPin, Star } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { PackYourCalendarMobile } from "@/components/Safari/PackYourCalendarMobile";
 import { TravelStyleSection, TravelStyle } from "@/components/Safari/TravelStyleSection";
@@ -507,27 +507,39 @@ const PackYourCalendar = () => {
                 {/* Group Size Selector */}
                 <div>
                   <h3 className="text-2xl font-bold text-safari-dark-grey mb-6">Group Size</h3>
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <label className="text-safari-dark-grey font-medium">Number of People:</label>
-                      <div className="flex items-center space-x-4">
-                        <button 
-                          onClick={() => setGroupSize(Math.max(2, groupSize - 1))}
-                          className="bg-safari-gold text-white w-10 h-10 rounded-full hover:bg-safari-light-brown transition-colors"
-                        >
-                          -
-                        </button>
-                        <span className="text-xl font-bold text-safari-dark-grey w-8 text-center">
-                          {groupSize}
-                        </span>
-                        <button 
-                          onClick={() => setGroupSize(Math.min(8, groupSize + 1))}
-                          className="bg-safari-gold text-white w-10 h-10 rounded-full hover:bg-safari-light-brown transition-colors"
-                        >
-                          +
-                        </button>
+                  <div className="grid grid-cols-2 gap-3">
+                    {[2, 4, 6, 8].map((size) => (
+                      <div
+                        key={size}
+                        onClick={() => setGroupSize(size)}
+                        className={`relative rounded-lg overflow-hidden cursor-pointer transition-all duration-300 transform hover:scale-105 ${
+                          groupSize === size
+                            ? 'ring-2 ring-safari-gold shadow-lg'
+                            : 'shadow hover:shadow-md'
+                        }`}
+                      >
+                        {/* Background with subtle pattern */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-safari-light-brown to-safari-gold opacity-20" />
+                        
+                        {/* Content */}
+                        <div className="relative p-4 text-center min-h-[100px] flex flex-col justify-center bg-white">
+                          {/* Selected Badge */}
+                          {groupSize === size && (
+                            <div className="absolute top-2 right-2 bg-safari-gold text-white px-2 py-1 rounded-full text-xs font-medium flex items-center space-x-1">
+                              <Star className="h-3 w-3" />
+                              <span>Selected</span>
+                            </div>
+                          )}
+                          
+                          {/* Icon and Size */}
+                          <div className="flex flex-col items-center space-y-2">
+                            <Users className="h-6 w-6 text-safari-gold" />
+                            <div className="text-2xl font-bold text-safari-dark-grey">{size}</div>
+                            <div className="text-sm text-safari-dark-grey opacity-80">People</div>
+                          </div>
+                        </div>
                       </div>
-                    </div>
+                    ))}
                     
                   </div>
                 </div>
