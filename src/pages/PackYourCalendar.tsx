@@ -435,13 +435,6 @@ const PackYourCalendar = () => {
         </div>
       )}
 
-      {/* Travel Style Section */}
-      <div ref={travelStyleRef}>
-        <TravelStyleSection 
-          selectedStyle={travelStyle}
-          onStyleChange={handleStyleChange}
-        />
-      </div>
 
       {/* Itinerary Section */}
       <div 
@@ -501,6 +494,14 @@ const PackYourCalendar = () => {
           </div>
           
           <div className="max-w-4xl mx-auto">
+            {/* Travel Style Section */}
+            <div ref={travelStyleRef} className="mb-8">
+              <TravelStyleSection 
+                selectedStyle={travelStyle}
+                onStyleChange={handleStyleChange}
+              />
+            </div>
+            
             <div className="bg-safari-cream rounded-lg p-8">
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 {/* Group Size Selector */}
