@@ -507,105 +507,88 @@ const PackYourCalendar = () => {
                 {/* Group Size Selector */}
                 <div>
                   <h3 className="text-2xl font-bold text-safari-dark-grey mb-6">Group Size</h3>
-                  <div className="grid grid-cols-2 gap-3">
-                    {[2, 4, 6, 8].map((size) => (
-                      <div
+                  <div className="grid grid-cols-4 gap-2">
+                    {[2, 3, 4, 5, 6, 7, 8].map((size) => (
+                      <Button
                         key={size}
+                        variant={groupSize === size ? "default" : "outline"}
                         onClick={() => setGroupSize(size)}
-                        className={`relative rounded-lg overflow-hidden cursor-pointer transition-all duration-300 transform hover:scale-105 ${
+                        className={`h-16 text-sm font-semibold transition-all duration-200 ${
                           groupSize === size
-                            ? 'ring-2 ring-safari-gold shadow-lg'
-                            : 'shadow hover:shadow-md'
+                            ? 'bg-safari-gold border-safari-gold text-white hover:bg-safari-light-brown'
+                            : 'bg-transparent border-safari-gold/30 text-safari-dark-grey hover:bg-safari-gold/10 hover:border-safari-gold'
                         }`}
                       >
-                        {/* Background with subtle pattern */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-safari-light-brown to-safari-gold opacity-20" />
-                        
-                        {/* Content */}
-                        <div className="relative p-4 text-center min-h-[100px] flex flex-col justify-center bg-white">
-                          {/* Selected Badge */}
-                          {groupSize === size && (
-                            <div className="absolute top-2 right-2 bg-safari-gold text-white px-2 py-1 rounded-full text-xs font-medium flex items-center space-x-1">
-                              <Star className="h-3 w-3" />
-                              <span>Selected</span>
-                            </div>
-                          )}
-                          
-                          {/* Icon and Size */}
-                          <div className="flex flex-col items-center space-y-2">
-                            <Users className="h-6 w-6 text-safari-gold" />
-                            <div className="text-2xl font-bold text-safari-dark-grey">{size}</div>
-                            <div className="text-sm text-safari-dark-grey opacity-80">People</div>
-                          </div>
-                        </div>
-                      </div>
+                        {size}+
+                      </Button>
                     ))}
-                    
                   </div>
                 </div>
 
                 {/* Vehicle Configuration */}
                 <div>
                   <h3 className="text-2xl font-bold text-safari-dark-grey mb-6">Vehicle Setup</h3>
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <span className="text-safari-dark-grey font-medium">Vehicles Needed:</span>
-                      <div className="flex items-center space-x-2">
-                        <Car className="h-5 w-5 text-safari-gold" />
-                        <span className="text-xl font-bold text-safari-gold">
-                          {calculateVehicles(groupSize)}
-                        </span>
-                      </div>
-                    </div>
-                    
-                    {/* Vehicle Configuration Options */}
-                    {getVehicleConfigurations(groupSize).length > 1 && (
-                      <div>
-                        <label className="text-safari-dark-grey font-medium mb-2 block">Configuration:</label>
-                        <div className="space-y-2">
-                          {getVehicleConfigurations(groupSize).map((config, index) => (
-                            <div key={index} className="flex items-center space-x-2">
-                              <input
-                                type="radio"
-                                name="vehicleConfig"
-                                checked={JSON.stringify(getSelectedVehicleConfig(groupSize)) === JSON.stringify(config)}
-                                onChange={() => setVehicleConfigs(prev => ({ ...prev, [groupSize]: config }))}
-                                className="w-4 h-4 text-safari-gold"
-                              />
-                              <span className="text-sm text-safari-dark-grey">
-                                {config.map((people, i) => (
-                                  <span key={i}>
-                                    {people} pax{i < config.length - 1 ? ' + ' : ''}
-                                  </span>
-                                ))}
-                              </span>
-                              {config.includes(3) && (
-                                <span className="text-xs bg-safari-gold text-white px-2 py-1 rounded">
-                                  Most Economical
-                                </span>
-                              )}
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                    
-                    {/* Visual Vehicle Display */}
-                    <div className="mt-4">
-                      <div className="flex flex-wrap gap-2">
-                        {getSelectedVehicleConfig(groupSize).map((people, index) => (
-                          <div key={index} className="bg-white rounded-lg p-3 border border-safari-gold">
-                            <div className="flex items-center space-x-2">
-                              <Car className="h-4 w-4 text-safari-gold" />
-                              <span className="text-sm font-medium text-safari-dark-grey">
-                                Vehicle {index + 1}: {people} pax
-                              </span>
+                  {getVehicleConfigurations(groupSize).length > 1 ? (
+                    <div className="grid grid-cols-1 gap-3">
+                      {getVehicleConfigurations(groupSize).map((config, index) => (
+                        <div
+                          key={index}
+                          onClick={() => setVehicleConfigs(prev => ({ ...prev, [groupSize]: config }))}
+                          className={`relative rounded-lg overflow-hidden cursor-pointer transition-all duration-300 transform hover:scale-105 ${
+                            JSON.stringify(getSelectedVehicleConfig(groupSize)) === JSON.stringify(config)
+                              ? 'ring-2 ring-safari-gold shadow-lg'
+                              : 'shadow hover:shadow-md'
+                          }`}
+                        >
+                          {/* Background with subtle pattern */}
+                          <div className="absolute inset-0 bg-gradient-to-br from-safari-light-brown to-safari-gold opacity-20" />
+                          
+                          {/* Content */}
+                          <div className="relative p-4 bg-white">
+                            {/* Selected Badge */}
+                            {JSON.stringify(getSelectedVehicleConfig(groupSize)) === JSON.stringify(config) && (
+                              <div className="absolute top-2 right-2 bg-safari-gold text-white px-2 py-1 rounded-full text-xs font-medium flex items-center space-x-1">
+                                <Star className="h-3 w-3" />
+                                <span>Selected</span>
+                              </div>
+                            )}
+                            
+                            {/* Vehicle Configuration Details */}
+                            <div className="flex items-center space-x-3">
+                              <Car className="h-6 w-6 text-safari-gold" />
+                              <div>
+                                <div className="font-semibold text-safari-dark-grey">
+                                  {config.length} Vehicle{config.length > 1 ? 's' : ''}
+                                </div>
+                                <div className="text-sm text-safari-dark-grey opacity-80">
+                                  {config.map((people, idx) => (
+                                    <span key={idx}>
+                                      {people} people{idx < config.length - 1 ? ' + ' : ''}
+                                    </span>
+                                  ))}
+                                </div>
+                                {config.includes(3) && (
+                                  <div className="text-xs bg-safari-gold text-white px-2 py-1 rounded mt-1 inline-block">
+                                    Most Economical
+                                  </div>
+                                )}
+                              </div>
                             </div>
                           </div>
-                        ))}
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="bg-white rounded-lg p-4 border border-safari-gold/30">
+                      <div className="flex items-center space-x-3">
+                        <Car className="h-6 w-6 text-safari-gold" />
+                        <div>
+                          <div className="font-semibold text-safari-dark-grey">1 Vehicle</div>
+                          <div className="text-sm text-safari-dark-grey opacity-80">{groupSize} people</div>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  )}
                 </div>
                 
                 {/* Pricing Display */}
