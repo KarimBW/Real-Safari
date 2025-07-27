@@ -529,28 +529,28 @@ const PackYourCalendar = () => {
                 <div>
                   <h3 className="text-2xl font-bold text-safari-dark-grey mb-6">Vehicle Setup</h3>
                   {getVehicleConfigurations(groupSize).length > 1 ? (
-                    <div className="grid grid-cols-1 gap-2">
+                    <div className="grid grid-cols-2 gap-2">
                       {getVehicleConfigurations(groupSize).map((config, index) => (
                         <Button
                           key={index}
                           variant={JSON.stringify(getSelectedVehicleConfig(groupSize)) === JSON.stringify(config) ? "default" : "outline"}
                           onClick={() => setVehicleConfigs(prev => ({ ...prev, [groupSize]: config }))}
-                          className={`h-16 text-sm font-semibold transition-all duration-200 justify-between ${
+                          className={`h-12 text-xs font-semibold transition-all duration-200 justify-between ${
                             JSON.stringify(getSelectedVehicleConfig(groupSize)) === JSON.stringify(config)
                               ? 'bg-safari-gold border-safari-gold text-white hover:bg-safari-light-brown'
                               : 'bg-transparent border-safari-gold/30 text-safari-dark-grey hover:bg-safari-gold/10 hover:border-safari-gold'
                           }`}
                         >
-                          <div className="flex items-center space-x-2">
-                            <Car className="h-4 w-4" />
+                          <div className="flex items-center space-x-1">
+                            <Car className="h-3 w-3" />
                             <div className="text-left">
-                              <div className="font-semibold">
-                                {config.length} Vehicle{config.length > 1 ? 's' : ''}
+                              <div className="font-semibold text-xs">
+                                {config.length}V
                               </div>
                               <div className="text-xs opacity-80">
                                 {config.map((people, idx) => (
                                   <span key={idx}>
-                                    {people} people{idx < config.length - 1 ? ' + ' : ''}
+                                    {people}{idx < config.length - 1 ? '+' : ''}
                                   </span>
                                 ))}
                               </div>
@@ -558,8 +558,8 @@ const PackYourCalendar = () => {
                           </div>
                           
                           {config.includes(3) && (
-                            <div className="text-xs bg-safari-gold text-white px-2 py-1 rounded">
-                              Most Economical
+                            <div className="text-xs bg-safari-gold text-white px-1 py-0.5 rounded">
+                              Best
                             </div>
                           )}
                         </Button>
