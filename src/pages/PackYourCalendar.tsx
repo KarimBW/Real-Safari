@@ -545,12 +545,12 @@ const PackYourCalendar = () => {
                             <Car className="h-3 w-3" />
                             <div className="text-left">
                               <div className="font-semibold text-xs">
-                                {config.length}V
+                                {config.length} Car{config.length > 1 ? 's' : ''}
                               </div>
                               <div className="text-xs opacity-80">
                                 {config.map((people, idx) => (
                                   <span key={idx}>
-                                    {people}{idx < config.length - 1 ? '+' : ''}
+                                    {people} seats{idx < config.length - 1 ? ', ' : ''}
                                   </span>
                                 ))}
                               </div>
@@ -559,7 +559,7 @@ const PackYourCalendar = () => {
                           
                           {config.includes(3) && (
                             <div className="text-xs bg-safari-gold text-white px-1 py-0.5 rounded">
-                              Best
+                              Cheapest
                             </div>
                           )}
                         </Button>
