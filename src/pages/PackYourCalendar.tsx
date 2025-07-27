@@ -544,23 +544,23 @@ const PackYourCalendar = () => {
                           <div className="absolute inset-0 bg-gradient-to-br from-safari-light-brown to-safari-gold opacity-20" />
                           
                           {/* Content */}
-                          <div className="relative p-4 bg-white">
+                          <div className="relative p-3 bg-white">
                             {/* Selected Badge */}
                             {JSON.stringify(getSelectedVehicleConfig(groupSize)) === JSON.stringify(config) && (
-                              <div className="absolute top-2 right-2 bg-safari-gold text-white px-2 py-1 rounded-full text-xs font-medium flex items-center space-x-1">
-                                <Star className="h-3 w-3" />
+                              <div className="absolute top-1 right-1 bg-safari-gold text-white px-1.5 py-0.5 rounded-full text-xs font-medium flex items-center space-x-1">
+                                <Star className="h-2.5 w-2.5" />
                                 <span>Selected</span>
                               </div>
                             )}
                             
                             {/* Vehicle Configuration Details */}
-                            <div className="flex items-center space-x-3">
-                              <Car className="h-6 w-6 text-safari-gold" />
+                            <div className="flex items-center space-x-2">
+                              <Car className="h-4 w-4 text-safari-gold" />
                               <div>
-                                <div className="font-semibold text-safari-dark-grey">
+                                <div className="font-semibold text-safari-dark-grey text-sm">
                                   {config.length} Vehicle{config.length > 1 ? 's' : ''}
                                 </div>
-                                <div className="text-sm text-safari-dark-grey opacity-80">
+                                <div className="text-xs text-safari-dark-grey opacity-80">
                                   {config.map((people, idx) => (
                                     <span key={idx}>
                                       {people} people{idx < config.length - 1 ? ' + ' : ''}
@@ -568,7 +568,7 @@ const PackYourCalendar = () => {
                                   ))}
                                 </div>
                                 {config.includes(3) && (
-                                  <div className="text-xs bg-safari-gold text-white px-2 py-1 rounded mt-1 inline-block">
+                                  <div className="text-xs bg-safari-gold text-white px-1.5 py-0.5 rounded mt-1 inline-block">
                                     Most Economical
                                   </div>
                                 )}
