@@ -529,12 +529,12 @@ const PackYourCalendar = () => {
                 <div>
                   <h3 className="text-2xl font-bold text-safari-dark-grey mb-6">Vehicle Setup</h3>
                   {getVehicleConfigurations(groupSize).length > 1 ? (
-                    <div className="grid grid-cols-1 gap-3">
+                    <div className="grid grid-cols-1 gap-2">
                       {getVehicleConfigurations(groupSize).map((config, index) => (
                         <div
                           key={index}
                           onClick={() => setVehicleConfigs(prev => ({ ...prev, [groupSize]: config }))}
-                          className={`relative rounded-lg overflow-hidden cursor-pointer transition-all duration-300 transform hover:scale-105 ${
+                          className={`relative rounded-lg overflow-hidden cursor-pointer transition-all duration-300 h-16 ${
                             JSON.stringify(getSelectedVehicleConfig(groupSize)) === JSON.stringify(config)
                               ? 'ring-2 ring-safari-gold shadow-lg'
                               : 'shadow hover:shadow-md'
@@ -544,12 +544,11 @@ const PackYourCalendar = () => {
                           <div className="absolute inset-0 bg-gradient-to-br from-safari-light-brown to-safari-gold opacity-20" />
                           
                           {/* Content */}
-                          <div className="relative p-3 bg-white">
+                          <div className="relative h-full px-3 py-2 bg-white flex items-center justify-between">
                             {/* Selected Badge */}
                             {JSON.stringify(getSelectedVehicleConfig(groupSize)) === JSON.stringify(config) && (
-                              <div className="absolute top-1 right-1 bg-safari-gold text-white px-1.5 py-0.5 rounded-full text-xs font-medium flex items-center space-x-1">
-                                <Star className="h-2.5 w-2.5" />
-                                <span>Selected</span>
+                              <div className="absolute top-1 right-1 bg-safari-gold text-white px-1 py-0.5 rounded-full text-xs font-medium flex items-center space-x-1">
+                                <Star className="h-2 w-2" />
                               </div>
                             )}
                             
@@ -567,13 +566,15 @@ const PackYourCalendar = () => {
                                     </span>
                                   ))}
                                 </div>
-                                {config.includes(3) && (
-                                  <div className="text-xs bg-safari-gold text-white px-1.5 py-0.5 rounded mt-1 inline-block">
-                                    Most Economical
-                                  </div>
-                                )}
                               </div>
                             </div>
+                            
+                            {/* Most Economical Badge */}
+                            {config.includes(3) && (
+                              <div className="text-xs bg-safari-gold text-white px-2 py-1 rounded">
+                                Most Economical
+                              </div>
+                            )}
                           </div>
                         </div>
                       ))}
