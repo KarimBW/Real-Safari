@@ -161,7 +161,7 @@ const PackYourCalendar = () => {
     }
     
     // Return most economical configuration (prioritize 3-person vehicles)
-    return configs.find(config => config.includes(3)) || configs[0] || [people];
+    return configs.find(config => config.includes(3)) || configs[0];
   };
 
   const calculateVehicles = (people: number): number => {
