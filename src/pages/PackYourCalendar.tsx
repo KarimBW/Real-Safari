@@ -545,14 +545,10 @@ const PackYourCalendar = () => {
                             <Car className="h-3 w-3" />
                             <div className="text-left">
                               <div className="font-semibold text-xs">
-                                {config.length} Car{config.length > 1 ? 's' : ''}
+                                {config.length} Vehicle{config.length > 1 ? 's' : ''}
                               </div>
                               <div className="text-xs opacity-80">
-                                {config.map((people, idx) => (
-                                  <span key={idx}>
-                                    {people} seats{idx < config.length - 1 ? ', ' : ''}
-                                  </span>
-                                ))}
+                                {groupSize} people
                               </div>
                             </div>
                           </div>
