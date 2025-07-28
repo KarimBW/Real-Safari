@@ -144,7 +144,7 @@ const PackYourCalendar = () => {
     if (people === 2) configs.push([2]);
     if (people === 3) configs.push([3]);
     if (people === 4) configs.push([2, 2], [4]);
-    if (people === 5) configs.push([2, 3], [3, 2]); // Add second option to force grid display
+    if (people === 5) configs.push([2, 3]);
     if (people === 6) configs.push([2, 2, 2], [3, 3]);
     if (people === 7) configs.push([2, 2, 3], [3, 4]);
     if (people === 8) configs.push([2, 3, 3], [4, 4]);
