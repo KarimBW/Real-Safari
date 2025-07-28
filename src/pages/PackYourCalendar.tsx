@@ -558,12 +558,6 @@ const PackYourCalendar = () => {
                               </div>
                             </div>
                           </div>
-                          
-                          {config.includes(3) && (
-                            <div className="text-xs bg-safari-gold text-white px-1 py-0.5 rounded">
-                              Cheapest
-                            </div>
-                          )}
                         </Button>
                       ))}
                     </div>
