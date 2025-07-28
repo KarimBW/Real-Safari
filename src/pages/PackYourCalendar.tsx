@@ -547,11 +547,13 @@ const PackYourCalendar = () => {
                               <div className="font-semibold text-sm">
                                 {config.length} Vehicle{config.length > 1 ? 's' : ''}
                               </div>
-                              <div className="text-xs opacity-80">
+                              <div className="text-xs opacity-80 flex items-center space-x-2">
                                 {config.map((people, idx) => (
-                                  <span key={idx}>
-                                    {people} people{idx < config.length - 1 ? ', ' : ''}
-                                  </span>
+                                  <div key={idx} className="flex items-center space-x-1">
+                                    <span>{people}</span>
+                                    <Users className="h-3 w-3" />
+                                    {idx < config.length - 1 && <span className="text-safari-dark-grey/40">•</span>}
+                                  </div>
                                 ))}
                               </div>
                             </div>
@@ -571,7 +573,10 @@ const PackYourCalendar = () => {
                         <Car className="h-6 w-6 text-safari-gold" />
                         <div>
                           <div className="font-semibold text-sm text-safari-dark-grey">1 Vehicle</div>
-                          <div className="text-xs text-safari-dark-grey opacity-80">{groupSize} people</div>
+                          <div className="text-xs text-safari-dark-grey opacity-80 flex items-center space-x-1">
+                            <span>{groupSize}</span>
+                            <Users className="h-3 w-3" />
+                          </div>
                         </div>
                       </div>
                     </div>
