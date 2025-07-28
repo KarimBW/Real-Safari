@@ -528,7 +528,7 @@ const PackYourCalendar = () => {
                 {/* Vehicle Configuration */}
                 <div>
                   <h3 className="text-2xl font-bold text-safari-dark-grey mb-6">Vehicle Setup</h3>
-                  {getVehicleConfigurations(groupSize).length > 1 ? (
+                  {getSelectedVehicleConfig(groupSize).length > 1 ? (
                     <div className="grid grid-cols-2 gap-2">
                       {getVehicleConfigurations(groupSize).map((config, index) => (
                         <Button
