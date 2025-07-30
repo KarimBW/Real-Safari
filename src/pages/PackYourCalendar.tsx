@@ -105,7 +105,7 @@ const PackYourCalendar = () => {
     {
       title: "Brown Season",
       subtitle: "High Season Experience",
-      image: "/lovable-uploads/be7118a7-97ba-4213-8b48-cb5810666f96.png",
+      image: "/lovable-uploads/f8df9392-5003-48b6-ac98-5b48f496ad5b.png",
       period: "01 July - 31 October",
       pricing: {
         twoPersons: 7600,
@@ -122,7 +122,7 @@ const PackYourCalendar = () => {
     {
       title: "Green Season",
       subtitle: "Low Season Adventure",
-      image: "/lovable-uploads/dc4b122a-37bd-449b-8540-8e783ee9b508.png",
+      image: "/lovable-uploads/816850fe-ec88-41bc-9a5f-644224f107cc.png",
       period: "01 November - 30 June",
       pricing: {
         twoPersons: 6300,
