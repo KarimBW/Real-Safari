@@ -566,10 +566,17 @@ const PackYourCalendar = () => {
                       <div className="flex items-center space-x-3">
                         <Car className="h-6 w-6 text-safari-gold" />
                         <div>
-                          <div className="font-semibold text-sm text-safari-dark-grey">1 Vehicle</div>
-                          <div className="text-xs text-safari-dark-grey opacity-80 flex items-center space-x-1">
-                            <span>{groupSize}</span>
-                            <Users className="h-3 w-3" />
+                          <div className="font-semibold text-sm text-safari-dark-grey">
+                            {getSelectedVehicleConfig(groupSize).length} Vehicle{getSelectedVehicleConfig(groupSize).length > 1 ? 's' : ''}
+                          </div>
+                          <div className="text-xs text-safari-dark-grey opacity-80 flex items-center space-x-2">
+                            {getSelectedVehicleConfig(groupSize).map((people, idx) => (
+                              <div key={idx} className="flex items-center space-x-1">
+                                <span>{people}</span>
+                                <Users className="h-3 w-3" />
+                                {idx < getSelectedVehicleConfig(groupSize).length - 1 && <span className="text-safari-dark-grey/40">•</span>}
+                              </div>
+                            ))}
                           </div>
                         </div>
                       </div>
