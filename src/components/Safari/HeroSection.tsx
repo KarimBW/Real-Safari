@@ -152,11 +152,11 @@ export const HeroSection = () => {
               </Link>
             </div>
             
-            {/* MEET THE HERD link */}
+            {/* PACK YOUR CALENDAR link */}
             <div>
-              <Link to="/meet-the-herd">
+              <Link to="/pack-your-calendar">
                 <h3 className="font-quicksand text-white hover:text-safari-gold transition-colors text-sm">
-                  MEET THE HERD
+                  PACK YOUR CALENDAR
                 </h3>
               </Link>
             </div>

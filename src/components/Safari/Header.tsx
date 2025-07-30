@@ -59,7 +59,7 @@ export const Header: React.FC<HeaderProps> = ({
         {/* Where To Next? with Dropdown */}
         <DropdownMenu open={dropdownOpen} onOpenChange={setDropdownOpen}>
           <DropdownMenuTrigger 
-            className={`text-white font-quicksand hover:text-safari-gold transition-all duration-300 text-sm md:text-base ${
+            className={`text-white font-quicksand hover:text-safari-gold transition-colors text-sm ${
               menuElevated ? 'transform -translate-y-[15px]' : ''
             }`}
             onMouseEnter={() => setDropdownOpen(true)}
@@ -67,7 +67,7 @@ export const Header: React.FC<HeaderProps> = ({
             asChild
           >
             <div className="flex items-center gap-1 cursor-pointer">
-              Where To Next? <ChevronDown className="w-3 h-3 md:w-4 md:h-4" />
+              WHERE TO NEXT? <ChevronDown className="w-3 h-3 md:w-4 md:h-4" />
             </div>
           </DropdownMenuTrigger>
           <DropdownMenuContent 
@@ -96,21 +96,21 @@ export const Header: React.FC<HeaderProps> = ({
         {/* Game Plan */}
         <Link 
           to="/game-plan" 
-          className={`text-white font-quicksand hover:text-safari-gold transition-all duration-300 text-sm md:text-base ${
+          className={`text-white font-quicksand hover:text-safari-gold transition-colors text-sm ${
             menuElevated ? 'transform -translate-y-[15px]' : ''
           }`}
         >
-          Game Plan
+          GAME PLAN
         </Link>
         
         {/* Pack Your Calendar */}
         <Link 
           to="/pack-your-calendar" 
-          className={`text-white font-quicksand hover:text-safari-gold transition-all duration-300 text-sm md:text-base ${
+          className={`text-white font-quicksand hover:text-safari-gold transition-colors text-sm ${
             menuElevated ? 'transform -translate-y-[15px]' : ''
           }`}
         >
-          Pack Your Calendar
+          PACK YOUR CALENDAR
         </Link>
       </nav>
     </header>

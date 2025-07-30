@@ -65,28 +65,28 @@ export const MobileHeader: React.FC<MobileHeaderProps> = ({ className = "" }) =>
             <nav className="flex flex-col space-y-8 pt-4">
               {/* Where To Next? */}
               <div className="space-y-4">
-                <h4 className="text-safari-gold font-quicksand text-lg">Where To Next?</h4>
+                <h4 className="text-safari-gold font-quicksand text-lg">WHERE TO NEXT?</h4>
                 <div className="flex flex-col space-y-3 pl-4">
                   <Link 
                     to="/destination/okavango" 
                     className="text-white font-quicksand hover:text-safari-gold py-2"
                     onClick={() => setIsOpen(false)}
                   >
-                    Okavango
+                    OKAVANGO
                   </Link>
                   <Link 
                     to="/destination/kalahari" 
                     className="text-white font-quicksand hover:text-safari-gold py-2"
                     onClick={() => setIsOpen(false)}
                   >
-                    Kalahari
+                    KALAHARI
                   </Link>
                   <Link 
                     to="/destination/makgadikgadi" 
                     className="text-white font-quicksand hover:text-safari-gold py-2"
                     onClick={() => setIsOpen(false)}
                   >
-                    Makgadikgadi
+                    MAKGADIKGADI
                   </Link>
                 </div>
               </div>
@@ -97,7 +97,7 @@ export const MobileHeader: React.FC<MobileHeaderProps> = ({ className = "" }) =>
                 className="text-white font-quicksand text-lg hover:text-safari-gold"
                 onClick={() => setIsOpen(false)}
               >
-                Game Plan
+                GAME PLAN
               </Link>
               
               {/* Pack Your Calendar */}
@@ -106,7 +106,7 @@ export const MobileHeader: React.FC<MobileHeaderProps> = ({ className = "" }) =>
                 className="text-white font-quicksand text-lg hover:text-safari-gold"
                 onClick={() => setIsOpen(false)}
               >
-                Pack Your Calendar
+                PACK YOUR CALENDAR
               </Link>
             </nav>
           </div>
