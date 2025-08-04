@@ -198,13 +198,13 @@ const CampDetailsSection = forwardRef<HTMLDivElement, CampDetailsSectionProps>((
             className="flex items-center gap-2 text-safari-dark-grey hover:text-safari-gold transition-colors"
           >
             <ArrowLeft size={24} />
-            <span>Previous Camp</span>
+            <span>Previous</span>
           </button>
           <button 
             onClick={goToNextCamp} 
             className="flex items-center gap-2 text-safari-dark-grey hover:text-safari-gold transition-colors"
           >
-            <span>Next Camp</span>
+            <span>Next</span>
             <ArrowRight size={24} />
           </button>
         </div>
