@@ -9,24 +9,28 @@ type Destination = {
   name: string;
   image: string;
   description: string;
-  slug: string; // Add slug for URL routing
+  slug: string;
+  showThe: boolean;
 };
 
 const destinations: Destination[] = [{
   name: "BOTSWANA",
   image: "/lovable-uploads/ebab21c9-3137-406f-b457-4a345b28c6ab.png",
   description: "Where lions roam and whisper tales of the wild savanna!",
-  slug: "botswana" // Non-clickable - no destination page exists
+  slug: "botswana",
+  showThe: false
 }, {
   name: "KALAHARI",
   image: "/lovable-uploads/c574e67a-51c3-442e-b68e-89788ccfb439.png",
   description: "It's so hot even the sand gets a sunburn!",
-  slug: "kalahari"
+  slug: "kalahari",
+  showThe: true
 }, {
   name: "MAKGADIKGADI",
   image: "/lovable-uploads/44660527-d212-4dc7-a061-b9879acf0e93.png",
   description: "Where elephants throw dust parties and have trunk-to-trunk conversations!",
-  slug: "makgadikgadi"
+  slug: "makgadikgadi",
+  showThe: true
 }];
 
 export const HeroSection = () => {
@@ -168,7 +172,7 @@ export const HeroSection = () => {
       {/* Static H2 heading */}
       <div className={`absolute inset-0 flex flex-col justify-center items-start ${isMobile ? 'pl-6' : 'pl-[85px] md:pl-[135px]'} z-10 ${isMobile ? '-mt-[120px]' : '-mt-[200px]'}`}>
         <h2 className={`text-white mb-4 ${isMobile ? 'text-4xl' : 'text-7xl'} text-left font-semibold my-0 mx-[2px]`}>
-          DISCOVER THE
+          DISCOVER{destination.showThe ? ' THE' : ''}
         </h2>
       </div>
 
