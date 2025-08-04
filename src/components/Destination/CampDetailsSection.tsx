@@ -1,7 +1,9 @@
 
 import React, { useState, useEffect, forwardRef } from 'react';
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { campData } from '@/data/campData';
+import { useTravelStyle } from "@/contexts/TravelStyleContext";
 
 interface CampDetailsSectionProps {
   destinationId: string;
@@ -16,6 +18,8 @@ const CampDetailsSection = forwardRef<HTMLDivElement, CampDetailsSectionProps>((
   activeCampIndex: propActiveCampIndex, 
   setActiveCampIndex: propSetActiveCampIndex 
 }, ref) => {
+  const navigate = useNavigate();
+  const { setBookingSelection } = useTravelStyle();
   const [internalActiveCampIndex, setInternalActiveCampIndex] = useState(0);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   
@@ -64,6 +68,18 @@ const CampDetailsSection = forwardRef<HTMLDivElement, CampDetailsSectionProps>((
   
   const goToImage = (index: number) => {
     setActiveImageIndex(index);
+  };
+
+  const handleBookCamp = () => {
+    // Save booking selection
+    setBookingSelection({
+      destination: destinationId,
+      campId: activeCamp.toLowerCase(),
+      campName: activeCamp
+    });
+    
+    // Navigate to game plan
+    navigate('/game-plan');
   };
 
   return (
@@ -128,7 +144,10 @@ const CampDetailsSection = forwardRef<HTMLDivElement, CampDetailsSectionProps>((
             </div>
             
             <div className="mt-8">
-              <button className="bg-safari-gold hover:bg-safari-light-brown text-white py-3 px-8 transition-colors duration-300">
+              <button 
+                onClick={handleBookCamp}
+                className="bg-safari-gold hover:bg-safari-light-brown text-white py-3 px-8 transition-colors duration-300"
+              >
                 Book This Camp
               </button>
             </div>

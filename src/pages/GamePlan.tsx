@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Header } from "@/components/Safari/Header";
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { ChoosePanelMobile } from "@/components/Safari/ChoosePanelMobile";
+import { useTravelStyle } from '@/contexts/TravelStyleContext';
 
 interface StyleOption {
   title: string;
@@ -19,6 +21,8 @@ interface StyleOption {
 }
 
 const GamePlan = () => {
+  const navigate = useNavigate();
+  const { setTravelStyle } = useTravelStyle();
   const [activePanel, setActivePanel] = useState<number | null>(null);
   const [showMenu, setShowMenu] = useState<boolean>(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
@@ -127,6 +131,14 @@ const GamePlan = () => {
       selfGuidedSectionRef.current.scrollIntoView({ behavior: 'smooth' });
       setActiveSection('self-guided');
     }
+  };
+
+  const handleBookExperience = (travelStyleType: 'guided' | 'solo') => {
+    // Save travel style selection
+    setTravelStyle(travelStyleType);
+    
+    // Navigate to pack your calendar
+    navigate('/pack-your-calendar');
   };
 
   return (
@@ -308,7 +320,10 @@ const GamePlan = () => {
                 </div>
                 
                 <div className="mt-6 md:mt-8">
-                  <Button className="bg-safari-gold hover:bg-safari-light-brown text-white w-full md:w-auto">
+                  <Button 
+                    onClick={() => handleBookExperience('guided')}
+                    className="bg-safari-gold hover:bg-safari-light-brown text-white w-full md:w-auto"
+                  >
                     Book This Experience
                   </Button>
                 </div>
@@ -371,7 +386,10 @@ const GamePlan = () => {
                 </div>
                 
                 <div className="mt-6 md:mt-8">
-                  <Button className="bg-safari-gold hover:bg-safari-light-brown text-white w-full md:w-auto">
+                  <Button 
+                    onClick={() => handleBookExperience('solo')}
+                    className="bg-safari-gold hover:bg-safari-light-brown text-white w-full md:w-auto"
+                  >
                     Book This Experience
                   </Button>
                 </div>
