@@ -8,6 +8,9 @@ interface BookingSelection {
   campId?: string;
   campName?: string;
   travelStyle?: TravelStyle;
+  selectedSeason?: 'brown' | 'green';
+  groupSize?: number;
+  totalCost?: number;
 }
 
 interface TravelStyleContextType {

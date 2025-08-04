@@ -73,7 +73,10 @@ export const PackYourCalendarMobile: React.FC<PackYourCalendarMobileProps> = ({
                 <Button 
                   variant="outline" 
                   className="bg-safari-gold border-safari-gold text-white hover:bg-safari-light-brown"
-                  onClick={() => scrollToSection(index)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    scrollToSection(index);
+                  }}
                 >
                   Plan Trip <ChevronDown className="ml-2 h-4 w-4" />
                 </Button>

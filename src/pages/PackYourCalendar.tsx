@@ -6,6 +6,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { PackYourCalendarMobile } from "@/components/Safari/PackYourCalendarMobile";
 import { TravelStyleSection, TravelStyle } from "@/components/Safari/TravelStyleSection";
 import { useTravelStyle } from "@/contexts/TravelStyleContext";
+import { BookingEmailModal } from "@/components/BookingEmailModal";
 
 interface SeasonOption {
   title: string;
@@ -93,7 +94,8 @@ const PackYourCalendar = () => {
   const [groupSize, setGroupSize] = useState<number>(2);
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const [vehicleConfigs, setVehicleConfigs] = useState<{[key: number]: number[]}>({});
-  const { travelStyle, setTravelStyle } = useTravelStyle();
+  const [showBookingModal, setShowBookingModal] = useState(false);
+  const { travelStyle, setTravelStyle, setBookingSelection } = useTravelStyle();
   const isMobile = useIsMobile();
   
   const itinerarySectionRef = useRef<HTMLDivElement>(null);
@@ -261,23 +263,49 @@ const PackYourCalendar = () => {
   };
 
   const scrollToSection = (index: number) => {
-    if (index === 0) {
-      setSelectedSeason('brown');
-      if (travelStyleRef.current) {
-        travelStyleRef.current.scrollIntoView({ behavior: 'smooth' });
-        setActiveSection('travelStyle');
-      }
-    } else if (index === 1) {
-      setSelectedSeason('green');
-      if (travelStyleRef.current) {
-        travelStyleRef.current.scrollIntoView({ behavior: 'smooth' });
-        setActiveSection('travelStyle');
-      }
+    const season = index === 0 ? 'brown' : 'green';
+    setSelectedSeason(season);
+    
+    // Save season selection to context
+    setBookingSelection({ 
+      selectedSeason: season,
+      groupSize: groupSize,
+      totalCost: calculateTotalCost(season, groupSize)
+    });
+    
+    if (travelStyleRef.current) {
+      travelStyleRef.current.scrollIntoView({ behavior: 'smooth' });
+      setActiveSection('travelStyle');
     }
   };
 
   const handleStyleChange = (style: TravelStyle) => {
     setTravelStyle(style);
+  };
+
+  const handleBookingClick = () => {
+    if (!selectedSeason) return;
+    
+    // Update booking selection with final details
+    setBookingSelection({
+      selectedSeason: selectedSeason,
+      groupSize: groupSize,
+      totalCost: calculateTotalCost(selectedSeason, groupSize)
+    });
+    
+    setShowBookingModal(true);
+  };
+
+  // Update booking selection when group size changes
+  const handleGroupSizeChange = (size: number) => {
+    setGroupSize(size);
+    if (selectedSeason) {
+      setBookingSelection({
+        selectedSeason: selectedSeason,
+        groupSize: size,
+        totalCost: calculateTotalCost(selectedSeason, size)
+      });
+    }
   };
 
   return (
@@ -512,7 +540,7 @@ const PackYourCalendar = () => {
                       <Button
                         key={size}
                         variant={groupSize === size ? "default" : "outline"}
-                        onClick={() => setGroupSize(size)}
+                        onClick={() => handleGroupSizeChange(size)}
                         className={`h-16 text-sm font-semibold transition-all duration-200 ${
                           groupSize === size
                             ? 'bg-safari-gold border-safari-gold text-white hover:bg-safari-light-brown'
@@ -655,8 +683,12 @@ const PackYourCalendar = () => {
               </div>
               
               <div className="mt-8 text-center">
-                <Button className="bg-safari-gold hover:bg-safari-light-brown text-white px-8 py-3 text-lg">
-                  Book Your Adventure
+                <Button 
+                  onClick={handleBookingClick}
+                  disabled={!selectedSeason}
+                  className="bg-safari-gold hover:bg-safari-light-brown text-white px-8 py-3 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {selectedSeason ? 'Book Your Adventure' : 'Select a Season First'}
                 </Button>
               </div>
             </div>
@@ -682,6 +714,17 @@ const PackYourCalendar = () => {
           </div>
         </div>
       </div>
+
+      {/* Booking Email Modal */}
+      {selectedSeason && (
+        <BookingEmailModal
+          isOpen={showBookingModal}
+          onClose={() => setShowBookingModal(false)}
+          seasonTitle={selectedSeason === 'brown' ? 'Brown Season (High Season)' : 'Green Season (Low Season)'}
+          groupSize={groupSize}
+          totalCost={calculateTotalCost(selectedSeason, groupSize)}
+        />
+      )}
     </div>
   );
 };
