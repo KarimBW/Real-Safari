@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { TravelStyleProvider } from "@/contexts/TravelStyleContext";
+import ScrollToTop from "@/components/ScrollToTop";
 import Index from "./pages/Index";
 import PackYourCalendar from "./pages/PackYourCalendar";
 import DestinationPage from "./pages/DestinationPage";
@@ -20,6 +21,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<Index />} />
             {/* Redirect /plan to /game-plan */}
