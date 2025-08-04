@@ -70,27 +70,23 @@ export const Header: React.FC<HeaderProps> = ({
               WHERE TO NEXT? <ChevronDown className="w-3 h-3 md:w-4 md:h-4" />
             </div>
           </DropdownMenuTrigger>
-          <DropdownMenuContent 
-            className="bg-safari-dark-grey border-safari-gold p-0 w-40 md:w-48"
-            onMouseEnter={() => setDropdownOpen(true)}
-            onMouseLeave={() => setDropdownOpen(false)}
-          >
-            <Link to="/destination/okavango" className="text-white block w-full px-3 md:px-4 py-2 hover:bg-safari-dark-brown">
-              <DropdownMenuItem className="cursor-pointer text-white hover:text-white focus:text-white">
-                Okavango
-              </DropdownMenuItem>
-            </Link>
-            <Link to="/destination/kalahari" className="text-white block w-full px-3 md:px-4 py-2 hover:bg-safari-dark-brown">
-              <DropdownMenuItem className="cursor-pointer text-white hover:text-white focus:text-white">
-                Kalahari
-              </DropdownMenuItem>
-            </Link>
-            <Link to="/destination/makgadikgadi" className="text-white block w-full px-3 md:px-4 py-2 hover:bg-safari-dark-brown">
-              <DropdownMenuItem className="cursor-pointer text-white hover:text-white focus:text-white">
-                Makgadikgadi
-              </DropdownMenuItem>
-            </Link>
-          </DropdownMenuContent>
+           <DropdownMenuContent 
+             className="bg-safari-dark-grey border-safari-gold p-0 w-40 md:w-48"
+             onMouseEnter={() => setDropdownOpen(true)}
+             onMouseLeave={() => setDropdownOpen(false)}
+           >
+             {/* Removed Okavango - not available yet */}
+             <Link to="/destination/kalahari" className="text-white block w-full px-3 md:px-4 py-2 hover:bg-safari-dark-brown">
+               <DropdownMenuItem className="cursor-pointer text-white hover:text-white focus:text-white">
+                 Kalahari
+               </DropdownMenuItem>
+             </Link>
+             <Link to="/destination/makgadikgadi" className="text-white block w-full px-3 md:px-4 py-2 hover:bg-safari-dark-brown">
+               <DropdownMenuItem className="cursor-pointer text-white hover:text-white focus:text-white">
+                 Makgadikgadi
+               </DropdownMenuItem>
+             </Link>
+           </DropdownMenuContent>
         </DropdownMenu>
         
         {/* Game Plan */}

@@ -13,10 +13,10 @@ type Destination = {
 };
 
 const destinations: Destination[] = [{
-  name: "OKAVANGO",
+  name: "BOTSWANA",
   image: "/lovable-uploads/ebab21c9-3137-406f-b457-4a345b28c6ab.png",
   description: "Where lions roam and whisper tales of the wild savanna!",
-  slug: "okavango"
+  slug: "botswana" // Non-clickable - no destination page exists
 }, {
   name: "KALAHARI",
   image: "/lovable-uploads/c574e67a-51c3-442e-b68e-89788ccfb439.png",
@@ -127,19 +127,20 @@ export const HeroSection = () => {
                     <ChevronDown className="w-4 h-4" />
                   </div>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent 
-                  className="bg-safari-dark-grey border-safari-gold" 
-                  onMouseEnter={() => setDropdownOpen(true)} 
-                  onMouseLeave={() => setDropdownOpen(false)}
-                >
-                  {destinations.map(dest => (
-                    <Link key={dest.slug} to={`/destination/${dest.slug}`}>
-                      <DropdownMenuItem className="text-white hover:bg-safari-dark-brown hover:text-white focus:text-white cursor-pointer">
-                        {dest.name}
-                      </DropdownMenuItem>
-                    </Link>
-                  ))}
-                </DropdownMenuContent>
+                 <DropdownMenuContent 
+                   className="bg-safari-dark-grey border-safari-gold" 
+                   onMouseEnter={() => setDropdownOpen(true)} 
+                   onMouseLeave={() => setDropdownOpen(false)}
+                 >
+                   {/* Only show available destinations - exclude Botswana (non-clickable) */}
+                   {destinations.slice(1).map(dest => (
+                     <Link key={dest.slug} to={`/destination/${dest.slug}`}>
+                       <DropdownMenuItem className="text-white hover:bg-safari-dark-brown hover:text-white focus:text-white cursor-pointer">
+                         {dest.name}
+                       </DropdownMenuItem>
+                     </Link>
+                   ))}
+                 </DropdownMenuContent>
               </DropdownMenu>
             </div>
             
@@ -173,16 +174,25 @@ export const HeroSection = () => {
 
       {/* H1 section */}
       <div className={`absolute inset-0 flex flex-col justify-center items-start ${isMobile ? 'pl-4' : 'pl-[83px] md:pl-[133px]'} z-10 ${isMobile ? 'mt-[10px]' : 'mt-[15px]'}`}>
-        <div className={`transition-opacity duration-800 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
-          {/* Destination name with typewriter effect - now wrapped in Link */}
-          <Link to={`/destination/${destination.slug}`}>
-            <h1 
-              id="hero-destination" 
-              className={`destination-text ${isMobile ? 'mx-2 text-[10vw]' : 'mx-[168px]'} overflow-hidden whitespace-nowrap ${isTyping ? 'animated' : ''} transition-colors cursor-pointer`}
-            >
-              {destination.name}
-            </h1>
-          </Link>
+         <div className={`transition-opacity duration-800 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
+           {/* Destination name with typewriter effect - conditionally wrapped in Link */}
+           {destination.slug === "botswana" ? (
+             <h1 
+               id="hero-destination" 
+               className={`destination-text ${isMobile ? 'mx-2 text-[10vw]' : 'mx-[168px]'} overflow-hidden whitespace-nowrap ${isTyping ? 'animated' : ''}`}
+             >
+               {destination.name}
+             </h1>
+           ) : (
+             <Link to={`/destination/${destination.slug}`}>
+               <h1 
+                 id="hero-destination" 
+                 className={`destination-text ${isMobile ? 'mx-2 text-[10vw]' : 'mx-[168px]'} overflow-hidden whitespace-nowrap ${isTyping ? 'animated' : ''} transition-colors cursor-pointer`}
+               >
+                 {destination.name}
+               </h1>
+             </Link>
+           )}
           <p className={`safari-quote text-white ${isMobile ? 'text-base mx-2 mt-2 max-w-xs' : 'text-xl mt-4 max-w-md mx-[178px]'}`}>
             "{destination.description}"
           </p>

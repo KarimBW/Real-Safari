@@ -33,6 +33,7 @@ export type EditableData = {
 };
 
 export const destinationData: Record<string, DestinationData> = {
+  /* TEMPORARILY DISABLED - Okavango packages not available yet
   okavango: {
     title: "OKAVANGO",
     mainDescription: "Okavango is a paradise of extraordinary beauty, where you can find almost unlimited wildlife adventures, beautiful wetlands, and pristine wilderness.",
@@ -73,6 +74,7 @@ export const destinationData: Record<string, DestinationData> = {
       }
     ]
   },
+  */
   kalahari: {
     title: "KALAHARI",
     mainDescription: "Kalahari is a land of stunning contrast, where vast desert plains meet vibrant wildlife and ancient traditions thrive under starlit skies.",

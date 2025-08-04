@@ -24,9 +24,11 @@ const App = () => (
             <Route path="/" element={<Index />} />
             {/* Redirect /plan to /game-plan */}
             <Route path="/plan" element={<Navigate to="/game-plan" replace />} />
-            <Route path="/pack-your-calendar" element={<PackYourCalendar />} />
-            <Route path="/destination/:id" element={<DestinationPage />} />
-            <Route path="/game-plan" element={<GamePlan />} />
+             <Route path="/pack-your-calendar" element={<PackYourCalendar />} />
+             <Route path="/destination/:id" element={<DestinationPage />} />
+             {/* Block access to Okavango destination - redirect to 404 */}
+             <Route path="/destination/okavango" element={<NotFound />} />
+             <Route path="/game-plan" element={<GamePlan />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
