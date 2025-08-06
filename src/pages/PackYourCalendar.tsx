@@ -5,7 +5,7 @@ import { ChevronDown, Users, Car, Calendar, MapPin, Star } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { PackYourCalendarMobile } from "@/components/Safari/PackYourCalendarMobile";
 import { TravelStyleSection, TravelStyle } from "@/components/Safari/TravelStyleSection";
-import { JourneyHighlights } from "@/components/Safari/JourneyHighlights";
+import { InteractiveJourneyMap } from "@/components/Safari/InteractiveJourneyMap";
 import { PackageOverview } from "@/components/Safari/PackageOverview";
 import { useTravelStyle } from "@/contexts/TravelStyleContext";
 import { BookingEmailModal } from "@/components/BookingEmailModal";
@@ -470,7 +470,7 @@ const PackYourCalendar = () => {
       <PackageOverview />
 
       {/* Journey Highlights Section */}
-      <JourneyHighlights />
+      <InteractiveJourneyMap />
 
       {/* Itinerary Section */}
       <div 
