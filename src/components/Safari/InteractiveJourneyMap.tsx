@@ -120,9 +120,9 @@ export const InteractiveJourneyMap: React.FC = () => {
           </p>
         </div>
 
-        {/* Enhanced Large Interactive Map */}
-        <div className="max-w-7xl mx-auto">
-          <div className="relative w-full h-[80vh] min-h-[600px] overflow-hidden">
+        {/* Enhanced Interactive Map */}
+        <div className="max-w-5xl mx-auto">
+          <div className="relative w-full h-[50vh] min-h-[400px] overflow-hidden">
             {/* Map paths connecting destinations */}
             <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
               <defs>
