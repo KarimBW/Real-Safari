@@ -5,6 +5,8 @@ import { ChevronDown, Users, Car, Calendar, MapPin, Star } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { PackYourCalendarMobile } from "@/components/Safari/PackYourCalendarMobile";
 import { TravelStyleSection, TravelStyle } from "@/components/Safari/TravelStyleSection";
+import { JourneyHighlights } from "@/components/Safari/JourneyHighlights";
+import { PackageOverview } from "@/components/Safari/PackageOverview";
 import { useTravelStyle } from "@/contexts/TravelStyleContext";
 import { BookingEmailModal } from "@/components/BookingEmailModal";
 
@@ -464,6 +466,12 @@ const PackYourCalendar = () => {
       )}
 
 
+      {/* Package Overview Section */}
+      <PackageOverview />
+
+      {/* Journey Highlights Section */}
+      <JourneyHighlights />
+
       {/* Itinerary Section */}
       <div 
         ref={itinerarySectionRef}
@@ -472,7 +480,7 @@ const PackYourCalendar = () => {
         <div className="container mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-safari-dark-grey mb-4">Your 9-Day Safari Adventure</h2>
-            <p className="text-lg text-safari-dark-grey">Experience the best of Botswana across three iconic destinations</p>
+            <p className="text-lg text-safari-dark-grey">Follow your journey through Botswana's most spectacular wilderness areas</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -45,8 +45,8 @@ export const BookingEmailModal: React.FC<BookingEmailModalProps> = ({
         customerName: name,
         customerEmail: email,
         countryOfResidence: country,
-        destination: bookingSelection.destination,
-        campName: bookingSelection.campName,
+        destination: 'Botswana Wild: Kalahari & Makgadikgadi Safari',
+        campName: 'Multi-destination Safari Package',
         travelStyle: travelStyle,
         selectedSeason: bookingSelection.selectedSeason,
         groupSize: groupSize,
@@ -93,20 +93,16 @@ export const BookingEmailModal: React.FC<BookingEmailModalProps> = ({
           <div className="space-y-4">
             {/* Booking Summary */}
             <div className="bg-safari-cream rounded-lg p-4 space-y-2">
-              <h3 className="font-semibold text-safari-dark-grey">Booking Summary</h3>
+              <h3 className="font-semibold text-safari-dark-grey">Safari Package Summary</h3>
               <div className="text-sm space-y-1">
-                {bookingSelection.destination && (
-                  <div className="flex justify-between">
-                    <span>Destination:</span>
-                    <span className="font-medium">{bookingSelection.destination}</span>
-                  </div>
-                )}
-                {bookingSelection.campName && (
-                  <div className="flex justify-between">
-                    <span>Camp:</span>
-                    <span className="font-medium">{bookingSelection.campName}</span>
-                  </div>
-                )}
+                <div className="flex justify-between">
+                  <span>Package:</span>
+                  <span className="font-medium">Botswana Wild: Kalahari & Makgadikgadi Safari</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Duration:</span>
+                  <span className="font-medium">9 days, 8 nights</span>
+                </div>
                 <div className="flex justify-between">
                   <span>Travel Style:</span>
                   <span className="font-medium">
