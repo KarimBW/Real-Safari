@@ -21,70 +21,145 @@ interface MapDestination {
 
 const destinations: MapDestination[] = [
   {
-    id: "maun",
-    name: "Maun",
+    id: "day1",
+    name: "Maun Arrival",
     shortName: "Gateway",
     description: "Your safari begins in the heart of the Okavango",
     poeticDescription: "Where civilization whispers goodbye and the wild calls your name",
-    highlights: ["Safari briefing", "Vehicle handover", "Last supplies"],
+    highlights: ["Safari briefing", "Vehicle handover", "Last supplies", "Welcome dinner"],
     bestFor: "Preparation & anticipation",
     terrain: "Town gateway",
     mood: "Excited anticipation",
     image: "/lovable-uploads/02233ed5-a1fa-40fd-a777-8e843f957aa6.png",
-    position: { x: 15, y: 60 },
+    position: { x: 10, y: 60 },
     day: "Day 1",
     icon: <Compass className="h-4 w-4" />
   },
   {
-    id: "ckgr",
-    name: "Central Kalahari Game Reserve",
-    shortName: "The Soul Desert",
-    description: "Where horizons forget to end and silence teaches you to listen",
-    poeticDescription: "In the vastness of forever, you discover the rhythm of your own heartbeat",
-    highlights: ["Desert-adapted wildlife", "Endless horizons", "Star-drunk nights", "Ancient fossil valleys"],
-    bestFor: "Soul-searching & solitude",
-    terrain: "Ancient pans & sandy tracks",
-    mood: "Meditative wonder",
+    id: "day2",
+    name: "Central Kalahari Entry",
+    shortName: "Desert Gateway",
+    description: "First taste of the infinite desert expanses",
+    poeticDescription: "The horizon calls and your soul answers with wonder",
+    highlights: ["Desert orientation", "Wildlife tracking", "Camp setup", "Star gazing"],
+    bestFor: "Adventure begins",
+    terrain: "Sandy tracks & acacia",
+    mood: "Discovery excitement",
     image: "/lovable-uploads/f8df9392-5003-48b6-ac98-5b48f496ad5b.png",
-    position: { x: 35, y: 75 },
-    day: "Days 2-4",
+    position: { x: 22, y: 75 },
+    day: "Day 2",
     icon: <Binoculars className="h-4 w-4" />
   },
   {
-    id: "makgadikgadi",
-    name: "Makgadikgadi Pans",
-    shortName: "Salt Dreams",
-    description: "Ancient sea floors where elephants march like ghosts",
-    poeticDescription: "Time stands still on these endless white stages where earth meets eternity",
-    highlights: ["Elephant migration", "Salt pan vastness", "Flamingo spectacle", "Prehistoric silence"],
-    bestFor: "Epic photography & reflection",
-    terrain: "Hard-packed salt & mystery",
-    mood: "Otherworldly awe",
-    image: "/lovable-uploads/816850fe-ec88-41bc-9a5f-644224f107cc.png",
-    position: { x: 60, y: 45 },
-    day: "Days 5-7",
+    id: "day3",
+    name: "Deep Kalahari",
+    shortName: "Heart of Desert",
+    description: "Where silence teaches you to listen to your soul",
+    poeticDescription: "In the vastness of forever, you discover the rhythm of your own heartbeat",
+    highlights: ["Desert-adapted wildlife", "Ancient valleys", "Bushmen culture", "Meditation walks"],
+    bestFor: "Soul-searching & solitude",
+    terrain: "Ancient pans & valleys",
+    mood: "Meditative wonder",
+    image: "/lovable-uploads/f8df9392-5003-48b6-ac98-5b48f496ad5b.png",
+    position: { x: 34, y: 80 },
+    day: "Day 3",
     icon: <Camera className="h-4 w-4" />
   },
   {
-    id: "nxai",
-    name: "Nxai Pan National Park",
-    shortName: "Baobab Theatre",
-    description: "Where ancient giants guard secrets and lions write stories in tall grass",
+    id: "day4",
+    name: "Kalahari Wildlife",
+    shortName: "Desert Life",
+    description: "Discover how life thrives in the harshest beauty",
+    poeticDescription: "Every creature here writes poetry in the sand with their survival",
+    highlights: ["Meerkats colony", "Desert lions", "Gemsbok herds", "Sunset photography"],
+    bestFor: "Wildlife photography",
+    terrain: "Open grasslands",
+    mood: "Wild connection",
+    image: "/lovable-uploads/f8df9392-5003-48b6-ac98-5b48f496ad5b.png",
+    position: { x: 46, y: 75 },
+    day: "Day 4",
+    icon: <MapPin className="h-4 w-4" />
+  },
+  {
+    id: "day5",
+    name: "Makgadikgadi Arrival",
+    shortName: "Salt Dreams Begin",
+    description: "Ancient sea floors where time stands still",
+    poeticDescription: "Step onto stages where earth rehearses eternity",
+    highlights: ["Salt pan exploration", "Flamingo spotting", "Archaeological sites", "Endless horizons"],
+    bestFor: "Epic photography",
+    terrain: "Hard-packed salt",
+    mood: "Otherworldly awe",
+    image: "/lovable-uploads/816850fe-ec88-41bc-9a5f-644224f107cc.png",
+    position: { x: 58, y: 50 },
+    day: "Day 5",
+    icon: <Camera className="h-4 w-4" />
+  },
+  {
+    id: "day6",
+    name: "Elephant Migration",
+    shortName: "Giant Procession",
+    description: "Where elephants march like ghosts across ancient stages",
+    poeticDescription: "Witness the oldest parade on earth - giants walking the paths of their ancestors",
+    highlights: ["Elephant herds", "Migration routes", "Ancient baobabs", "Cultural storytelling"],
+    bestFor: "Wildlife spectacle",
+    terrain: "Migration corridors",
+    mood: "Humbling reverence",
+    image: "/lovable-uploads/816850fe-ec88-41bc-9a5f-644224f107cc.png",
+    position: { x: 66, y: 45 },
+    day: "Day 6",
+    icon: <Binoculars className="h-4 w-4" />
+  },
+  {
+    id: "day7",
+    name: "Flamingo Spectacle",
+    shortName: "Pink Paradise",
+    description: "Thousands of flamingos paint the salt pans pink",
+    poeticDescription: "Nature's most delicate artists create masterpieces in motion",
+    highlights: ["Flamingo colonies", "Salt crystallization", "Bird photography", "Sunset reflections"],
+    bestFor: "Serene beauty",
+    terrain: "Shallow salt waters",
+    mood: "Peaceful wonder",
+    image: "/lovable-uploads/816850fe-ec88-41bc-9a5f-644224f107cc.png",
+    position: { x: 72, y: 40 },
+    day: "Day 7",
+    icon: <Camera className="h-4 w-4" />
+  },
+  {
+    id: "day8",
+    name: "Nxai Pan & Baines' Baobabs",
+    shortName: "Ancient Giants",
+    description: "Where legendary trees guard timeless secrets",
     poeticDescription: "Under Baines' legendary trees, every sunset feels like the first one ever painted",
-    highlights: ["Baines' Baobabs", "Lion encounters", "Giraffe kingdoms", "Golden hour magic"],
-    bestFor: "Classic safari moments",
-    terrain: "Scattered woodlands & open pans",
+    highlights: ["Baines' Baobabs", "Lion encounters", "Historical significance", "Golden hour magic"],
+    bestFor: "Iconic photography",
+    terrain: "Scattered woodlands",
     mood: "Timeless elegance",
     image: "/lovable-uploads/6f7ac6f4-6078-4baa-8ef8-1a5d7f4e8bc0.png",
-    position: { x: 75, y: 25 },
-    day: "Days 8-9",
+    position: { x: 80, y: 30 },
+    day: "Day 8",
     icon: <MapPin className="h-4 w-4" />
+  },
+  {
+    id: "day9",
+    name: "Final Safari & Departure",
+    shortName: "Journey's End",
+    description: "Last moments with the wild before returning transformed",
+    poeticDescription: "You came seeking adventure but leave carrying the soul of Africa within you",
+    highlights: ["Final game drive", "Reflection time", "Journey celebration", "Departure preparations"],
+    bestFor: "Reflection & gratitude",
+    terrain: "Open savannas",
+    mood: "Bittersweet fulfillment",
+    image: "/lovable-uploads/6f7ac6f4-6078-4baa-8ef8-1a5d7f4e8bc0.png",
+    position: { x: 88, y: 25 },
+    day: "Day 9",
+    icon: <Compass className="h-4 w-4" />
   }
 ];
 
 export const InteractiveJourneyMap: React.FC = () => {
   const [hoveredDestination, setHoveredDestination] = useState<string | null>(null);
-  const [selectedDestination, setSelectedDestination] = useState<string>("ckgr");
+  const [selectedDestination, setSelectedDestination] = useState<string>("day1");
 
   return (
     <div className="relative min-h-screen py-20 overflow-hidden">
@@ -124,9 +199,14 @@ export const InteractiveJourneyMap: React.FC = () => {
               </defs>
               <path
                 d={`M ${destinations[0].position.x} ${destinations[0].position.y} 
-                    Q 25 70 ${destinations[1].position.x} ${destinations[1].position.y}
-                    Q 50 55 ${destinations[2].position.x} ${destinations[2].position.y}
-                    Q 70 35 ${destinations[3].position.x} ${destinations[3].position.y}`}
+                    L ${destinations[1].position.x} ${destinations[1].position.y}
+                    L ${destinations[2].position.x} ${destinations[2].position.y}
+                    L ${destinations[3].position.x} ${destinations[3].position.y}
+                    L ${destinations[4].position.x} ${destinations[4].position.y}
+                    L ${destinations[5].position.x} ${destinations[5].position.y}
+                    L ${destinations[6].position.x} ${destinations[6].position.y}
+                    L ${destinations[7].position.x} ${destinations[7].position.y}
+                    L ${destinations[8].position.x} ${destinations[8].position.y}`}
                 stroke="url(#pathGradient)"
                 strokeWidth="3"
                 fill="none"
@@ -287,11 +367,11 @@ export const InteractiveJourneyMap: React.FC = () => {
         <div className="mt-20 text-center">
           <div className="max-w-5xl mx-auto">
             <h3 className="text-3xl font-bold text-primary mb-8">Your 9-Day Transformation</h3>
-            <div className="grid md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-9 gap-4">
               {destinations.map((dest, index) => (
                 <div 
                   key={dest.id}
-                  className="group cursor-pointer p-4 rounded-xl hover:bg-muted/30 transition-all duration-300"
+                  className="group cursor-pointer p-3 rounded-xl hover:bg-muted/30 transition-all duration-300"
                   onMouseEnter={() => setHoveredDestination(dest.id)}
                   onMouseLeave={() => setHoveredDestination(null)}
                   onClick={() => setSelectedDestination(dest.id)}
@@ -299,11 +379,11 @@ export const InteractiveJourneyMap: React.FC = () => {
                   <div className={`transition-all duration-300 ${
                     hoveredDestination === dest.id ? 'scale-105' : 'scale-100'
                   }`}>
-                    <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors shadow-lg">
-                      {React.cloneElement(dest.icon as React.ReactElement, { className: "h-6 w-6" })}
+                    <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors shadow-lg">
+                      {React.cloneElement(dest.icon as React.ReactElement, { className: "h-5 w-5" })}
                     </div>
-                    <h4 className="font-semibold text-base mb-2">{dest.shortName}</h4>
-                    <p className="text-sm text-muted-foreground">{dest.day}</p>
+                    <h4 className="font-semibold text-xs mb-1 text-center">{dest.shortName}</h4>
+                    <p className="text-xs text-muted-foreground text-center">{dest.day}</p>
                   </div>
                 </div>
               ))}
