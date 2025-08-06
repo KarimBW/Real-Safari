@@ -466,57 +466,9 @@ const PackYourCalendar = () => {
       )}
 
 
-      {/* Package Overview Section */}
-      <PackageOverview />
-
-      {/* Journey Highlights Section */}
+      {/* Enhanced Interactive Journey Map */}
       <InteractiveJourneyMap />
 
-      {/* Itinerary Section */}
-      <div 
-        ref={itinerarySectionRef}
-        className="bg-safari-cream py-16 px-4 md:px-8"
-      >
-        <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-safari-dark-grey mb-4">Your 9-Day Safari Adventure</h2>
-            <p className="text-lg text-safari-dark-grey">Follow your journey through Botswana's most spectacular wilderness areas</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {itinerary.map((day, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
-                <div className="bg-safari-gold text-white p-4">
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-bold">Day {day.day}</h3>
-                    <Calendar className="h-5 w-5" />
-                  </div>
-                  <h4 className="text-xl font-semibold mt-1">{day.title}</h4>
-                  <p className="text-safari-light-brown text-sm flex items-center mt-1">
-                    <MapPin className="h-4 w-4 mr-1" />
-                    {day.location}
-                  </p>
-                </div>
-                
-                <div className="p-4">
-                  <p className="text-safari-dark-grey text-sm mb-3 leading-relaxed">
-                    {day.description}
-                  </p>
-                  
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs text-safari-gold font-medium">
-                      {day.accommodation}
-                    </span>
-                    <span className="text-xs text-safari-dark-grey">
-                      {day.day === 1 || day.day === 8 ? "Hotel" : "Rooftop Tent"}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
 
       {/* Group Size Calculator Section */}
       <div 
