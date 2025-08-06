@@ -232,17 +232,6 @@ const PackYourCalendar = () => {
       const scrollThreshold = windowHeight * 0.8;
       
       setShowMenu(scrollPosition > scrollThreshold);
-      
-      if (choosePanelRef.current) {
-        const choosePanelHeight = choosePanelRef.current.offsetHeight;
-        if (scrollPosition > choosePanelHeight * 0.5) {
-          choosePanelRef.current.style.transform = `translateY(-${Math.min(scrollPosition - (choosePanelHeight * 0.3), choosePanelHeight)}px)`;
-          choosePanelRef.current.style.opacity = `${1 - Math.min(scrollPosition / choosePanelHeight, 1)}`;
-        } else {
-          choosePanelRef.current.style.transform = 'translateY(0)';
-          choosePanelRef.current.style.opacity = '1';
-        }
-      }
     };
 
     window.addEventListener('scroll', handleScroll);
