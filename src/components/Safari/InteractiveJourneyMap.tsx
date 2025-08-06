@@ -30,8 +30,8 @@ const destinations: MapDestination[] = [
     bestFor: "Preparation & anticipation",
     terrain: "Town gateway",
     mood: "Excited anticipation",
-    image: "/lovable-uploads/02233ed5-a1fa-40fd-a777-8e843f957aa6.png",
-    position: { x: 10, y: 60 },
+    image: "/lovable-uploads/59f35e67-5f3a-4177-b4a1-53e4389fee2d.png", // Delta image for Maun
+    position: { x: 10, y: 50 },
     day: "Day 1",
     icon: <Compass className="h-4 w-4" />
   },
@@ -45,8 +45,8 @@ const destinations: MapDestination[] = [
     bestFor: "Adventure begins",
     terrain: "Sandy tracks & acacia",
     mood: "Discovery excitement",
-    image: "/lovable-uploads/f8df9392-5003-48b6-ac98-5b48f496ad5b.png",
-    position: { x: 22, y: 75 },
+    image: "/lovable-uploads/a79c2903-be2b-4134-acd5-2baba07a13ab.png", // CKGR zebras
+    position: { x: 22, y: 65 },
     day: "Day 2",
     icon: <Binoculars className="h-4 w-4" />
   },
@@ -60,8 +60,8 @@ const destinations: MapDestination[] = [
     bestFor: "Soul-searching & solitude",
     terrain: "Ancient pans & valleys",
     mood: "Meditative wonder",
-    image: "/lovable-uploads/f8df9392-5003-48b6-ac98-5b48f496ad5b.png",
-    position: { x: 34, y: 80 },
+    image: "/lovable-uploads/02233ed5-a1fa-40fd-a777-8e843f957aa6.png", // Ostrich from Khutse
+    position: { x: 34, y: 70 },
     day: "Day 3",
     icon: <Camera className="h-4 w-4" />
   },
@@ -75,8 +75,8 @@ const destinations: MapDestination[] = [
     bestFor: "Wildlife photography",
     terrain: "Open grasslands",
     mood: "Wild connection",
-    image: "/lovable-uploads/f8df9392-5003-48b6-ac98-5b48f496ad5b.png",
-    position: { x: 46, y: 75 },
+    image: "/lovable-uploads/09a00f34-b704-4711-88f5-929dbe49f205.png", // Cheetah from Mabuasehube
+    position: { x: 46, y: 65 },
     day: "Day 4",
     icon: <MapPin className="h-4 w-4" />
   },
@@ -90,8 +90,8 @@ const destinations: MapDestination[] = [
     bestFor: "Epic photography",
     terrain: "Hard-packed salt",
     mood: "Otherworldly awe",
-    image: "/lovable-uploads/816850fe-ec88-41bc-9a5f-644224f107cc.png",
-    position: { x: 58, y: 50 },
+    image: "/lovable-uploads/a25ce305-a695-4546-9fae-b8fdc60cc4d9.png", // Makgadikgadi elephants
+    position: { x: 58, y: 40 },
     day: "Day 5",
     icon: <Camera className="h-4 w-4" />
   },
@@ -105,8 +105,8 @@ const destinations: MapDestination[] = [
     bestFor: "Wildlife spectacle",
     terrain: "Migration corridors",
     mood: "Humbling reverence",
-    image: "/lovable-uploads/816850fe-ec88-41bc-9a5f-644224f107cc.png",
-    position: { x: 66, y: 45 },
+    image: "/lovable-uploads/13144fc7-d253-4fd1-997d-96c622d2754d.png", // Savuti elephants
+    position: { x: 66, y: 35 },
     day: "Day 6",
     icon: <Binoculars className="h-4 w-4" />
   },
@@ -120,8 +120,8 @@ const destinations: MapDestination[] = [
     bestFor: "Serene beauty",
     terrain: "Shallow salt waters",
     mood: "Peaceful wonder",
-    image: "/lovable-uploads/816850fe-ec88-41bc-9a5f-644224f107cc.png",
-    position: { x: 72, y: 40 },
+    image: "/lovable-uploads/52fba817-468b-49a9-827a-bb36b663d4b6.png", // Flamingo image
+    position: { x: 72, y: 30 },
     day: "Day 7",
     icon: <Camera className="h-4 w-4" />
   },
@@ -135,8 +135,8 @@ const destinations: MapDestination[] = [
     bestFor: "Iconic photography",
     terrain: "Scattered woodlands",
     mood: "Timeless elegance",
-    image: "/lovable-uploads/6f7ac6f4-6078-4baa-8ef8-1a5d7f4e8bc0.png",
-    position: { x: 80, y: 30 },
+    image: "/lovable-uploads/262d126c-8864-467a-a4dc-fa9033a12dc2.png", // Baobab image
+    position: { x: 80, y: 20 },
     day: "Day 8",
     icon: <MapPin className="h-4 w-4" />
   },
@@ -150,8 +150,8 @@ const destinations: MapDestination[] = [
     bestFor: "Reflection & gratitude",
     terrain: "Open savannas",
     mood: "Bittersweet fulfillment",
-    image: "/lovable-uploads/6f7ac6f4-6078-4baa-8ef8-1a5d7f4e8bc0.png",
-    position: { x: 88, y: 25 },
+    image: "/lovable-uploads/d02c9222-8e68-4653-b5ca-528385d274b4.png", // Nxai lions
+    position: { x: 88, y: 15 },
     day: "Day 9",
     icon: <Compass className="h-4 w-4" />
   }
@@ -163,7 +163,6 @@ export const InteractiveJourneyMap: React.FC = () => {
 
   return (
     <div className="relative min-h-screen py-20 overflow-hidden">
-
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <Badge variant="outline" className="mb-4 text-primary border-primary">
@@ -178,9 +177,9 @@ export const InteractiveJourneyMap: React.FC = () => {
           </p>
         </div>
 
-        {/* Enhanced Interactive Map */}
+        {/* Enhanced Interactive Map with increased height */}
         <div className="max-w-5xl mx-auto">
-          <div className="relative w-full h-[50vh] min-h-[400px] overflow-hidden">
+          <div className="relative w-full h-[60vh] min-h-[500px] overflow-hidden mb-8">
             {/* Map paths connecting destinations */}
             <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
               <defs>
@@ -255,8 +254,8 @@ export const InteractiveJourneyMap: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Enhanced day label */}
-                <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 whitespace-nowrap">
+                {/* Enhanced day label with better positioning */}
+                <div className="absolute -bottom-16 left-1/2 transform -translate-x-1/2 whitespace-nowrap">
                   <Badge variant="outline" className="text-sm font-medium bg-white/95 backdrop-blur-sm shadow-lg">
                     {destination.day}
                   </Badge>
@@ -264,7 +263,7 @@ export const InteractiveJourneyMap: React.FC = () => {
 
                 {/* Enhanced hover tooltip with itinerary details */}
                 {hoveredDestination === destination.id && (
-                  <div className="absolute -top-32 left-1/2 transform -translate-x-1/2 z-20">
+                  <div className="absolute -top-40 left-1/2 transform -translate-x-1/2 z-20">
                     <div className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-2xl border-2 border-primary/20 min-w-80 max-w-md animate-scale-in">
                       <div className="flex items-center gap-3 mb-3">
                         <div className="p-2 bg-primary/10 rounded-lg">
