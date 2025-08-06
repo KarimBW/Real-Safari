@@ -19,6 +19,31 @@ interface MapDestination {
   icon: React.ReactNode;
 }
 
+interface MovementDetails {
+  departure?: string;
+  arrival?: string;
+  travelTime?: string;
+  transport?: string;
+  distance?: string;
+}
+
+interface MapDestination {
+  id: string;
+  name: string;
+  shortName: string;
+  description: string;
+  poeticDescription: string;
+  highlights: string[];
+  bestFor: string;
+  terrain: string;
+  mood: string;
+  image: string;
+  position: { x: number; y: number };
+  day: string;
+  icon: React.ReactNode;
+  movement?: MovementDetails;
+}
+
 const destinations: MapDestination[] = [
   {
     id: "day1",
@@ -30,10 +55,15 @@ const destinations: MapDestination[] = [
     bestFor: "Preparation & anticipation",
     terrain: "Town gateway",
     mood: "Excited anticipation",
-    image: "/lovable-uploads/59f35e67-5f3a-4177-b4a1-53e4389fee2d.png", // Delta image for Maun
+    image: "/lovable-uploads/59f35e67-5f3a-4177-b4a1-53e4389fee2d.png",
     position: { x: 10, y: 50 },
     day: "Day 1",
-    icon: <Compass className="h-4 w-4" />
+    icon: <Compass className="h-4 w-4" />,
+    movement: {
+      arrival: "Maun Airport",
+      transport: "Airport transfer to lodge",
+      travelTime: "30 minutes"
+    }
   },
   {
     id: "day2",
@@ -45,10 +75,17 @@ const destinations: MapDestination[] = [
     bestFor: "Adventure begins",
     terrain: "Sandy tracks & acacia",
     mood: "Discovery excitement",
-    image: "/lovable-uploads/a79c2903-be2b-4134-acd5-2baba07a13ab.png", // CKGR zebras
+    image: "/lovable-uploads/a79c2903-be2b-4134-acd5-2baba07a13ab.png",
     position: { x: 22, y: 65 },
     day: "Day 2",
-    icon: <Binoculars className="h-4 w-4" />
+    icon: <Binoculars className="h-4 w-4" />,
+    movement: {
+      departure: "Maun Lodge (08:00)",
+      arrival: "Khutse Game Reserve (12:00)",
+      transport: "4WD safari vehicle",
+      travelTime: "4 hours",
+      distance: "250km south"
+    }
   },
   {
     id: "day3",
@@ -60,10 +97,17 @@ const destinations: MapDestination[] = [
     bestFor: "Soul-searching & solitude",
     terrain: "Ancient pans & valleys",
     mood: "Meditative wonder",
-    image: "/lovable-uploads/02233ed5-a1fa-40fd-a777-8e843f957aa6.png", // Ostrich from Khutse
+    image: "/lovable-uploads/02233ed5-a1fa-40fd-a777-8e843f957aa6.png",
     position: { x: 34, y: 70 },
     day: "Day 3",
-    icon: <Camera className="h-4 w-4" />
+    icon: <Camera className="h-4 w-4" />,
+    movement: {
+      departure: "Khutse Camp (07:00)",
+      arrival: "Deception Valley Camp (11:30)",
+      transport: "4WD convoy",
+      travelTime: "4.5 hours",
+      distance: "180km deep into CKGR"
+    }
   },
   {
     id: "day4",
@@ -75,10 +119,17 @@ const destinations: MapDestination[] = [
     bestFor: "Wildlife photography",
     terrain: "Open grasslands",
     mood: "Wild connection",
-    image: "/lovable-uploads/09a00f34-b704-4711-88f5-929dbe49f205.png", // Cheetah from Mabuasehube
+    image: "/lovable-uploads/09a00f34-b704-4711-88f5-929dbe49f205.png",
     position: { x: 46, y: 65 },
     day: "Day 4",
-    icon: <MapPin className="h-4 w-4" />
+    icon: <MapPin className="h-4 w-4" />,
+    movement: {
+      departure: "Deception Valley (06:30)",
+      arrival: "Mabuasehube Camp (15:00)",
+      transport: "Cross-country 4WD",
+      travelTime: "8.5 hours with game viewing",
+      distance: "200km through pristine wilderness"
+    }
   },
   {
     id: "day5",
@@ -90,10 +141,17 @@ const destinations: MapDestination[] = [
     bestFor: "Epic photography",
     terrain: "Hard-packed salt",
     mood: "Otherworldly awe",
-    image: "/lovable-uploads/a25ce305-a695-4546-9fae-b8fdc60cc4d9.png", // Makgadikgadi elephants
+    image: "/lovable-uploads/a25ce305-a695-4546-9fae-b8fdc60cc4d9.png",
     position: { x: 58, y: 40 },
     day: "Day 5",
-    icon: <Camera className="h-4 w-4" />
+    icon: <Camera className="h-4 w-4" />,
+    movement: {
+      departure: "Mabuasehube (08:00)",
+      arrival: "Makgadikgadi Camp (16:00)",
+      transport: "Long-distance 4WD transfer",
+      travelTime: "8 hours via Ghanzi",
+      distance: "400km northeast transition"
+    }
   },
   {
     id: "day6",
@@ -105,10 +163,11 @@ const destinations: MapDestination[] = [
     bestFor: "Wildlife spectacle",
     terrain: "Migration corridors",
     mood: "Humbling reverence",
-    image: "/lovable-uploads/13144fc7-d253-4fd1-997d-96c622d2754d.png", // Savuti elephants
+    image: "/lovable-uploads/13144fc7-d253-4fd1-997d-96c622d2754d.png",
     position: { x: 66, y: 35 },
     day: "Day 6",
     icon: <Binoculars className="h-4 w-4" />
+    // No movement - exploring same region
   },
   {
     id: "day7",
@@ -120,10 +179,11 @@ const destinations: MapDestination[] = [
     bestFor: "Serene beauty",
     terrain: "Shallow salt waters",
     mood: "Peaceful wonder",
-    image: "/lovable-uploads/52fba817-468b-49a9-827a-bb36b663d4b6.png", // Flamingo image
+    image: "/lovable-uploads/52fba817-468b-49a9-827a-bb36b663d4b6.png",
     position: { x: 72, y: 30 },
     day: "Day 7",
     icon: <Camera className="h-4 w-4" />
+    // No movement - exploring same salt pan region
   },
   {
     id: "day8",
@@ -135,10 +195,17 @@ const destinations: MapDestination[] = [
     bestFor: "Iconic photography",
     terrain: "Scattered woodlands",
     mood: "Timeless elegance",
-    image: "/lovable-uploads/262d126c-8864-467a-a4dc-fa9033a12dc2.png", // Baobab image
+    image: "/lovable-uploads/262d126c-8864-467a-a4dc-fa9033a12dc2.png",
     position: { x: 80, y: 20 },
     day: "Day 8",
-    icon: <MapPin className="h-4 w-4" />
+    icon: <MapPin className="h-4 w-4" />,
+    movement: {
+      departure: "Makgadikgadi Camp (07:30)",
+      arrival: "Nxai Pan Camp (10:00)",
+      transport: "Short 4WD transfer",
+      travelTime: "2.5 hours",
+      distance: "120km to iconic baobabs"
+    }
   },
   {
     id: "day9",
@@ -150,10 +217,17 @@ const destinations: MapDestination[] = [
     bestFor: "Reflection & gratitude",
     terrain: "Open savannas",
     mood: "Bittersweet fulfillment",
-    image: "/lovable-uploads/d02c9222-8e68-4653-b5ca-528385d274b4.png", // Nxai lions
+    image: "/lovable-uploads/d02c9222-8e68-4653-b5ca-528385d274b4.png",
     position: { x: 88, y: 15 },
     day: "Day 9",
-    icon: <Compass className="h-4 w-4" />
+    icon: <Compass className="h-4 w-4" />,
+    movement: {
+      departure: "Nxai Pan Camp (11:00)",
+      arrival: "Maun Airport (14:30)",
+      transport: "Final 4WD transfer to flight",
+      travelTime: "3.5 hours",
+      distance: "200km back to civilization"
+    }
   }
 ];
 
@@ -280,7 +354,7 @@ export const InteractiveJourneyMap: React.FC = () => {
                         <div>
                           <h5 className="font-semibold text-sm text-foreground mb-1">Wildlife & Experiences</h5>
                           <div className="space-y-1">
-                            {destination.highlights.slice(0, 3).map((highlight, index) => (
+                            {destination.highlights.slice(0, 2).map((highlight, index) => (
                               <div key={index} className="text-xs text-muted-foreground flex items-start gap-2">
                                 <div className="w-1 h-1 rounded-full bg-primary mt-1.5 shrink-0" />
                                 {highlight}
@@ -288,6 +362,29 @@ export const InteractiveJourneyMap: React.FC = () => {
                             ))}
                           </div>
                         </div>
+                        
+                        {destination.movement && (
+                          <div className="pt-2 border-t">
+                            <h5 className="font-semibold text-sm text-foreground mb-1">Movement Details</h5>
+                            <div className="space-y-1">
+                              {destination.movement.departure && (
+                                <p className="text-xs text-muted-foreground">
+                                  <span className="font-medium">Departure:</span> {destination.movement.departure}
+                                </p>
+                              )}
+                              {destination.movement.arrival && (
+                                <p className="text-xs text-muted-foreground">
+                                  <span className="font-medium">Arrival:</span> {destination.movement.arrival}
+                                </p>
+                              )}
+                              {destination.movement.travelTime && (
+                                <p className="text-xs text-muted-foreground">
+                                  <span className="font-medium">Travel:</span> {destination.movement.travelTime} • {destination.movement.transport}
+                                </p>
+                              )}
+                            </div>
+                          </div>
+                        )}
                         
                         <div className="pt-2 border-t">
                           <p className="text-xs text-muted-foreground">
@@ -331,7 +428,7 @@ export const InteractiveJourneyMap: React.FC = () => {
                       "{destination.poeticDescription}"
                     </p>
                     
-                    <div className="grid md:grid-cols-3 gap-6">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                       <div>
                         <Badge variant="outline" className="mb-3">Wildlife & Experiences</Badge>
                         <div className="space-y-2">
@@ -344,16 +441,52 @@ export const InteractiveJourneyMap: React.FC = () => {
                         </div>
                       </div>
                       
-                      <div>
-                        <Badge variant="outline" className="mb-3">Perfect For</Badge>
-                        <p className="text-sm text-muted-foreground">{destination.bestFor}</p>
-                      </div>
+                      {destination.movement && (
+                        <div>
+                          <Badge variant="outline" className="mb-3">Movement & Travel</Badge>
+                          <div className="space-y-2">
+                            {destination.movement.departure && (
+                              <p className="text-sm text-muted-foreground">
+                                <span className="font-medium">Departure:</span> {destination.movement.departure}
+                              </p>
+                            )}
+                            {destination.movement.arrival && (
+                              <p className="text-sm text-muted-foreground">
+                                <span className="font-medium">Arrival:</span> {destination.movement.arrival}
+                              </p>
+                            )}
+                            {destination.movement.transport && (
+                              <p className="text-sm text-muted-foreground">
+                                <span className="font-medium">Transport:</span> {destination.movement.transport}
+                              </p>
+                            )}
+                            {destination.movement.travelTime && (
+                              <p className="text-sm text-muted-foreground">
+                                <span className="font-medium">Duration:</span> {destination.movement.travelTime}
+                              </p>
+                            )}
+                            {destination.movement.distance && (
+                              <p className="text-sm text-muted-foreground">
+                                <span className="font-medium">Distance:</span> {destination.movement.distance}
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                      )}
                       
                       <div>
-                        <Badge variant="outline" className="mb-3">Terrain & Mood</Badge>
-                        <p className="text-sm text-muted-foreground">
-                          {destination.terrain} • {destination.mood}
-                        </p>
+                        <Badge variant="outline" className="mb-3">Experience Details</Badge>
+                        <div className="space-y-2">
+                          <p className="text-sm text-muted-foreground">
+                            <span className="font-medium">Perfect for:</span> {destination.bestFor}
+                          </p>
+                          <p className="text-sm text-muted-foreground">
+                            <span className="font-medium">Terrain:</span> {destination.terrain}
+                          </p>
+                          <p className="text-sm text-muted-foreground">
+                            <span className="font-medium">Mood:</span> {destination.mood}
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </CardContent>
