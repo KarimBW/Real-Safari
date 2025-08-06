@@ -2,13 +2,16 @@ import emailjs from '@emailjs/browser';
 import { EMAIL_CONFIG } from '@/config/emailConfig';
 
 interface BookingData {
+  customerName: string;
   customerEmail: string;
+  countryOfResidence: string;
   destination?: string;
   campName?: string;
   travelStyle?: string;
   selectedSeason?: string;
   groupSize?: number;
   totalCost?: number;
+  vehicleConfiguration?: string;
 }
 
 export const sendBookingEmail = async (bookingData: BookingData): Promise<boolean> => {
@@ -18,12 +21,15 @@ export const sendBookingEmail = async (bookingData: BookingData): Promise<boolea
 
     const templateParams = {
       to_email: EMAIL_CONFIG.COMPANY_EMAIL,
+      customer_name: bookingData.customerName,
       customer_email: bookingData.customerEmail,
+      country_of_residence: bookingData.countryOfResidence,
       destination: bookingData.destination || 'Botswana Safari',
       camp_name: bookingData.campName || 'Not selected',
       travel_style: bookingData.travelStyle === 'guided' ? 'Guided & Glorious' : 'Lone & Wild',
       selected_season: bookingData.selectedSeason === 'brown' ? 'Brown Season (High Season)' : 'Green Season (Low Season)',
       group_size: bookingData.groupSize || 2,
+      vehicle_configuration: bookingData.vehicleConfiguration || 'Not specified',
       total_cost: bookingData.totalCost ? `RM ${bookingData.totalCost.toLocaleString()}` : 'Not calculated',
       booking_date: new Date().toLocaleDateString(),
       subject: 'New Safari Booking Request',

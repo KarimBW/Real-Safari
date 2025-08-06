@@ -23,7 +23,9 @@ export const BookingEmailModal: React.FC<BookingEmailModalProps> = ({
   groupSize,
   totalCost
 }) => {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [country, setCountry] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [showError, setShowError] = useState(false);
@@ -32,7 +34,7 @@ export const BookingEmailModal: React.FC<BookingEmailModalProps> = ({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!email || !email.includes('@')) {
+    if (!name.trim() || !email || !email.includes('@') || !country.trim()) {
       return;
     }
 
@@ -40,7 +42,9 @@ export const BookingEmailModal: React.FC<BookingEmailModalProps> = ({
 
     try {
       const success = await sendBookingEmail({
+        customerName: name,
         customerEmail: email,
+        countryOfResidence: country,
         destination: bookingSelection.destination,
         campName: bookingSelection.campName,
         travelStyle: travelStyle,
@@ -65,7 +69,9 @@ export const BookingEmailModal: React.FC<BookingEmailModalProps> = ({
   const handleSuccessClose = () => {
     setShowSuccess(false);
     clearBookingSelection();
+    setName('');
     setEmail('');
+    setCountry('');
     onClose();
   };
 
@@ -122,8 +128,21 @@ export const BookingEmailModal: React.FC<BookingEmailModalProps> = ({
               </div>
             </div>
 
-            {/* Email Form */}
+            {/* Customer Details Form */}
             <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <Label htmlFor="name">Full Name</Label>
+                <Input
+                  id="name"
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Enter your full name"
+                  required
+                  disabled={isSubmitting}
+                />
+              </div>
+
               <div>
                 <Label htmlFor="email">Email Address</Label>
                 <Input
@@ -132,6 +151,19 @@ export const BookingEmailModal: React.FC<BookingEmailModalProps> = ({
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="your.email@example.com"
+                  required
+                  disabled={isSubmitting}
+                />
+              </div>
+
+              <div>
+                <Label htmlFor="country">Country of Residence</Label>
+                <Input
+                  id="country"
+                  type="text"
+                  value={country}
+                  onChange={(e) => setCountry(e.target.value)}
+                  placeholder="Enter your country"
                   required
                   disabled={isSubmitting}
                 />
@@ -152,7 +184,7 @@ export const BookingEmailModal: React.FC<BookingEmailModalProps> = ({
                 </Button>
                 <Button
                   type="submit"
-                  disabled={isSubmitting || !email}
+                  disabled={isSubmitting || !name.trim() || !email || !country.trim()}
                   className="flex-1 bg-safari-gold hover:bg-safari-light-brown"
                 >
                   {isSubmitting ? (
@@ -179,7 +211,7 @@ export const BookingEmailModal: React.FC<BookingEmailModalProps> = ({
               Booking Request Sent!
             </AlertDialogTitle>
             <AlertDialogDescription>
-              Thank you for your booking request! We've received your details and will contact you within 24 hours to confirm your safari adventure.
+              Thank you for your booking request, {name}! We've received your details and will contact you within 24 hours to confirm your safari adventure.
               <br /><br />
               A confirmation email has been sent to <strong>{email}</strong>.
             </AlertDialogDescription>
