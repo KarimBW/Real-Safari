@@ -88,23 +88,6 @@ export const InteractiveJourneyMap: React.FC = () => {
 
   return (
     <div className="relative min-h-screen py-20 overflow-hidden">
-      {/* Floating hippo background */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] opacity-5">
-          <img 
-            src="/lovable-uploads/691157be-fdd5-4b67-811b-9f440014bdeb.png" 
-            alt="Hippo silhouette"
-            className="w-full h-full object-contain opacity-30 transform rotate-12"
-          />
-        </div>
-        <div className="absolute top-[-10%] left-[-15%] w-[40%] h-[40%] opacity-3">
-          <img 
-            src="/lovable-uploads/691157be-fdd5-4b67-811b-9f440014bdeb.png" 
-            alt="Hippo silhouette"
-            className="w-full h-full object-contain opacity-20 transform -rotate-6 scale-75"
-          />
-        </div>
-      </div>
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
