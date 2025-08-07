@@ -144,11 +144,11 @@ const CampDetailsSection = forwardRef<HTMLDivElement, CampDetailsSectionProps>((
             </div>
             
             <div className="mt-8">
-              <button 
+                <button 
                 onClick={handleBookCamp}
                 className="bg-safari-gold hover:bg-safari-light-brown text-white py-3 px-8 transition-colors duration-300"
               >
-                Book This Camp
+                Reserve Your Adventure
               </button>
             </div>
           </div>

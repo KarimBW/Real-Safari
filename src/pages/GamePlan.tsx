@@ -6,6 +6,7 @@ import { ChevronDown } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { ChoosePanelMobile } from "@/components/Safari/ChoosePanelMobile";
 import { useTravelStyle } from '@/contexts/TravelStyleContext';
+import FooterSection from '@/components/Destination/FooterSection';
 
 interface StyleOption {
   title: string;
@@ -398,6 +399,9 @@ const GamePlan = () => {
           </div>
         </div>
       </div>
+      
+      {/* Footer */}
+      <FooterSection />
     </div>
   );
 };

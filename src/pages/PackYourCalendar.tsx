@@ -9,6 +9,7 @@ import { InteractiveJourneyMap } from "@/components/Safari/InteractiveJourneyMap
 import { PackageOverview } from "@/components/Safari/PackageOverview";
 import { useTravelStyle } from "@/contexts/TravelStyleContext";
 import { BookingEmailModal } from "@/components/BookingEmailModal";
+import FooterSection from '@/components/Destination/FooterSection';
 
 interface SeasonOption {
   title: string;
@@ -674,6 +675,9 @@ const PackYourCalendar = () => {
           totalCost={calculateTotalCost(selectedSeason, groupSize)}
         />
       )}
+      
+      {/* Footer */}
+      <FooterSection />
     </div>
   );
 };
