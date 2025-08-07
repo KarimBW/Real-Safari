@@ -45,8 +45,6 @@ export const BookingEmailModal: React.FC<BookingEmailModalProps> = ({
         customerName: name,
         customerEmail: email,
         countryOfResidence: country,
-        destination: 'Botswana Wild: Kalahari & Makgadikgadi Safari',
-        campName: 'Multi-destination Safari Package',
         travelStyle: travelStyle,
         selectedSeason: bookingSelection.selectedSeason,
         groupSize: groupSize,

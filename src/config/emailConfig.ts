@@ -10,11 +10,10 @@
 // 5. Replace the values below:
 
 export const EMAIL_CONFIG = {
-  // Replace these with your actual EmailJS credentials
-  PUBLIC_KEY: 'YOUR_EMAILJS_PUBLIC_KEY',
-  SERVICE_ID: 'YOUR_SERVICE_ID', 
-  TEMPLATE_ID: 'YOUR_TEMPLATE_ID',
-  COMPANY_EMAIL: 'info@botswanasafari.com' // Replace with your company email
+  PUBLIC_KEY: 'eGSCiYnt9Kf2sdSqp',
+  SERVICE_ID: 'service_g2ppidq', 
+  TEMPLATE_ID: 'template_1n5xxlr',
+  COMPANY_EMAIL: 'info@botswanasafari.com'
 };
 
 // Note: For production, consider using environment variables
