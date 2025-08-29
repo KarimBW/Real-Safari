@@ -4,6 +4,9 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { campData } from '@/data/campData';
 import { useTravelStyle } from "@/contexts/TravelStyleContext";
+import safariElephantsSunset from '@/assets/safari-elephants-sunset.jpg';
+import safariLionsPride from '@/assets/safari-lions-pride.jpg';
+import safariGiraffesKalahari from '@/assets/safari-giraffes-kalahari.jpg';
 
 interface CampDetailsSectionProps {
   destinationId: string;
@@ -31,16 +34,15 @@ const CampDetailsSection = forwardRef<HTMLDivElement, CampDetailsSectionProps>((
   const campInfo = campData[destinationId]?.[activeCamp.toLowerCase()] || 
     { description: "Information about this camp is coming soon!", features: ["Wildlife viewing", "Guided safaris", "Stargazing"] };
   
-  // Images for the carousel - placeholder implementation
+  // Images for the carousel - authentic African safari photos
   const getCarouselImages = (destinationId: string, camp: string) => {
-    // In a real implementation, these would come from a proper data source
-    const basePlaceholders = [
-      "https://images.unsplash.com/photo-1472396961693-142e6e269027",
-      "https://images.unsplash.com/photo-1466721591366-2d5fba72006d",
-      "https://images.unsplash.com/photo-1493962853295-0fd70327578a"
+    const safariImages = [
+      safariElephantsSunset,
+      safariLionsPride,
+      safariGiraffesKalahari
     ];
     
-    return basePlaceholders;
+    return safariImages;
   };
 
   const carouselImages = getCarouselImages(destinationId, activeCamp);
@@ -180,7 +182,7 @@ const CampDetailsSection = forwardRef<HTMLDivElement, CampDetailsSectionProps>((
                     }}
                   >
                     <img 
-                      src={`${image}?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80`}
+                      src={image}
                       alt={`${activeCamp} camp view ${index + 1}`}
                       className="w-full h-full object-cover rounded-lg"
                     />
