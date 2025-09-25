@@ -113,8 +113,8 @@ const PackYourCalendar = () => {
       image: "/lovable-uploads/f8df9392-5003-48b6-ac98-5b48f496ad5b.png",
       period: "01 July - 31 October",
       pricing: {
-        twoPersons: 7600,
-        threePersons: 5900
+        twoPersons: 7900,
+        threePersons: 6100
       },
       features: [
         "Peak wildlife viewing with animals concentrated around water sources",
@@ -130,8 +130,8 @@ const PackYourCalendar = () => {
       image: "/lovable-uploads/816850fe-ec88-41bc-9a5f-644224f107cc.png",
       period: "01 November - 30 June",
       pricing: {
-        twoPersons: 6300,
-        threePersons: 5100
+        twoPersons: 6400,
+        threePersons: 5200
       },
       features: [
         "Lush landscapes and dramatic skies",
