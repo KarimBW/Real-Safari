@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { TravelStyleProvider } from "@/contexts/TravelStyleContext";
 import ScrollToTop from "@/components/ScrollToTop";
+import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import Index from "./pages/Index";
 import PackYourCalendar from "./pages/PackYourCalendar";
 import DestinationPage from "./pages/DestinationPage";
@@ -22,6 +23,7 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <ScrollToTop />
+          <WhatsAppFloat />
           <Routes>
             <Route path="/" element={<Index />} />
             {/* Redirect /plan to /game-plan */}
