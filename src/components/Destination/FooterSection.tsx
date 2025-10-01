@@ -30,6 +30,7 @@ const FooterSection: React.FC = () => {
             <h3 className="text-2xl font-bold mb-6 text-safari-dark-grey">Get In Touch</h3>
             <div className="text-safari-dark-grey space-y-3">
               <p className="font-semibold">Blue Zebra Adventures t/a Real Safari</p>
+              <p className="text-sm">License Number: MOTAC L/N/12103</p>
               <p className="text-sm">
                 G-038, Dataran Millenium<br />
                 98, Jalan 14/1<br />
