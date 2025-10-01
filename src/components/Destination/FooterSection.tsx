@@ -27,19 +27,25 @@ const FooterSection: React.FC = () => {
           </div>
           
           <div>
-            <h3 className="text-2xl font-bold mb-6 text-safari-dark-grey">Stay Connected</h3>
-            <p className="text-safari-dark-grey mb-4">
-              Join our newsletter for safari updates, wildlife facts, and the occasional elephant joke.
-            </p>
-            <div className="flex">
-              <input 
-                type="email" 
-                placeholder="Your email" 
-                className="px-4 py-3 bg-white border border-safari-light-brown focus:outline-none flex-1"
-              />
-              <button className="bg-safari-gold hover:bg-safari-light-brown text-white px-4 py-3 transition-colors">
-                Sign Up
-              </button>
+            <h3 className="text-2xl font-bold mb-6 text-safari-dark-grey">Get In Touch</h3>
+            <div className="text-safari-dark-grey space-y-3">
+              <p className="font-semibold">Blue Zebra Adventures t/a Real Safari</p>
+              <p className="text-sm">
+                G-038, Dataran Millenium<br />
+                98, Jalan 14/1<br />
+                46100, Petaling Jaya, Selangor<br />
+                <span className="italic">(open by appointment only)</span>
+              </p>
+              <p className="text-sm">
+                <a href="mailto:bluezebraadventures@gmail.com" className="hover:text-safari-gold transition-colors">
+                  bluezebraadventures@gmail.com
+                </a>
+              </p>
+              <p className="text-sm">
+                <a href="tel:+60186311330" className="hover:text-safari-gold transition-colors">
+                  +60 186 3113 30
+                </a>
+              </p>
             </div>
           </div>
         </div>
