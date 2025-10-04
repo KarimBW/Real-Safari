@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ChevronLeft } from 'lucide-react';
 import {
   Accordion,
@@ -10,15 +10,20 @@ import {
 import FooterSection from '@/components/Destination/FooterSection';
 
 const TermsAndConditions = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen bg-safari-cream">
       {/* Header */}
       <header className="bg-safari-dark-grey text-white py-6 px-8">
         <div className="container mx-auto">
-          <Link to="/" className="inline-flex items-center gap-2 text-white hover:text-safari-gold transition-colors mb-4">
+          <button 
+            onClick={() => navigate(-1)} 
+            className="inline-flex items-center gap-2 text-white hover:text-safari-gold transition-colors mb-4"
+          >
             <ChevronLeft className="h-4 w-4" />
-            Back to Home
-          </Link>
+            Back to Previous Page
+          </button>
           <h1 className="text-4xl md:text-5xl font-bold">Terms & Conditions</h1>
           <p className="text-lg mt-2 text-safari-sand">Blue Zebra Adventures Sdn. Bhd. t/a Real Safari</p>
           <p className="text-sm mt-1 text-safari-gold">License Number: MOTAC L/N/12103</p>
