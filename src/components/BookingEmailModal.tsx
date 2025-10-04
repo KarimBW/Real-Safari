@@ -3,6 +3,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Checkbox } from '@/components/ui/checkbox';
 import { AlertDialog, AlertDialogAction, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '@/components/ui/alert-dialog';
 import { Loader2, Mail, CheckCircle, XCircle } from 'lucide-react';
 import { sendBookingEmail } from '@/lib/emailService';
@@ -26,6 +27,7 @@ export const BookingEmailModal: React.FC<BookingEmailModalProps> = ({
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [country, setCountry] = useState('');
+  const [agreedToTerms, setAgreedToTerms] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [showError, setShowError] = useState(false);
@@ -70,6 +72,7 @@ export const BookingEmailModal: React.FC<BookingEmailModalProps> = ({
     setName('');
     setEmail('');
     setCountry('');
+    setAgreedToTerms(false);
     onClose();
   };
 
@@ -166,6 +169,31 @@ export const BookingEmailModal: React.FC<BookingEmailModalProps> = ({
                 </p>
               </div>
 
+              {/* Terms & Conditions Acceptance */}
+              <div className="flex items-start gap-3 p-4 bg-safari-cream rounded-lg border border-safari-light-brown">
+                <Checkbox
+                  id="terms"
+                  checked={agreedToTerms}
+                  onCheckedChange={(checked) => setAgreedToTerms(checked as boolean)}
+                  disabled={isSubmitting}
+                  className="mt-1"
+                />
+                <div className="flex-1">
+                  <Label htmlFor="terms" className="text-sm cursor-pointer">
+                    I have read and agree to the{' '}
+                    <a 
+                      href="/terms-and-conditions" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-safari-gold hover:underline font-medium"
+                    >
+                      Terms & Conditions
+                    </a>
+                    {' '}including the booking, payment, and cancellation policies.
+                  </Label>
+                </div>
+              </div>
+
               <div className="flex gap-2 pt-4">
                 <Button
                   type="button"
@@ -178,7 +206,7 @@ export const BookingEmailModal: React.FC<BookingEmailModalProps> = ({
                 </Button>
                 <Button
                   type="submit"
-                  disabled={isSubmitting || !name.trim() || !email || !country.trim()}
+                  disabled={isSubmitting || !name.trim() || !email || !country.trim() || !agreedToTerms}
                   className="flex-1 bg-safari-gold hover:bg-safari-light-brown"
                 >
                   {isSubmitting ? (

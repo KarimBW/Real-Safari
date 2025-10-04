@@ -11,6 +11,7 @@ import Index from "./pages/Index";
 import PackYourCalendar from "./pages/PackYourCalendar";
 import DestinationPage from "./pages/DestinationPage";
 import GamePlan from "./pages/GamePlan";
+import TermsAndConditions from "./pages/TermsAndConditions";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -33,6 +34,7 @@ const App = () => (
              {/* Block access to Okavango destination - redirect to 404 */}
              <Route path="/destination/okavango" element={<NotFound />} />
              <Route path="/game-plan" element={<GamePlan />} />
+             <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

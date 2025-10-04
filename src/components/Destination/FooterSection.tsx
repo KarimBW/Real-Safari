@@ -51,13 +51,24 @@ const FooterSection: React.FC = () => {
           </div>
         </div>
         
-        <div className="border-t border-safari-light-brown pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="mb-4 md:mb-0 text-safari-dark-grey">© 2025 REAL SAFARI — All wildlife respected, all adventures guaranteed</p>
-          <div className="flex space-x-6">
-            <Link to="#" className="text-safari-dark-grey hover:text-safari-gold transition-colors">INSTAGRAM</Link>
-            <Link to="#" className="text-safari-dark-grey hover:text-safari-gold transition-colors">FACEBOOK</Link>
-            <Link to="#" className="text-safari-dark-grey hover:text-safari-gold transition-colors">YOUTUBE</Link>
-            <Link to="#" className="text-safari-dark-grey hover:text-safari-gold transition-colors">TELEGRAM</Link>
+        <div className="border-t border-safari-light-brown pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center mb-4">
+            <p className="mb-4 md:mb-0 text-safari-dark-grey">© 2025 REAL SAFARI — All wildlife respected, all adventures guaranteed</p>
+            <div className="flex space-x-6">
+              <Link to="#" className="text-safari-dark-grey hover:text-safari-gold transition-colors">INSTAGRAM</Link>
+              <Link to="#" className="text-safari-dark-grey hover:text-safari-gold transition-colors">FACEBOOK</Link>
+              <Link to="#" className="text-safari-dark-grey hover:text-safari-gold transition-colors">YOUTUBE</Link>
+              <Link to="#" className="text-safari-dark-grey hover:text-safari-gold transition-colors">TELEGRAM</Link>
+            </div>
+          </div>
+          <div className="flex flex-wrap justify-center md:justify-start gap-4 text-sm">
+            <Link to="/terms-and-conditions" className="text-safari-dark-grey hover:text-safari-gold transition-colors">
+              Terms & Conditions
+            </Link>
+            <span className="text-safari-light-brown">|</span>
+            <Link to="/terms-and-conditions" className="text-safari-dark-grey hover:text-safari-gold transition-colors">
+              Booking Policy
+            </Link>
           </div>
         </div>
         
