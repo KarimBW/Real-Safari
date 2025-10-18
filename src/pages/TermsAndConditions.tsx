@@ -34,254 +34,276 @@ const TermsAndConditions = () => {
       <div className="container mx-auto px-8 py-16 max-w-4xl">
         <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
           <p className="text-safari-dark-grey mb-8">
-            Please read the following information to ensure that you fully understand all booking terms and conditions, 
-            how payments are made, our cancellation policy and our insurance waiver.
+            These Terms and Conditions set out the contractual agreement between Blue Zebra Adventures Sdn. Bhd. and the guest 
+            for all bookings made with us. Please read them carefully to ensure you fully understand our booking, payment, 
+            cancellation, and liability policies. By paying a deposit or any part of the total booking cost, you confirm that 
+            you have read, understood, and agreed to these Terms and Conditions.
           </p>
 
           <Accordion type="single" collapsible className="w-full">
-            {/* Section 1: How to Book */}
+            {/* Section 1: Introduction */}
             <AccordionItem value="item-1">
-              <AccordionTrigger className="text-left">1. How to Book</AccordionTrigger>
+              <AccordionTrigger className="text-left">1. Introduction</AccordionTrigger>
+              <AccordionContent>
+                <p className="text-safari-dark-grey">
+                  These Terms and Conditions set out the contractual agreement between Blue Zebra Adventures Sdn. Bhd. 
+                  ("Blue Zebra," "the Company," "we," or "us") and the guest ("you," "your," or "the guest") for all bookings 
+                  made with us. Please read them carefully to ensure you fully understand our booking, payment, cancellation, 
+                  and liability policies. By paying a deposit or any part of the total booking cost, you confirm that you have 
+                  read, understood, and agreed to these Terms and Conditions.
+                </p>
+              </AccordionContent>
+            </AccordionItem>
+
+            {/* Section 2: How to Book */}
+            <AccordionItem value="item-2">
+              <AccordionTrigger className="text-left">2. How to Book</AccordionTrigger>
               <AccordionContent>
                 <div className="space-y-4 text-safari-dark-grey">
                   <p>
-                    <strong>a)</strong> A 20% deposit is required and made payable to Blue Zebra Adventures Sdn. Bhd to book your trip 
-                    based on your selected dates. On receipt of your deposit, we will, subject to availability, make reservations. 
-                    Alternative dates will be given if there are no availability on your selected dates. Once the trip dates are 
-                    confirmed you will receive your confirmation notice, your reservation is confirmed and accepted by us.
+                    A <strong>30% deposit</strong> is required and payable to Blue Zebra Adventures Sdn. Bhd. to secure 
+                    your booking based on your preferred travel dates.
                   </p>
                   <p>
-                    <strong>b)</strong> Final payment is due to Blue Zebra Adventures Sdn. Bhd. not later than 8 weeks prior to departure. 
-                    On receipt of your full payment, we will send information required for your trip. Please ensure that you receive 
-                    the information before you leave for your trip.
+                    Upon receipt of your deposit, and subject to availability, we will confirm your reservation. If your 
+                    selected dates are unavailable, alternative dates will be proposed. Once dates are confirmed, a 
+                    <strong> Booking Confirmation Notice</strong> will be issued, signifying acceptance of your reservation.
                   </p>
                   <p>
-                    <strong>c)</strong> Rates are quoted in Malaysian Ringgit. We accept payment by cash, cheque, credit card or online banking.
+                    The balance of payment is due <strong>no later than 10 weeks (70 days) prior to departure</strong>. 
+                    Failure to make payment by this date may result in automatic cancellation of the booking and forfeiture 
+                    of the deposit.
+                  </p>
+                  <p>
+                    Bookings made less than 10 weeks prior to intended date of travel shall be subject to alternative payment 
+                    arrangement as seen fit by the company and disclosed to the guest.
+                  </p>
+                  <p>
+                    All rates are quoted in <strong>Malaysian Ringgit (MYR)</strong>. Prices are subject to change without 
+                    prior notice due to exchange rate fluctuations, changes in government taxes, park fees, or fuel surcharges.
+                  </p>
+                  <p>
+                    We accept payment by cash, credit card, or online bank transfer.
                   </p>
                 </div>
               </AccordionContent>
             </AccordionItem>
 
-            {/* Section 2: Cancellation */}
-            <AccordionItem value="item-2">
-              <AccordionTrigger className="text-left">2. Cancellation</AccordionTrigger>
+            {/* Section 3: Cancellations */}
+            <AccordionItem value="item-3">
+              <AccordionTrigger className="text-left">3. Cancellations</AccordionTrigger>
               <AccordionContent>
                 <div className="space-y-4 text-safari-dark-grey">
                   <p>
-                    Cancellations are only effective on receipt of written notification. If cancellation is prior to 8 weeks 
-                    before departure your deposit is forfeited. If your cancellation is made after the due date for full payment 
-                    of your tour fare, charges will be levied. The scale of charges, expressed as a percentage of the tour prices, 
-                    is as follows:
+                    All cancellations must be made in writing and are only effective upon acknowledgement of receipt of such 
+                    notification by Blue Zebra. Refunds will be processed according to the following schedule:
                   </p>
                   <ul className="list-disc pl-6 space-y-2">
-                    <li>More than 8 weeks notice ~ Deposit forfeited</li>
-                    <li>Less than 8 weeks notice ~ Deposit plus 25%</li>
-                    <li>Less than 4 weeks notice ~ 50%</li>
-                    <li>Less than 3 weeks notice ~ 60%</li>
-                    <li>Less than 2 weeks notice ~ 100%</li>
+                    <li><strong>More than 10 weeks notice:</strong> Deposit forfeited</li>
+                    <li><strong>8-10 weeks notice:</strong> Deposit plus 25% of total cost</li>
+                    <li><strong>4-8 weeks notice:</strong> 50% of total cost</li>
+                    <li><strong>2-4 weeks notice:</strong> 75% of total cost</li>
+                    <li><strong>Less than 2 weeks notice:</strong> 100% of total cost</li>
                   </ul>
                   <p>
-                    As for no show or starting the trip after the reserved date or leaving the trip prior to its completion, 
-                    no refunds can be made.
+                    No refunds are provided for no-shows, late arrivals, early departures, or unused services once travel 
+                    has commenced.
                   </p>
                 </div>
               </AccordionContent>
             </AccordionItem>
 
-            {/* Section 3: If You Change Your Booking */}
-            <AccordionItem value="item-3">
-              <AccordionTrigger className="text-left">3. If You Change Your Booking</AccordionTrigger>
+            {/* Section 4: Changes to Bookings */}
+            <AccordionItem value="item-4">
+              <AccordionTrigger className="text-left">4. Changes to Bookings</AccordionTrigger>
               <AccordionContent>
                 <p className="text-safari-dark-grey">
-                  After your booking has been confirmed, should you wish to make any changes to your itinerary or wish an 
-                  earlier departure date, we will make every effort to accommodate your requests based on availability. 
-                  However, there may be extra costs involved to accommodate to your request. These costs are in addition 
-                  to the fee quoted to you for your initial safari. Normal cancellation fees apply if you wish to postpone 
-                  your departure.
+                  If you wish to modify your booking after confirmation (including travel dates, itinerary, or participant 
+                  numbers), we will make every reasonable effort to accommodate your request, subject to availability. 
+                  Any additional costs or third-party fees incurred as a result of changes will be your responsibility. 
+                  Should you wish to postpone your departure, our standard cancellation terms will apply.
                 </p>
               </AccordionContent>
             </AccordionItem>
 
-            {/* Section 4: Insurance */}
-            <AccordionItem value="item-4">
-              <AccordionTrigger className="text-left">4. Insurance</AccordionTrigger>
+            {/* Section 5: Travel Insurance */}
+            <AccordionItem value="item-5">
+              <AccordionTrigger className="text-left">5. Travel Insurance</AccordionTrigger>
               <AccordionContent>
                 <div className="space-y-4 text-safari-dark-grey">
                   <p>
-                    It is a condition of booking, that the sole responsibility lies with the guest to ensure that they carry 
-                    the correct comprehensive travel and medical insurance to cover themselves, as well as any dependants/travelling 
-                    companions for the duration of their trip to Africa. This insurance should include cover in respect of, but 
-                    not limited to, the following eventualities: cancellation or curtailment of the safari, emergency evacuation 
-                    expenses, medical expenses, repatriation expenses, damage/theft/loss of personal baggage, money and goods.
+                    It is a <strong>mandatory condition of booking</strong> that all guests hold valid, comprehensive travel 
+                    and medical insurance for the duration of their trip. Your insurance must include, but is not limited to, 
+                    coverage for:
                   </p>
+                  <ul className="list-disc pl-6 space-y-2">
+                    <li>Trip cancellation or curtailment</li>
+                    <li>Emergency evacuation and repatriation</li>
+                    <li>Medical expenses</li>
+                    <li>Damage, theft, or loss of personal belongings and money</li>
+                  </ul>
                   <p>
-                    Blue Zebra Adventures Sdn. Bhd., including their representatives, employees and agents will take no responsibility 
-                    for any costs, losses incurred or suffered by the guest, or guest's dependants or travelling companions, with 
-                    regards to, but not limited to, any of the above mentioned eventualities. Guests will be charged directly by 
-                    the relevant service providers for any emergency services they may require, and may find themselves in a position 
-                    unable to access such services should they not be carrying the relevant insurance cover.
-                  </p>
-                  <p>
-                    Guests not wishing to purchase comprehensive travel and medical insurance, will be asked to sign a liability 
-                    release form.
+                    Blue Zebra, its representatives, employees, and agents accept no responsibility for any costs, losses, 
+                    or damages arising from events that could have been covered by travel insurance. Proof of valid insurance 
+                    may be required before departure. Guests declining insurance coverage will be required to sign a liability 
+                    release form prior to travel.
                   </p>
                 </div>
               </AccordionContent>
             </AccordionItem>
 
-            {/* Section 5: Baggage */}
-            <AccordionItem value="item-5">
-              <AccordionTrigger className="text-left">5. Baggage</AccordionTrigger>
-              <AccordionContent>
-                <p className="text-safari-dark-grey">
-                  For safety and because space is restricted, baggage in the camper is restricted to a maximum of 15 kg per person 
-                  in soft bags. Backpacks are the ideal kind of baggage. This includes camera equipment and carry-on baggage. 
-                  Should guests arrive with excess baggage without prior warning their baggage could be delayed, as we may have 
-                  to transfer the baggage to your last place of accommodation of your safari itinerary at a later stage at a 
-                  considerable extra cost to you.
-                </p>
-              </AccordionContent>
-            </AccordionItem>
-
-            {/* Section 6: Wild Animals */}
+            {/* Section 6: Baggage */}
             <AccordionItem value="item-6">
-              <AccordionTrigger className="text-left">6. Wild Animals</AccordionTrigger>
+              <AccordionTrigger className="text-left">6. Baggage</AccordionTrigger>
               <AccordionContent>
                 <p className="text-safari-dark-grey">
-                  Please be aware that these safaris may take you into close contact with wild animals. Attacks by wild animals 
-                  are rare, but no safari into the African wilderness can guarantee that this will not occur. Neither Blue Zebra, 
-                  nor their employees or contractors, can be held responsible for any injury or incident on the safari. Please 
-                  note that most campsites are not fenced.
+                  Due to safety and space limitations, baggage per person is limited to <strong>15 kg (33 lbs)</strong> in 
+                  soft bags, including camera equipment and carry-on luggage. Backpacks are recommended. Excess baggage may 
+                  be delayed and transferred to your final destination at your cost. Blue Zebra accepts no liability for 
+                  delayed baggage delivery.
                 </p>
               </AccordionContent>
             </AccordionItem>
 
-            {/* Section 7: Immigration & Health */}
+            {/* Section 7: Wildlife and Safety */}
             <AccordionItem value="item-7">
-              <AccordionTrigger className="text-left">7. Immigration & Health</AccordionTrigger>
+              <AccordionTrigger className="text-left">7. Wildlife and Safety</AccordionTrigger>
               <AccordionContent>
                 <p className="text-safari-dark-grey">
-                  The onus is upon the guest to ensure that passports and visas are valid for the countries visited. Blue Zebra 
-                  and their staff cannot be held liable for any visas, etc. not held by the guests, nor the cost of visas.
+                  Safaris often take place in areas inhabited by wild animals. While incidents are rare, no safari can 
+                  guarantee complete safety from wildlife encounters. Blue Zebra, its employees, and contractors cannot be 
+                  held responsible for any injury, loss, or damage caused by wild animals. Guests participate at their own 
+                  risk, and most safari camps are unfenced.
                 </p>
               </AccordionContent>
             </AccordionItem>
 
-            {/* Section 8: Not Included */}
+            {/* Section 8: Immigration and Health Requirements */}
             <AccordionItem value="item-8">
-              <AccordionTrigger className="text-left">8. Not Included</AccordionTrigger>
+              <AccordionTrigger className="text-left">8. Immigration and Health Requirements</AccordionTrigger>
               <AccordionContent>
-                <div className="space-y-2 text-safari-dark-grey">
-                  <p className="italic">(This varies from itinerary to itinerary)</p>
-                  <p>
-                    Insurance to cover for cancellation and curtailment, medical, diesel fuel and water for the camper, 
-                    emergency evacuation back home, beverages in certain areas, personal laundry at certain camps, gratuities 
-                    to guides, porters and to staff; any excursion not related to the safari; meals that are not mentioned as 
-                    per the itinerary, scheduled airfares, transfers and departure taxes.
-                  </p>
+                <p className="text-safari-dark-grey">
+                  It is the sole responsibility of each guest to ensure they possess valid passports, visas, vaccination 
+                  certificates, and other travel documents required for the countries visited. Blue Zebra will not be held 
+                  liable for costs incurred due to failure to obtain such documentation.
+                </p>
+              </AccordionContent>
+            </AccordionItem>
+
+            {/* Section 9: Services Not Included */}
+            <AccordionItem value="item-9">
+              <AccordionTrigger className="text-left">9. Services Not Included</AccordionTrigger>
+              <AccordionContent>
+                <div className="space-y-4 text-safari-dark-grey">
+                  <p>Unless otherwise stated in your itinerary, the following are not included in your tour price:</p>
+                  <ul className="list-disc pl-6 space-y-2">
+                    <li>Travel and medical insurance</li>
+                    <li>Diesel fuel and water for the camper</li>
+                    <li>Emergency evacuation or repatriation</li>
+                    <li>Certain beverages and laundry services</li>
+                    <li>Gratuities to staff, porters, and guides</li>
+                    <li>Optional excursions not listed in your itinerary</li>
+                    <li>Meals not specified in the itinerary</li>
+                    <li>Scheduled airfares, transfers, and departure taxes</li>
+                  </ul>
                 </div>
               </AccordionContent>
             </AccordionItem>
 
-            {/* Section 9: Responsibility */}
-            <AccordionItem value="item-9">
-              <AccordionTrigger className="text-left">9. Responsibility</AccordionTrigger>
-              <AccordionContent>
-                <p className="text-safari-dark-grey">
-                  Neither Blue Zebra Adventures Sdn. Bhd. nor any person or agent acting for, through or on behalf of Blue Zebra 
-                  Adventures Sdn. Bhd. shall be liable for any loss or damage whatsoever arising from any cause whatsoever and 
-                  without restricting the generality of the afore-going shall particularly not be responsible for loss or damage 
-                  arising from any errors or omissions contained in its brochure or other literature, loss or damage caused by 
-                  delays, sickness, theft, injury or death.
-                  <br /><br />
-                  In addition Blue Zebra shall have the right at any time at its discretion to cancel any safari or the remainder 
-                  thereof or make any alteration in route, accommodation, price or other details and, in the event of any safari 
-                  being rendered impossible, illegal or inadvisable by weather, strike, war, government or interference or any 
-                  other cause whatsoever, the extra expenses incurred as a result thereof shall be the responsibility of the passenger. 
-                  Blue Zebra may at its discretion and without liability or cost to itself at any time cancel or terminate the guest's 
-                  booking and in particular without limiting the generality of the afore-going it shall be entitled to do so in the 
-                  event of the illness or the illegal or incompatible behaviour of the guest, who shall in such circumstances not be 
-                  entitled to any refund. The person making any booking will, by the making of such booking, warrant that he or she 
-                  has authority to enter into a contract on behalf of the other person included in such a booking and in the event of 
-                  the failure of any or all of the other persons so included to make payment, the person making the booking shall by 
-                  his/her signature thereof assume personal liability for the total price of all bookings made by him/her.
-                </p>
-              </AccordionContent>
-            </AccordionItem>
-
-            {/* Section 10: Changes to Schedules */}
+            {/* Section 10: Company Responsibility and Liability */}
             <AccordionItem value="item-10">
-              <AccordionTrigger className="text-left">10. Changes to Schedules</AccordionTrigger>
+              <AccordionTrigger className="text-left">10. Company Responsibility and Liability</AccordionTrigger>
               <AccordionContent>
-                <p className="text-safari-dark-grey">
-                  Although every effort is made to adhere to schedules it should be borne in mind that Blue Zebra reserves the 
-                  right and in fact is obliged to occasionally change routes and camps on safaris as dictated by changing conditions. 
-                  Such conditions may be brought about by seasonal rainfall on bush tracks and in game areas, by game migrations 
-                  from one region to another, or airline or other booking problems, etc.
-                </p>
+                <div className="space-y-4 text-safari-dark-grey">
+                  <p>
+                    To the maximum extent permitted by law, Blue Zebra Adventures Sdn. Bhd. shall not be held liable for 
+                    any loss, injury, death, damage, delay, or expense arising from any cause whatsoever, including but 
+                    not limited to:
+                  </p>
+                  <ul className="list-disc pl-6 space-y-2">
+                    <li>Force majeure events (weather, war, strikes, government action, pandemics, etc.)</li>
+                    <li>Acts or omissions of third-party service providers</li>
+                    <li>Errors in brochures or printed materials</li>
+                    <li>Delays, sickness, theft, or changes to itineraries</li>
+                  </ul>
+                  <p className="font-semibold mt-4">Blue Zebra reserves the right to:</p>
+                  <ul className="list-disc pl-6 space-y-2">
+                    <li>Alter or cancel any safari or portion thereof due to conditions beyond its control</li>
+                    <li>Substitute accommodations, vehicles, or guides when necessary</li>
+                    <li>Decline or terminate a booking due to illness, illegal conduct, or behavior deemed incompatible 
+                        with the interests of other guests</li>
+                  </ul>
+                  <p>In such cases, no refund or compensation will be made.</p>
+                </div>
               </AccordionContent>
             </AccordionItem>
 
-            {/* Section 11: Refunds */}
+            {/* Section 11: Force Majeure */}
             <AccordionItem value="item-11">
-              <AccordionTrigger className="text-left">11. Refunds</AccordionTrigger>
+              <AccordionTrigger className="text-left">11. Force Majeure</AccordionTrigger>
               <AccordionContent>
                 <p className="text-safari-dark-grey">
-                  Whilst Blue Zebra uses its best endeavours to ensure that all anticipated accommodation is available as planned, 
-                  there shall be no claim of any nature whatsoever against Blue Zebra for a refund either in the whole or part, 
-                  if any accommodation or excursion is unavailable and a reasonable alternative is not found. If the guest is 
-                  unable to use any service provided in the itinerary, then there are no refunds due.
+                  In the event of circumstances beyond our reasonable control (including natural disasters, war, epidemics, 
+                  strikes, or government restrictions), Blue Zebra shall not be held responsible for any resulting loss or 
+                  change in travel arrangements. We will make every reasonable effort to reschedule affected bookings or 
+                  provide a credit for future travel, subject to supplier policies.
                 </p>
               </AccordionContent>
             </AccordionItem>
 
-            {/* Section 12: Guides */}
+            {/* Section 12: Itinerary and Schedule Changes */}
             <AccordionItem value="item-12">
-              <AccordionTrigger className="text-left">12. Guides</AccordionTrigger>
+              <AccordionTrigger className="text-left">12. Itinerary and Schedule Changes</AccordionTrigger>
               <AccordionContent>
                 <p className="text-safari-dark-grey">
-                  For Active Safaris, the guide's main role is to guide and assist. Any request for the guide to drive will be 
-                  subjected to the guide's discretion. If one of our guides is unable to carry out his duties due to illness, etc. 
-                  we reserve the right to substitute with another guide.
+                  Every effort will be made to adhere to the confirmed itinerary; however, changes may occur due to weather, 
+                  road conditions, animal movements, or logistical reasons. Blue Zebra reserves the right to vary routes, 
+                  accommodation, and schedules without notice.
                 </p>
               </AccordionContent>
             </AccordionItem>
 
-            {/* Section 13: Governing Law */}
+            {/* Section 13: Refund Policy */}
             <AccordionItem value="item-13">
-              <AccordionTrigger className="text-left">13. Governing Law</AccordionTrigger>
+              <AccordionTrigger className="text-left">13. Refund Policy</AccordionTrigger>
               <AccordionContent>
                 <p className="text-safari-dark-grey">
-                  This agreement is made subject to and shall be governed by and construed according to the laws of the country 
-                  in which the safari takes place. The company only makes your travel arrangements and acts merely as an agent 
-                  for the operating companies.
+                  No refunds are available for unused services, missed excursions, or late arrivals. If a particular 
+                  accommodation or activity is unavailable, Blue Zebra will endeavor to arrange a suitable alternative but 
+                  cannot guarantee this. Failure to use any service does not entitle the guest to any refund.
                 </p>
               </AccordionContent>
             </AccordionItem>
 
-            {/* Section 14: Consent */}
+            {/* Section 14: Guides */}
             <AccordionItem value="item-14">
-              <AccordionTrigger className="text-left">14. Consent</AccordionTrigger>
+              <AccordionTrigger className="text-left">14. Guides</AccordionTrigger>
               <AccordionContent>
                 <p className="text-safari-dark-grey">
-                  The payment of the deposit OR any other partial payment for a reservation on a safari constitutes consent by 
-                  all guests covered by that payment to all provisions of the conditions and general information contained in 
-                  this document. The terms, under which you agree to take these safaris, cannot be changed or amended except 
-                  in writing signed by an authorized director of the Company.
+                  On Guided Safaris, guides are responsible primarily for navigation, safety, and assistance. Driving 
+                  requests are at the guide's discretion. If a guide becomes unavailable due to illness or emergency, 
+                  Blue Zebra reserves the right to substitute with another qualified guide without liability.
                 </p>
               </AccordionContent>
             </AccordionItem>
 
-            {/* Section 15: Age limits */}
+            {/* Section 15: Age and Fitness Requirements */}
             <AccordionItem value="item-15">
-              <AccordionTrigger className="text-left">15. Age Limits in Camps and Lodges</AccordionTrigger>
+              <AccordionTrigger className="text-left">15. Age and Fitness Requirements</AccordionTrigger>
               <AccordionContent>
-                <p className="text-safari-dark-grey">
-                  There is no upper age limits, but we respectfully request that only physically active people join these safaris! 
-                  Certain excursion activities have minimum age requirements. We will be able to advise which properties and 
-                  operators allow younger children. Walking Safaris have a lower age limit of 12 and a maximum of 65, 70 or 75, 
-                  depending on the level of difficulty of the activity. Minimum driving age is 21 and maximum is 85.
-                </p>
+                <div className="space-y-4 text-safari-dark-grey">
+                  <p>
+                    There is no upper age limit for participation; however, safaris require a reasonable level of physical 
+                    fitness. Certain activities may have age restrictions:
+                  </p>
+                  <ul className="list-disc pl-6 space-y-2">
+                    <li><strong>Walking Safaris:</strong> Minimum age 12; maximum 65–75 depending on difficulty</li>
+                    <li><strong>Driving Safaris:</strong> Minimum driving age 21; maximum 85</li>
+                  </ul>
+                  <p>
+                    Guests are responsible for ensuring they meet the physical and legal requirements of each activity.
+                  </p>
+                </div>
               </AccordionContent>
             </AccordionItem>
 
@@ -290,7 +312,31 @@ const TermsAndConditions = () => {
               <AccordionTrigger className="text-left">16. Driving Licence</AccordionTrigger>
               <AccordionContent>
                 <p className="text-safari-dark-grey">
-                  A valid Driving License equivalent to Botswana Driving Licence Category B is required with a minimum age of 18.
+                  Drivers must hold a valid driving licence equivalent to Botswana Category B, with a minimum age of 18 years.
+                </p>
+              </AccordionContent>
+            </AccordionItem>
+
+            {/* Section 17: Governing Law */}
+            <AccordionItem value="item-17">
+              <AccordionTrigger className="text-left">17. Governing Law</AccordionTrigger>
+              <AccordionContent>
+                <p className="text-safari-dark-grey">
+                  This agreement shall be governed by and construed in accordance with the laws of the Republic of Botswana 
+                  (or the primary jurisdiction in which the safari takes place). Any disputes arising shall be subject to the 
+                  exclusive jurisdiction of the competent courts in that jurisdiction.
+                </p>
+              </AccordionContent>
+            </AccordionItem>
+
+            {/* Section 18: Consent */}
+            <AccordionItem value="item-18">
+              <AccordionTrigger className="text-left">18. Consent</AccordionTrigger>
+              <AccordionContent>
+                <p className="text-safari-dark-grey">
+                  Payment of a deposit or any portion of the total tour price constitutes acknowledgment and acceptance of 
+                  all terms and conditions stated herein. No variation to these Terms shall be valid unless made in writing 
+                  and signed by an authorized representative of Blue Zebra Adventures Sdn. Bhd.
                 </p>
               </AccordionContent>
             </AccordionItem>
@@ -301,11 +347,12 @@ const TermsAndConditions = () => {
         <div className="bg-safari-gold/10 border-l-4 border-safari-gold rounded-lg p-6 mb-8">
           <h2 className="text-xl font-bold text-safari-dark-grey mb-4">Key Points to Remember</h2>
           <ul className="space-y-2 text-safari-dark-grey">
-            <li>✓ 20% deposit required to confirm booking</li>
-            <li>✓ Full payment due 8 weeks before departure</li>
-            <li>✓ Comprehensive travel insurance is mandatory</li>
-            <li>✓ Maximum baggage: 15kg per person in soft bags</li>
-            <li>✓ Cancellation within 2 weeks = 100% charge</li>
+            <li>✓ 30% deposit required to confirm booking</li>
+            <li>✓ Full payment due 10 weeks (70 days) before departure</li>
+            <li>✓ Comprehensive travel and medical insurance is mandatory</li>
+            <li>✓ Maximum baggage: 15kg (33 lbs) per person in soft bags</li>
+            <li>✓ Valid passport, visas, and health documentation required</li>
+            <li>✓ No refunds for no-shows, late arrivals, or unused services</li>
           </ul>
         </div>
 
