@@ -98,13 +98,44 @@ const TermsAndConditions = () => {
                     All cancellations must be made in writing and are only effective upon acknowledgement of receipt of such 
                     notification by Blue Zebra. Refunds will be processed according to the following schedule:
                   </p>
-                  <ul className="list-disc pl-6 space-y-2">
-                    <li><strong>More than 10 weeks notice:</strong> Deposit forfeited</li>
-                    <li><strong>8-10 weeks notice:</strong> Deposit plus 25% of total cost</li>
-                    <li><strong>4-8 weeks notice:</strong> 50% of total cost</li>
-                    <li><strong>2-4 weeks notice:</strong> 75% of total cost</li>
-                    <li><strong>Less than 2 weeks notice:</strong> 100% of total cost</li>
-                  </ul>
+                  <div className="overflow-x-auto">
+                    <table className="w-full border-collapse border border-safari-sand/30 my-4">
+                      <thead>
+                        <tr className="bg-safari-sand/20">
+                          <th className="border border-safari-sand/30 p-3 text-left font-semibold">
+                            Notice Period Before Departure
+                          </th>
+                          <th className="border border-safari-sand/30 p-3 text-left font-semibold">
+                            Refund Entitlement
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td className="border border-safari-sand/30 p-3">More than 10 weeks</td>
+                          <td className="border border-safari-sand/30 p-3">75% of deposit refunded</td>
+                        </tr>
+                        <tr className="bg-safari-sand/10">
+                          <td className="border border-safari-sand/30 p-3">10 – 8 weeks</td>
+                          <td className="border border-safari-sand/30 p-3">50% of deposit refunded</td>
+                        </tr>
+                        <tr>
+                          <td className="border border-safari-sand/30 p-3">8 – 4 weeks</td>
+                          <td className="border border-safari-sand/30 p-3">25% of deposit refunded</td>
+                        </tr>
+                        <tr className="bg-safari-sand/10">
+                          <td className="border border-safari-sand/30 p-3">Less than 4 weeks</td>
+                          <td className="border border-safari-sand/30 p-3">No refund</td>
+                        </tr>
+                        <tr>
+                          <td className="border border-safari-sand/30 p-3">After full payment</td>
+                          <td className="border border-safari-sand/30 p-3">
+                            Refunds subject to supplier policies and non-refundable costs already incurred
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                   <p>
                     No refunds are provided for no-shows, late arrivals, early departures, or unused services once travel 
                     has commenced.
