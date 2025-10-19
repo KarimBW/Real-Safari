@@ -41,7 +41,7 @@ const GamePlan = () => {
       content: {
         title: "Ride with a Legend at the Wheel",
         subtitle: "aka The Guided Safari",
-        description: "Prefer a little storytelling with your scenery? This one's for you. You'll still be in your own fully-kitted 4x4, but one of our expert safari guides will lead the convoy in a separate vehicle—or ride along with you if you'd like. They know every dust track, every elephant hangout, and which bird call means \"there's a leopard nearby.\" Think of it as having a living, breathing safari encyclopedia… with jokes.",
+        description: "Prefer a little storytelling with your scenery? This one's for you. You'll still be in your own fully-kitted 4x4, but one of our expert safari guides will be right there with you—riding shotgun, spotting game, and sharing their wealth of knowledge. They know every dust track, every elephant hangout, and which bird call means \"there's a leopard nearby.\" Think of it as having a living, breathing safari encyclopedia… with jokes.",
         features: [
           "A pro guide who's part animal tracker, part history buff, part bush therapist",
           "Deep insights about wildlife, culture, and the land",
