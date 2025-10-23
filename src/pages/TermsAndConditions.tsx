@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ChevronLeft, Menu, X } from 'lucide-react';
+import { ChevronLeft } from 'lucide-react';
 import {
   Accordion,
   AccordionContent,
@@ -11,41 +11,6 @@ import FooterSection from '@/components/Destination/FooterSection';
 
 const TermsAndConditions = () => {
   const navigate = useNavigate();
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState<string | null>(null);
-
-  const sections = [
-    { id: "item-1", title: "Introduction" },
-    { id: "item-2", title: "How to Book" },
-    { id: "item-3", title: "Cancellations" },
-    { id: "item-4", title: "Changes to Bookings" },
-    { id: "item-5", title: "Travel Insurance" },
-    { id: "item-6", title: "Baggage" },
-    { id: "item-7", title: "Wildlife and Safety" },
-    { id: "item-8", title: "Immigration and Health Requirements" },
-    { id: "item-9", title: "Services Not Included" },
-    { id: "item-10", title: "Company Responsibility and Liability" },
-    { id: "item-11", title: "Force Majeure" },
-    { id: "item-12", title: "Itinerary and Schedule Changes" },
-    { id: "item-13", title: "Refund Policy" },
-    { id: "item-14", title: "Guides" },
-    { id: "item-15", title: "Age and Fitness Requirements" },
-    { id: "item-16", title: "Driving Licence" },
-    { id: "item-17", title: "Governing Law" },
-    { id: "item-18", title: "Complaints and Disputes" },
-    { id: "item-19", title: "Data Protection and Privacy" },
-    { id: "item-20", title: "Entire Agreement" },
-  ];
-
-  const handleSectionClick = (sectionId: string) => {
-    setActiveSection(sectionId);
-    setMenuOpen(false);
-    // Trigger accordion to open
-    const element = document.querySelector(`[data-state][value="${sectionId}"]`);
-    if (element) {
-      (element as HTMLElement).click();
-    }
-  };
 
   return (
     <div className="min-h-screen bg-safari-cream">
@@ -65,59 +30,8 @@ const TermsAndConditions = () => {
         </div>
       </header>
 
-      {/* Mobile Menu Toggle */}
-      <button
-        onClick={() => setMenuOpen(!menuOpen)}
-        className="lg:hidden fixed top-24 right-4 z-50 bg-safari-dark-grey text-white p-3 rounded-lg shadow-lg hover:bg-safari-gold transition-colors"
-      >
-        {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-      </button>
-
-      {/* Content with Sidebar */}
-      <div className="container mx-auto px-8 py-16 max-w-7xl">
-        <div className="flex gap-8">
-          {/* Table of Contents Sidebar */}
-          <aside className={`
-            ${menuOpen ? 'translate-x-0' : '-translate-x-full'}
-            lg:translate-x-0
-            fixed lg:sticky top-24 left-0 h-[calc(100vh-6rem)]
-            w-64 bg-white rounded-lg shadow-lg p-6
-            transition-transform duration-300 z-40
-            lg:block overflow-y-auto
-          `}>
-            <h2 className="text-xl font-bold text-safari-dark-grey mb-4">Table of Contents</h2>
-            <nav>
-              <ul className="space-y-2">
-                {sections.map((section, index) => (
-                  <li key={section.id}>
-                    <button
-                      onClick={() => handleSectionClick(section.id)}
-                      className={`
-                        w-full text-left px-3 py-2 rounded-md text-sm transition-colors
-                        ${activeSection === section.id 
-                          ? 'bg-safari-gold text-white font-medium' 
-                          : 'text-safari-dark-grey hover:bg-safari-sand/20'
-                        }
-                      `}
-                    >
-                      {index + 1}. {section.title}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </aside>
-
-          {/* Overlay for mobile */}
-          {menuOpen && (
-            <div 
-              onClick={() => setMenuOpen(false)}
-              className="lg:hidden fixed inset-0 bg-black/50 z-30"
-            />
-          )}
-
-          {/* Main Content */}
-          <div className="flex-1 max-w-4xl">
+      {/* Content */}
+      <div className="container mx-auto px-8 py-16 max-w-4xl">
         <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
           <p className="text-safari-dark-grey mb-8">
             These Terms and Conditions set out the contractual agreement between Blue Zebra Adventures Sdn. Bhd. and the guest 
@@ -126,13 +40,7 @@ const TermsAndConditions = () => {
             you have read, understood, and agreed to these Terms and Conditions.
           </p>
 
-          <Accordion 
-            type="single" 
-            collapsible 
-            className="w-full"
-            value={activeSection || undefined}
-            onValueChange={setActiveSection}
-          >
+          <Accordion type="single" collapsible className="w-full">
             {/* Section 1: Introduction */}
             <AccordionItem value="item-1">
               <AccordionTrigger className="text-left">1. Introduction</AccordionTrigger>
@@ -510,8 +418,6 @@ const TermsAndConditions = () => {
                 +60 186 3113 30
               </a>
             </p>
-          </div>
-        </div>
           </div>
         </div>
       </div>
