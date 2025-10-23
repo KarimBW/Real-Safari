@@ -1,6 +1,4 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { ChevronLeft } from 'lucide-react';
 import {
   Accordion,
   AccordionContent,
@@ -8,22 +6,17 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import FooterSection from '@/components/Destination/FooterSection';
+import { Header } from '@/components/Safari/Header';
 
 const TermsAndConditions = () => {
-  const navigate = useNavigate();
-
   return (
     <div className="min-h-screen bg-safari-cream">
-      {/* Header */}
-      <header className="bg-safari-dark-grey text-white py-6 px-8">
+      {/* Navigation Header */}
+      <Header className="fixed top-0 left-0 right-0 z-50 bg-safari-dark-grey/95 backdrop-blur-sm" />
+      
+      {/* Page Title Section */}
+      <header className="bg-safari-dark-grey text-white py-16 px-8 mt-16">
         <div className="container mx-auto">
-          <button 
-            onClick={() => navigate(-1)} 
-            className="inline-flex items-center gap-2 text-white hover:text-safari-gold transition-colors mb-4"
-          >
-            <ChevronLeft className="h-4 w-4" />
-            Back to Previous Page
-          </button>
           <h1 className="text-4xl md:text-5xl font-bold">Terms & Conditions</h1>
           <p className="text-lg mt-2 text-safari-sand">Blue Zebra Adventures Sdn. Bhd. t/a Real Safari</p>
           <p className="text-sm mt-1 text-safari-gold">License Number: MOTAC L/N/12103</p>
