@@ -213,11 +213,17 @@ const TermsAndConditions = () => {
             <AccordionItem value="item-8">
               <AccordionTrigger className="text-left">8. Immigration and Health Requirements</AccordionTrigger>
               <AccordionContent>
-                <p className="text-safari-dark-grey">
-                  It is the sole responsibility of each guest to ensure they possess valid passports, visas, vaccination 
-                  certificates, and other travel documents required for the countries visited. Blue Zebra will not be held 
-                  liable for costs incurred due to failure to obtain such documentation.
-                </p>
+                <div className="space-y-4 text-safari-dark-grey">
+                  <p>
+                    It is the sole responsibility of each guest to ensure they possess valid passports, visas, vaccination 
+                    certificates, and other travel documents required for the countries visited. Blue Zebra will not be held 
+                    liable for costs incurred due to failure to obtain such documentation.
+                  </p>
+                  <p>
+                    Guests with special needs or who require medical attention or care must declare to the company of their 
+                    condition and sign a waiver form to exclude the liability of the company.
+                  </p>
+                </div>
               </AccordionContent>
             </AccordionItem>
 
@@ -334,6 +340,10 @@ const TermsAndConditions = () => {
                   <p>
                     Guests are responsible for ensuring they meet the physical and legal requirements of each activity.
                   </p>
+                  <p>
+                    Guests with special needs or who require medical attention or care must make a declaration of 'fit to 
+                    travel' to the company.
+                  </p>
                 </div>
               </AccordionContent>
             </AccordionItem>
@@ -343,7 +353,8 @@ const TermsAndConditions = () => {
               <AccordionTrigger className="text-left">16. Driving Licence</AccordionTrigger>
               <AccordionContent>
                 <p className="text-safari-dark-grey">
-                  Drivers must hold a valid driving licence equivalent to Botswana Category B, with a minimum age of 18 years.
+                  Drivers must possess a valid International Driver's License or equivalent to Botswana Category B with a 
+                  minimum age of 18 years.
                 </p>
               </AccordionContent>
             </AccordionItem>
@@ -352,11 +363,16 @@ const TermsAndConditions = () => {
             <AccordionItem value="item-17">
               <AccordionTrigger className="text-left">17. Governing Law</AccordionTrigger>
               <AccordionContent>
-                <p className="text-safari-dark-grey">
-                  This agreement shall be governed by and construed in accordance with the laws of the Republic of Botswana 
-                  (or the primary jurisdiction in which the safari takes place). Any disputes arising shall be subject to the 
-                  exclusive jurisdiction of the competent courts in that jurisdiction.
-                </p>
+                <div className="space-y-4 text-safari-dark-grey">
+                  <p>
+                    This agreement shall be governed by and construed in accordance with the laws of the Republic of Botswana 
+                    (or the primary jurisdiction in which the safari takes place). Any disputes arising shall be subject to the 
+                    exclusive jurisdiction of the competent courts in that jurisdiction.
+                  </p>
+                  <p>
+                    However the governing law for the payment, variation, cancellation or refund is the Malaysian Law.
+                  </p>
+                </div>
               </AccordionContent>
             </AccordionItem>
 
