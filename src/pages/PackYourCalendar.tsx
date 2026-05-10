@@ -658,7 +658,7 @@ const PackYourCalendar = () => {
                 <li>• Maximum 8 persons and 3 vehicles per group</li>
                 <li>• Campsite locations may vary by availability</li>
                 <li>• Bring food supplies or buy in Maun</li>
-                <li>• Best flight connections: Qatar Airways or Emirates</li>
+                <li>• Best flight connections: Qatar Airways or Ethiopian Airlines</li>
               </ul>
             </div>
           </div>
