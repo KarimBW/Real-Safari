@@ -300,6 +300,16 @@ const PackYourCalendar = () => {
     }
   };
 
+  // Select a season from the bottom pricing cards (no scroll)
+  const handleBottomSeasonSelect = (season: 'brown' | 'green') => {
+    setSelectedSeason(season);
+    setBookingSelection({
+      selectedSeason: season,
+      groupSize: groupSize,
+      totalCost: calculateTotalCost(season, groupSize)
+    });
+  };
+
   return (
     <div className="flex flex-col min-h-screen relative">
       {/* Full page background - desktop only */}
