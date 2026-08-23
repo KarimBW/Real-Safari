@@ -113,7 +113,7 @@ const PackYourCalendar = () => {
       image: "/lovable-uploads/f8df9392-5003-48b6-ac98-5b48f496ad5b.png",
       period: "01 July - 31 October",
       pricing: {
-        twoPersons: 8400,
+        twoPersons: 9430,
         threePersons: 6500
       },
       features: [
@@ -130,7 +130,7 @@ const PackYourCalendar = () => {
       image: "/lovable-uploads/816850fe-ec88-41bc-9a5f-644224f107cc.png",
       period: "01 November - 30 June",
       pricing: {
-        twoPersons: 6900,
+        twoPersons: 8480,
         threePersons: 5500
       },
       features: [
@@ -194,7 +194,7 @@ const PackYourCalendar = () => {
     
     // Add guide fee based on travel style
     if (travelStyle === 'guided') {
-      totalCost += 1500;
+      totalCost += 1750;
     }
     
     return totalCost;
@@ -218,7 +218,7 @@ const PackYourCalendar = () => {
         : seasonPricing.pricing.threePersons * vehiclePeople
     }));
 
-    const guideFee = travelStyle === 'guided' ? 1500 : 0;
+    const guideFee = travelStyle === 'guided' ? 1750 : 0;
     const total = vehicles.reduce((sum, v) => sum + v.cost, 0) + guideFee;
 
     return { vehicles, guideFee, total };

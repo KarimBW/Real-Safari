@@ -98,7 +98,7 @@ export const PackageOverview: React.FC = () => {
                   <CheckCircle className="h-4 w-4 text-green-500 mt-1" />
                   <div>
                     <p className="font-medium">Guided Experience</p>
-                    <p className="text-sm text-muted-foreground">Professional guide accompanies your journey (+RM 1,500)</p>
+                    <p className="text-sm text-muted-foreground">Professional guide accompanies your journey (+RM 1,750)</p>
                   </div>
                 </div>
               </CardContent>
