@@ -19,7 +19,7 @@ export const TravelStyleSection: React.FC<TravelStyleSectionProps> = ({
       id: 'guided' as TravelStyle,
       name: 'Guided & Glorious',
       description: 'Expert storytelling and seamless adventure',
-      fee: 1500,
+      fee: 1750,
       features: [
         'Expert local guide',
         'Rich storytelling & insights',
