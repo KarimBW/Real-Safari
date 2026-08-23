@@ -300,6 +300,16 @@ const PackYourCalendar = () => {
     }
   };
 
+  // Select a season from the bottom pricing cards (no scroll)
+  const handleBottomSeasonSelect = (season: 'brown' | 'green') => {
+    setSelectedSeason(season);
+    setBookingSelection({
+      selectedSeason: season,
+      groupSize: groupSize,
+      totalCost: calculateTotalCost(season, groupSize)
+    });
+  };
+
   return (
     <div className="flex flex-col min-h-screen relative">
       {/* Full page background - desktop only */}
@@ -613,14 +623,40 @@ const PackYourCalendar = () => {
                     )}
                     
                     <div className="grid grid-cols-2 gap-4">
-                      <div className="bg-white rounded-lg p-4 text-center">
+                      <div
+                        onClick={() => handleBottomSeasonSelect('brown')}
+                        className={`relative bg-white rounded-lg p-4 text-center cursor-pointer transition-all duration-200 border-2 ${
+                          selectedSeason === 'brown'
+                            ? 'border-safari-gold ring-2 ring-safari-gold shadow-lg'
+                            : 'border-safari-gold/30 hover:bg-safari-gold/10 hover:border-safari-gold'
+                        }`}
+                      >
+                        {selectedSeason === 'brown' && (
+                          <span className="absolute top-2 right-2 bg-safari-gold text-white px-2 py-1 rounded-full text-xs font-medium flex items-center space-x-1">
+                            <Star className="h-3 w-3" />
+                            <span>Selected</span>
+                          </span>
+                        )}
                         <h4 className="font-bold text-safari-dark-grey mb-2">Brown Season</h4>
                         <p className="text-sm text-safari-dark-grey mb-2">July - October</p>
                         <p className="text-lg font-bold text-safari-gold">
                           RM {calculateTotalCost('brown', groupSize).toLocaleString()}
                         </p>
                       </div>
-                      <div className="bg-white rounded-lg p-4 text-center">
+                      <div
+                        onClick={() => handleBottomSeasonSelect('green')}
+                        className={`relative bg-white rounded-lg p-4 text-center cursor-pointer transition-all duration-200 border-2 ${
+                          selectedSeason === 'green'
+                            ? 'border-safari-gold ring-2 ring-safari-gold shadow-lg'
+                            : 'border-safari-gold/30 hover:bg-safari-gold/10 hover:border-safari-gold'
+                        }`}
+                      >
+                        {selectedSeason === 'green' && (
+                          <span className="absolute top-2 right-2 bg-safari-gold text-white px-2 py-1 rounded-full text-xs font-medium flex items-center space-x-1">
+                            <Star className="h-3 w-3" />
+                            <span>Selected</span>
+                          </span>
+                        )}
                         <h4 className="font-bold text-safari-dark-grey mb-2">Green Season</h4>
                         <p className="text-sm text-safari-dark-grey mb-2">November - June</p>
                         <p className="text-lg font-bold text-safari-gold">
