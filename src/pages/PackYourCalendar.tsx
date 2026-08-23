@@ -585,7 +585,7 @@ const PackYourCalendar = () => {
                                 Vehicle {vehicle.id} ({vehicle.people} pax):
                               </span>
                               <span className="text-safari-dark-grey">
-                                RM {vehicle.cost.toLocaleString()}
+                                RM {vehicle.rate.toLocaleString()} <span className="text-xs opacity-70">pp</span> · RM {vehicle.cost.toLocaleString()} total
                               </span>
                             </div>
                           ))}
