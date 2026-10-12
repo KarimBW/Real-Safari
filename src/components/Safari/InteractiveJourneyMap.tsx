@@ -257,9 +257,9 @@ export const InteractiveJourneyMap: React.FC = () => {
 
         {/* Enhanced Interactive Map with increased height */}
         <div className="max-w-5xl mx-auto">
-          <div className="relative w-full h-[60vh] min-h-[500px] overflow-hidden mb-8">
+          <div className="relative w-full h-[60vh] min-h-[500px] mb-8">
             {/* Map paths connecting destinations */}
-            <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <svg className={`absolute inset-0 w-full h-full transition-opacity duration-300 ${hoveredDestination ? "opacity-25" : "opacity-100"}`} viewBox="0 0 100 100" preserveAspectRatio="none">
               <defs>
                 <linearGradient id="pathGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                   <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.4" />
@@ -294,10 +294,19 @@ export const InteractiveJourneyMap: React.FC = () => {
             </svg>
 
             {/* Destination points with camp photos */}
-            {destinations.map((destination) => (
+            {destinations.map((destination) => {
+              const isHovered = hoveredDestination === destination.id;
+              const isDimmed = hoveredDestination !== null && !isHovered;
+              const { x, y } = destination.position;
+              const horizontalClass =
+                x < 25 ? "left-0" : x > 75 ? "right-0" : "left-1/2 -translate-x-1/2";
+              const verticalClass = y < 40 ? "top-full mt-20" : "bottom-full mb-6";
+              return (
               <div
                 key={destination.id}
-                className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer transition-all duration-500 hover:scale-110"
+                className={`absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer transition-all duration-300 ease-out ${
+                  isHovered ? "z-50" : "z-10"
+                } ${isDimmed ? "opacity-20 scale-95 pointer-events-none" : "opacity-100"}`}
                 style={{
                   left: `${destination.position.x}%`,
                   top: `${destination.position.y}%`,
@@ -340,9 +349,9 @@ export const InteractiveJourneyMap: React.FC = () => {
                 </div>
 
                 {/* Enhanced hover tooltip with itinerary details */}
-                {hoveredDestination === destination.id && (
-                  <div className="absolute -top-40 left-1/2 transform -translate-x-1/2 z-20">
-                    <div className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-2xl border-2 border-primary/20 min-w-80 max-w-md animate-scale-in">
+                {isHovered && (
+                  <div className={`absolute ${horizontalClass} ${verticalClass} z-50`}>
+                    <div className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-2xl border-2 border-primary/20 w-80 max-w-[85vw] animate-scale-in">
                       <div className="flex items-center gap-3 mb-3">
                         <div className="p-2 bg-primary/10 rounded-lg">
                           {destination.icon}
@@ -400,7 +409,8 @@ export const InteractiveJourneyMap: React.FC = () => {
                   </div>
                 )}
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
