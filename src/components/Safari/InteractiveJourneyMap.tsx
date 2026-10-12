@@ -259,8 +259,10 @@ export const InteractiveJourneyMap: React.FC = () => {
       const inset = 16;
       const leftEdge = Math.max(inset, mapBounds.left + inset);
       const rightEdge = Math.min(window.innerWidth - inset, mapBounds.right - inset);
-      const topEdge = Math.max(96, mapBounds.top + inset);
       const bottomEdge = Math.min(window.innerHeight - inset, mapBounds.bottom - inset);
+      // When only part of the map is visible, use the space above it rather than
+      // forcing a tall card below the viewport.
+      const topEdge = Math.max(96, Math.min(mapBounds.top + inset, bottomEdge - popup.offsetHeight));
       const clamp = (value: number, min: number, max: number) =>
         Math.max(min, Math.min(value, Math.max(min, max)));
 
