@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { MapPin, Camera, Binoculars, Compass } from "lucide-react";
@@ -238,6 +238,52 @@ const destinations: MapDestination[] = [
 export const InteractiveJourneyMap: React.FC = () => {
   const [hoveredDestination, setHoveredDestination] = useState<string | null>(null);
   const [selectedDestination, setSelectedDestination] = useState<string>("day1");
+  const mapRef = useRef<HTMLDivElement>(null);
+  const popupRef = useRef<HTMLDivElement>(null);
+  const [popupPosition, setPopupPosition] = useState<{ left: number; top: number } | null>(null);
+
+  useLayoutEffect(() => {
+    if (!hoveredDestination) {
+      setPopupPosition(null);
+      return;
+    }
+
+    const positionPopup = () => {
+      const map = mapRef.current;
+      const popup = popupRef.current;
+      const marker = popup?.parentElement;
+      if (!map || !popup || !marker) return;
+
+      const mapBounds = map.getBoundingClientRect();
+      const markerBounds = marker.getBoundingClientRect();
+      const inset = 16;
+      const leftEdge = Math.max(inset, mapBounds.left + inset);
+      const rightEdge = Math.min(window.innerWidth - inset, mapBounds.right - inset);
+      const topEdge = Math.max(96, mapBounds.top + inset);
+      const bottomEdge = Math.min(window.innerHeight - inset, mapBounds.bottom - inset);
+      const clamp = (value: number, min: number, max: number) =>
+        Math.max(min, Math.min(value, Math.max(min, max)));
+
+      // Centre over the pin, nudging only as much as the visible map requires.
+      const left = clamp(markerBounds.left + markerBounds.width / 2 - popup.offsetWidth / 2,
+        leftEdge, rightEdge - popup.offsetWidth);
+      const top = clamp(markerBounds.top + markerBounds.height / 2 - popup.offsetHeight / 2,
+        topEdge, bottomEdge - popup.offsetHeight);
+      setPopupPosition({ left: left - markerBounds.left, top: top - markerBounds.top });
+    };
+
+    positionPopup();
+    const observer = new ResizeObserver(positionPopup);
+    if (popupRef.current) observer.observe(popupRef.current);
+    if (mapRef.current) observer.observe(mapRef.current);
+    window.addEventListener("resize", positionPopup);
+    window.addEventListener("scroll", positionPopup, { passive: true });
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", positionPopup);
+      window.removeEventListener("scroll", positionPopup);
+    };
+  }, [hoveredDestination]);
 
   return (
     <div className="relative min-h-screen py-20 overflow-hidden">
@@ -257,7 +303,7 @@ export const InteractiveJourneyMap: React.FC = () => {
 
         {/* Enhanced Interactive Map with increased height */}
         <div className="max-w-5xl mx-auto">
-          <div className="relative w-full h-[60vh] min-h-[500px] mb-8">
+          <div ref={mapRef} className="relative w-full h-[60vh] min-h-[500px] mb-8">
             {/* Map paths connecting destinations */}
             <svg className={`absolute inset-0 w-full h-full transition-opacity duration-300 ${hoveredDestination ? "opacity-25" : "opacity-100"}`} viewBox="0 0 100 100" preserveAspectRatio="none">
               <defs>
@@ -297,10 +343,6 @@ export const InteractiveJourneyMap: React.FC = () => {
             {destinations.map((destination) => {
               const isHovered = hoveredDestination === destination.id;
               const isDimmed = hoveredDestination !== null && !isHovered;
-              const { x, y } = destination.position;
-              const horizontalClass =
-                x < 25 ? "left-0" : x > 75 ? "right-0" : "left-1/2 -translate-x-1/2";
-              const verticalClass = y < 40 ? "top-full mt-20" : "bottom-full mb-6";
               return (
               <div
                 key={destination.id}
@@ -350,8 +392,15 @@ export const InteractiveJourneyMap: React.FC = () => {
 
                 {/* Enhanced hover tooltip with itinerary details */}
                 {isHovered && (
-                  <div className={`absolute ${horizontalClass} ${verticalClass} z-50`}>
-                    <div className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-2xl border-2 border-primary/20 w-80 max-w-[85vw] animate-scale-in">
+                  <div
+                    ref={popupRef}
+                    role="tooltip"
+                    aria-label={`${destination.day} overview`}
+                    className="absolute z-50 pointer-events-none w-80 max-w-[85vw]"
+                    style={{ left: popupPosition?.left ?? 0, top: popupPosition?.top ?? 0,
+                      visibility: popupPosition ? "visible" : "hidden" }}
+                  >
+                    <div className="bg-popover text-popover-foreground rounded-lg p-6 shadow-2xl border-2 border-primary/20">
                       <div className="flex items-center gap-3 mb-3">
                         <div className="p-2 bg-primary/10 rounded-lg">
                           {destination.icon}
