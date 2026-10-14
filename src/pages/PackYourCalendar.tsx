@@ -197,11 +197,6 @@ const PackYourCalendar = () => {
       totalCost += rateFor(seasonPricing, vehiclePeople) * vehiclePeople;
     });
     
-    // Add guide fee based on travel style
-    if (travelStyle === 'guided') {
-      totalCost += 1750;
-    }
-    
     return totalCost;
   };
 
@@ -211,7 +206,7 @@ const PackYourCalendar = () => {
       (season === 'green' && option.title === 'Green Season')
     );
     
-    if (!seasonPricing) return { vehicles: [], guideFee: 0, total: 0 };
+    if (!seasonPricing) return { vehicles: [], total: 0 };
 
     const config = getSelectedVehicleConfig(people);
     const vehicles = config.map((vehiclePeople, index) => ({
@@ -221,10 +216,9 @@ const PackYourCalendar = () => {
       cost: rateFor(seasonPricing, vehiclePeople) * vehiclePeople
     }));
 
-    const guideFee = travelStyle === 'guided' ? 1750 : 0;
-    const total = vehicles.reduce((sum, v) => sum + v.cost, 0) + guideFee;
+    const total = vehicles.reduce((sum, v) => sum + v.cost, 0);
 
-    return { vehicles, guideFee, total };
+    return { vehicles, total };
   };
 
   useEffect(() => {
@@ -602,14 +596,6 @@ const PackYourCalendar = () => {
                               </span>
                             </div>
                           ))}
-                          {getCostBreakdown(selectedSeason, groupSize).guideFee > 0 && (
-                            <div className="flex justify-between text-sm">
-                              <span className="text-safari-dark-grey">Expert Guide Service:</span>
-                              <span className="text-safari-dark-grey">
-                                RM {getCostBreakdown(selectedSeason, groupSize).guideFee.toLocaleString()}
-                              </span>
-                            </div>
-                          )}
                         </div>
                         
                         <div className="border-t pt-2">

@@ -19,7 +19,6 @@ export const TravelStyleSection: React.FC<TravelStyleSectionProps> = ({
       id: 'guided' as TravelStyle,
       name: 'Guided & Glorious',
       description: 'Expert storytelling and seamless adventure',
-      fee: 1750,
       features: [
         'Expert local guide',
         'Rich storytelling & insights',
@@ -33,7 +32,6 @@ export const TravelStyleSection: React.FC<TravelStyleSectionProps> = ({
       id: 'solo' as TravelStyle,
       name: 'Lone & Wild',
       description: 'Pure wilderness adventure at your own pace',
-      fee: 0,
       features: [
         'Complete independence',
         'Self-guided exploration',
@@ -95,16 +93,6 @@ export const TravelStyleSection: React.FC<TravelStyleSectionProps> = ({
                 </div>
                 
                 <p className="text-sm mb-4 opacity-90 flex-grow">{style.description}</p>
-                
-                {/* Pricing */}
-                <div className="border-t border-white border-opacity-30 pt-3">
-                  <div className="flex justify-between items-center">
-                    <span className="text-xs opacity-80">Additional Fee:</span>
-                    <span className="text-lg font-bold text-safari-gold">
-                      {style.fee > 0 ? `+RM ${style.fee.toLocaleString()}` : 'FREE'}
-                    </span>
-                  </div>
-                </div>
               </div>
             </div>
           );
