@@ -11,6 +11,7 @@ interface SeasonOption {
   pricing: {
     twoPersons: number;
     threePersons: number;
+    fourPersons: number;
   };
   features: string[];
   description: string;

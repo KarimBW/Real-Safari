@@ -19,6 +19,7 @@ interface SeasonOption {
   pricing: {
     twoPersons: number;
     threePersons: number;
+    fourPersons: number;
   };
   features: string[];
   description: string;
@@ -114,7 +115,8 @@ const PackYourCalendar = () => {
       period: "01 July - 31 October",
       pricing: {
         twoPersons: 7500,
-        threePersons: 5700
+        threePersons: 5700,
+        fourPersons: 5000
       },
       features: [
         "Peak wildlife viewing with animals concentrated around water sources",
@@ -131,7 +133,8 @@ const PackYourCalendar = () => {
       period: "01 November - 30 June",
       pricing: {
         twoPersons: 5850,
-        threePersons: 4000
+        threePersons: 4000,
+        fourPersons: 3500
       },
       features: [
         "Lush landscapes and dramatic skies",
@@ -173,6 +176,12 @@ const PackYourCalendar = () => {
     return getSelectedVehicleConfig(people).length;
   };
 
+  const rateFor = (option: SeasonOption, vehiclePeople: number): number => {
+    if (vehiclePeople <= 2) return option.pricing.twoPersons;
+    if (vehiclePeople === 3) return option.pricing.threePersons;
+    return option.pricing.fourPersons;
+  };
+
   const calculateTotalCost = (season: 'brown' | 'green', people: number): number => {
     const seasonPricing = seasonOptions.find(option => 
       (season === 'brown' && option.title === 'Brown Season') ||
@@ -185,11 +194,7 @@ const PackYourCalendar = () => {
     let totalCost = 0;
     
     config.forEach(vehiclePeople => {
-      if (vehiclePeople === 2) {
-        totalCost += seasonPricing.pricing.twoPersons * 2;
-      } else {
-        totalCost += seasonPricing.pricing.threePersons * vehiclePeople;
-      }
+      totalCost += rateFor(seasonPricing, vehiclePeople) * vehiclePeople;
     });
     
     // Add guide fee based on travel style
@@ -212,10 +217,8 @@ const PackYourCalendar = () => {
     const vehicles = config.map((vehiclePeople, index) => ({
       id: index + 1,
       people: vehiclePeople,
-      rate: vehiclePeople === 2 ? seasonPricing.pricing.twoPersons : seasonPricing.pricing.threePersons,
-      cost: vehiclePeople === 2 
-        ? seasonPricing.pricing.twoPersons * 2 
-        : seasonPricing.pricing.threePersons * vehiclePeople
+      rate: rateFor(seasonPricing, vehiclePeople),
+      cost: rateFor(seasonPricing, vehiclePeople) * vehiclePeople
     }));
 
     const guideFee = travelStyle === 'guided' ? 1750 : 0;
