@@ -206,7 +206,7 @@ const PackYourCalendar = () => {
       (season === 'green' && option.title === 'Green Season')
     );
     
-    if (!seasonPricing) return { vehicles: [], guideFee: 0, total: 0 };
+    if (!seasonPricing) return { vehicles: [], total: 0 };
 
     const config = getSelectedVehicleConfig(people);
     const vehicles = config.map((vehiclePeople, index) => ({
