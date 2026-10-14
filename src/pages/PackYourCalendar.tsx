@@ -133,7 +133,7 @@ const PackYourCalendar = () => {
       period: "01 November - 30 June",
       pricing: {
         twoPersons: 5850,
-        threePersons: 4000,
+        threePersons: 4800,
         fourPersons: 3500
       },
       features: [
