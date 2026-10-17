@@ -677,13 +677,13 @@ const PackYourCalendar = () => {
                 <li>• All campsites use rooftop tent accommodation</li>
                 <li>• HALAL meat available from certified suppliers</li>
                 <li>• Diesel fuel for camper not included</li>
-                <li>• Guide included (own tent provided)</li>
+                <li>• Guide included (guide sleeps in own ground tent, not the vehicle rooftop tent)</li>
               </ul>
               <ul className="space-y-1">
                 <li>• Maximum 8 persons and 3 vehicles per group</li>
                 <li>• Campsite locations may vary by availability</li>
                 <li>• Bring food supplies or buy in Maun</li>
-                <li>• Best flight connections: Qatar Airways or Ethiopian Airlines</li>
+                <li>• Best flight connections: Ethiopian Airlines or Qatar Airways (one ticket to Maun); all other airlines via Johannesburg (two tickets — Joburg to Maun on CemAir, Airlink or Air Botswana)</li>
               </ul>
             </div>
           </div>
