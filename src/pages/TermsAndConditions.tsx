@@ -89,7 +89,7 @@ const TermsAndConditions = () => {
                 <div className="space-y-4 text-safari-dark-grey">
                   <p>
                     All cancellations must be made in writing and are only effective upon acknowledgement of receipt of such 
-                    notification by Blue Zebra. Refunds will be processed according to the following schedule:
+                    notification by Blue Zebra. Refunds will be processed according to the following schedule prior to traveling dates:
                   </p>
                   <div className="overflow-x-auto">
                     <table className="w-full border-collapse border border-safari-sand/30 my-4">
