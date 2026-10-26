@@ -63,12 +63,12 @@ const TermsAndConditions = () => {
                     <strong> Booking Confirmation Notice</strong> will be issued, signifying acceptance of your reservation.
                   </p>
                   <p>
-                    The balance of payment is due <strong>no later than 10 weeks (70 days) prior to departure</strong>. 
+                    The booking balance is due <strong>no later than 6 weeks (45 days) prior to departure</strong>. 
                     Failure to make payment by this date may result in automatic cancellation of the booking and forfeiture 
                     of the deposit.
                   </p>
                   <p>
-                    Bookings made less than 10 weeks prior to intended date of travel shall be subject to alternative payment 
+                    Bookings made less than 6 weeks (45 days) prior to intended date of travel shall be subject to alternative payment 
                     arrangement as seen fit by the company and disclosed to the guest.
                   </p>
                   <p>
@@ -389,7 +389,7 @@ const TermsAndConditions = () => {
           <h2 className="text-xl font-bold text-safari-dark-grey mb-4">Key Points to Remember</h2>
           <ul className="space-y-2 text-safari-dark-grey">
             <li>✓ 30% deposit required to confirm booking</li>
-            <li>✓ Full payment due 10 weeks (70 days) before departure</li>
+            <li>✓ Booking balance due 6 weeks (45 days) before departure</li>
             <li>✓ Comprehensive travel and medical insurance is mandatory</li>
             <li>✓ Maximum baggage: 15kg (33 lbs) per person in soft bags</li>
             <li>✓ Valid passport, visas, and health documentation required</li>
