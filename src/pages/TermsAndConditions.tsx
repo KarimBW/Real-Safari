@@ -105,18 +105,22 @@ const TermsAndConditions = () => {
                       </thead>
                       <tbody>
                         <tr>
-                          <td className="border border-safari-sand/30 p-3">More than 6 weeks</td>
-                          <td className="border border-safari-sand/30 p-3">75% of deposit</td>
+                          <td className="border border-safari-sand/30 p-3">More than 8 weeks</td>
+                          <td className="border border-safari-sand/30 p-3">Full refund</td>
                         </tr>
                         <tr className="bg-safari-sand/10">
+                          <td className="border border-safari-sand/30 p-3">8 – 6 weeks</td>
+                          <td className="border border-safari-sand/30 p-3">75% of deposit</td>
+                        </tr>
+                        <tr>
                           <td className="border border-safari-sand/30 p-3">6 – 4 weeks</td>
                           <td className="border border-safari-sand/30 p-3">50% of total cost</td>
                         </tr>
-                        <tr>
+                        <tr className="bg-safari-sand/10">
                           <td className="border border-safari-sand/30 p-3">4 – 2 weeks</td>
                           <td className="border border-safari-sand/30 p-3">25% of total cost</td>
                         </tr>
-                        <tr className="bg-safari-sand/10">
+                        <tr>
                           <td className="border border-safari-sand/30 p-3">Less than 2 weeks</td>
                           <td className="border border-safari-sand/30 p-3">No refund</td>
                         </tr>
