@@ -113,22 +113,19 @@ const TermsAndConditions = () => {
                           <td className="border border-safari-sand/30 p-3">50% of deposit refunded</td>
                         </tr>
                         <tr>
-                          <td className="border border-safari-sand/30 p-3">8 – 4 weeks</td>
+                          <td className="border border-safari-sand/30 p-3">4 – 2 weeks</td>
                           <td className="border border-safari-sand/30 p-3">25% of deposit refunded</td>
                         </tr>
                         <tr className="bg-safari-sand/10">
-                          <td className="border border-safari-sand/30 p-3">Less than 4 weeks</td>
+                          <td className="border border-safari-sand/30 p-3">Less than 2 weeks</td>
                           <td className="border border-safari-sand/30 p-3">No refund</td>
-                        </tr>
-                        <tr>
-                          <td className="border border-safari-sand/30 p-3">After full payment</td>
-                          <td className="border border-safari-sand/30 p-3">
-                            Refunds subject to supplier policies and non-refundable costs already incurred
-                          </td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
+                  <p className="text-sm italic text-safari-dark-grey/80 border-l-2 border-safari-gold pl-3 -mt-2">
+                    Note: After full payment, refunds are subject to supplier policies and non-refundable costs already incurred.
+                  </p>
                   <p>
                     No refunds are provided for no-shows, late arrivals, early departures, or unused services once travel 
                     has commenced.
